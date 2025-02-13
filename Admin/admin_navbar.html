@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS</title>
+    <link rel="icon" href="../images/HMS Logo.jpg">
+    <link rel="stylesheet" href="./../Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <style>
+        .top-navbar {
+            position: sticky;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .top-navbar .logout-link {
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .top-navbar .logout-link:hover {
+            color: #ffc107 !important;
+        }
+    </style>
+</head>
+
+<body><!-- Admin navbar -->
+
+    <div class="top-navbar bg-dark text-white">
+        <button class="btn btn-light d-md-none" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+            <i class="fa fa-bars"></i> Menu
+        </button>
+        <div class="div">
+            <img src="../images/HMS Logo.jpg" alt="" style="height:40px; width:40px; border-radius: 50%; margin-right:5px">
+            <a class="navbar-brand text-white fw-bold" href="#">HMS</a>
+        </div>
+        <span class="fw-bold d-none d-md-block">Admin Dashboard</span>
+        <a href="admin_logout.php" class="logout-link text-white"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
+    <script src="./../Bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
