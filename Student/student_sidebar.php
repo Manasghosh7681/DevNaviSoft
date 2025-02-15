@@ -28,7 +28,6 @@
         font-weight: bold;
     }
 </style>
-
 <!-- Admin sidebar -->
 <div class="offcanvas offcanvas-start bg-dark text-white w-50" tabindex="-1" id="offcanvasSidebar"
     aria-labelledby="offcanvasSidebarLabel">

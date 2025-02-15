@@ -89,7 +89,7 @@ if (isset($_SESSION['sic'])) {
                     <div class="info-box leave">
                         <h4>Leave</h4>
                         <i class="fa-solid fs-1 fa-plane-departure"></i>
-                        <a href="#" class="btn">
+                        <a href="student_leave.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> Leave Appy</a>
                     </div>
                 </div>
