@@ -1,140 +1,18 @@
-
 <style>
-    #approved{
+    #approved {
         color: green;
     }
-    #rejected{
+
+    #rejected {
         color: red;
     }
-    #pending{
+
+    #pending {
         color: blue;
     }
 </style>
-<script src="../Jquery/jquery-3.7.1.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let application = document.querySelector("#application");
-        let history = document.querySelector("#history");
-        // console.log(application)
-        // console.log(history)
-        let applicationContent = document.querySelector("#application-content")
-        let historyContent = document.querySelector("#history-content")
-
-        application.style.borderBottom = "2px solid blue";
-
-        
-        application.addEventListener("click", function() {
-            application.style.borderBottom = "2px solid blue";
-            history.style.borderBottom = "none";
-            history.style.color = "blue"
-            
-            $("#application-content").show()
-            $("#history-content").hide()
-        });
-
-        history.addEventListener("click", function() {
-            history.style.borderBottom = "2px solid blue";
-            application.style.borderBottom = "none";
-            history.style.color = "black"
-            $("#application-content").hide()
-            $("#history-content").show()
-            leaveHistory()
-        });
-    });
-
-    $(document).ready(() => {
-        $.ajax({
-            url: "pending_leave.php",
-            method: "GET",
-            success: function(data) {
-                if (data !== "False") {
-                    data = JSON.parse(data)
-                    let table = `<div class='table-responsive'>
-                                    <table class='table table-bordered table-hover text-center'>
-                                        <tr class="table-dark">
-                                            <th>Apply Date</th>
-                                            <th>Leaving Days</th>
-                                            <th>Status</th>
-                                        </tr>`
-                    for (let i = 0; i < data.length; i++) {
-                        table += `<tr>
-                                    <td>${data[i].apply_date}</td>
-                                    <td>${data[i].leave_days}</td>
-                                    <td class="${(data[i].status === 'Rejected')? 'text-danger' : 'text-success' }">
-                                        ${data[i].status}
-                                        ${
-                                            (data[i].status !== 'Rejected')?
-                                                `<button class='btn btn-info text-light withdraw-btn' data-apply-date="${data[i].apply_date}">Withdraw</button>`: ''
-                                        }
-                                        
-                                    </td>
-                                </tr>`
-                    }
-                    table += `</table>
-                    </div>`
-                    $("#pending-list").html(table)
-                }
-            }
-        })
-    })
-    $(document).on("click", ".withdraw-btn", function() {
-        let apply_date = $(this).data("apply-date"); // Retrieves the apply_date value
-        if(confirm("Are you sure to withdraw")){
-            withdraw(apply_date); // Calls the withdraw function with the retrieved date
-            window.location = "student_leave.php"
-        }
-    });
-
-    function withdraw(apply_date) {
-        $.ajax({
-            url: "leave_withdraw.php",
-            method: "POST",
-            data: {
-                "apply_date": apply_date
-            },
-            success: function(data) {
-                console.log(data)
-            }
-        })
-    }
-    function leaveHistory(){
-        $.ajax({
-            url: "leave_history.php",
-            method: "POST",
-            success: function(data){
-                // console.log(data)
-                // console.log(typeof(data))
-                if(data !== "False"){
-                    data = JSON.parse(data)
-                    let table = `<div class='table-reponsive>
-                                    <table class='table border border-1>
-                                        <thead>
-                                            <tr>
-                                                <th>Sno</th>
-                                                <th>Apply Date</th>
-                                                <th>Leave Date</th>
-                                                <th>Destination</th>
-                                                <th>Reason</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>`
-                    for (let i = 0; i < data.length; i++) {
-                        table += `<tr>
-                                    <td>${i+1}</td>
-                                    <td>${data[i].apply_date}</td>
-                                    <td>${data[i].leave_days}</td>
-                                    <td>${data[i].destination}</td>
-                                    <td>${data[i].reason}</td>
-                                    <td class='${data[i].status}'>${data[i].status}</td>
-                                </tr>`
-                    }
-                }
-            }
-        })
-    }
-</script>
 <?php
-// session_start();
+session_start();
 if (isset($_SESSION['sic'])) {
     include "student_navbar.html";
     $current_file = basename(__FILE__);
@@ -142,7 +20,7 @@ if (isset($_SESSION['sic'])) {
     <div class="d-flex">
         <?php include "student_sidebar.php"; ?>
         <style>
-            .sidebar{
+            .sidebar {
                 height: auto;
             }
         </style>
@@ -214,13 +92,136 @@ if (isset($_SESSION['sic'])) {
 <?php
 }
 ?>
+<script src="../Jquery/jquery-3.7.1.js"></script>
 <script>
-    document.querySelector("#from-date").addEventListener('click',()=>{
-        document.querySelector("#from-date").setAttribute('min',new Date().toLocaleDateString('en-CA'))
+    document.addEventListener("DOMContentLoaded", function() {
+        let application = document.querySelector("#application");
+        let history = document.querySelector("#history");
+        let applicationContent = document.querySelector("#application-content")
+        let historyContent = document.querySelector("#history-content")
+
+        application.style.borderBottom = "2px solid blue";
+
+
+        application.addEventListener("click", function() {
+            application.style.borderBottom = "2px solid blue";
+            history.style.borderBottom = "none";
+            history.style.color = "blue"
+
+            $("#application-content").show()
+            $("#history-content").hide()
+        });
+
+        history.addEventListener("click", function() {
+            history.style.borderBottom = "2px solid blue";
+            application.style.borderBottom = "none";
+            history.style.color = "black"
+            $("#application-content").hide()
+            $("#history-content").show()
+            leaveHistory()
+        });
+    });
+
+    $(document).ready(() => {
+        $.ajax({
+            url: "pending_leave.php",
+            method: "GET",
+            success: function(data) {
+                if (data !== "False") {
+                    data = JSON.parse(data)
+                    let table = `<div class='table-responsive'>
+                                    <table class='table table-bordered table-hover text-center'>
+                                        <tr class="table-dark">
+                                            <th>Apply Date</th>
+                                            <th>Leaving Days</th>
+                                            <th>Status</th>
+                                        </tr>`
+                    for (let i = 0; i < data.length; i++) {
+                        table += `<tr>
+                                    <td>${data[i].apply_date}</td>
+                                    <td>${data[i].leave_days}</td>
+                                    <td class="${(data[i].status === 'Rejected')? 'text-danger' : 'text-success' }">
+                                        ${data[i].status}
+                                        ${
+                                            (data[i].status !== 'Rejected')?
+                                                `<button class='btn btn-info text-light withdraw-btn' data-apply-date="${data[i].apply_date}">Withdraw</button>`: ''
+                                        }
+                                        
+                                    </td>
+                                </tr>`
+                    }
+                    table += `</table>
+                    </div>`
+                    $("#pending-list").html(table)
+                }
+            }
+        })
     })
-    document.querySelector("#from-date").addEventListener('change',()=>{
+    $(document).on("click", ".withdraw-btn", function() {
+        let apply_date = $(this).data("apply-date"); // Retrieves the apply_date value
+        if (confirm("Are you sure to withdraw")) {
+            withdraw(apply_date); // Calls the withdraw function with the retrieved date
+            window.location = "student_leave.php"
+        }
+    });
+
+    function withdraw(apply_date) {
+        $.ajax({
+            url: "leave_withdraw.php",
+            method: "POST",
+            data: {
+                "apply_date": apply_date
+            },
+            success: function(data) {
+
+            }
+        })
+    }
+
+    function leaveHistory() {
+        $.ajax({
+            url: "leave_history.php",
+            method: "POST",
+            success: function(data) {
+                if (data !== "False") {
+                    data = JSON.parse(data)
+                    let table = `<div class='table-reponsive mt-4'>
+                                    <table class='table table-bordered text-center'>
+                                        <thead class='table-dark'>
+                                            <tr>
+                                                <th>Sno</th>
+                                                <th>Apply Date</th>
+                                                <th>Leave Date</th>
+                                                <th>Destination</th>
+                                                <th>Reason</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>`
+                    for (let i = 0; i < data.length; i++) {
+                        table += `<tr>
+                                    <td>${i+1}</td>
+                                    <td>${data[i].apply_date}</td>
+                                    <td>${data[i].leave_days}</td>
+                                    <td>${data[i].destination}</td>
+                                    <td>${data[i].reason}</td>
+                                    <td class='${data[i].status}'>${data[i].status}</td>
+                                </tr>`
+                    }
+                    table += `</tbody>
+                            </table>
+                            </div>`
+                    $("#history-content").html(table)
+                }
+            }
+        })
+    }
+    document.querySelector("#from-date").addEventListener('click', () => {
+        document.querySelector("#from-date").setAttribute('min', new Date().toLocaleDateString('en-CA'))
+    })
+    document.querySelector("#from-date").addEventListener('change', () => {
         let fromDate = document.querySelector("#from-date").value
-        document.querySelector("#to-date").setAttribute('min',fromDate)
+        document.querySelector("#to-date").setAttribute('min', fromDate)
     })
     $("#leave-form").submit((e) => {
         let contact_no = $("#contact_no").val()

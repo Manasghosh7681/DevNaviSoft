@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2025 at 06:07 PM
+-- Generation Time: Feb 20, 2025 at 07:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `hms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leave_request`
+--
+
+CREATE TABLE `leave_request` (
+  `sno` int(11) NOT NULL,
+  `sic` varchar(255) NOT NULL,
+  `apply_date` varchar(255) NOT NULL,
+  `leave_days` varchar(255) NOT NULL,
+  `destination` varchar(255) NOT NULL,
+  `contact_no` bigint(10) NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `leave_request`
+--
+
+INSERT INTO `leave_request` (`sno`, `sic`, `apply_date`, `leave_days`, `destination`, `contact_no`, `reason`, `status`) VALUES
+(1, '22vlsi44', '20-02-2025 11:58:26 AM', '2025-02-22 11:00 TO 2025-02-28 11:00', 'Home', 8093547586, 'I will go to office', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -53,6 +77,12 @@ INSERT INTO `notice` (`notice_id`, `notice_title`, `notice_date`, `notice_descri
 --
 
 --
+-- Indexes for table `leave_request`
+--
+ALTER TABLE `leave_request`
+  ADD PRIMARY KEY (`sno`);
+
+--
 -- Indexes for table `notice`
 --
 ALTER TABLE `notice`
@@ -61,6 +91,12 @@ ALTER TABLE `notice`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `leave_request`
+--
+ALTER TABLE `leave_request`
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `notice`
