@@ -1,15 +1,13 @@
 <?php
 session_start();
-if ($_SESSION['sic']) {
-    include "student_navbar.html";
-    $current_file = basename(__FILE__);
-?>
-    <div class="d-flex">
-        <?php include "student_sidebar.php"; ?>
-        <div class="container">
-            <h2>History</h2>
-        </div>
-    </div>
-    <?php
+if(isset($_SESSION['sic'])){
+    require_once "../Database/student_db_function.php";
+    $res = leaveHistory($_SESSION['sic']);
+    if($res){
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+        echo json_encode($data);
+    }else {
+        echo "False";
+    }
 }
 ?>

@@ -67,4 +67,22 @@ function withdraw($sic,$apply_date){
         echo $e->getMessage();
     }
 }
+function  leaveHistory($sic){
+    global $conn;
+    try {
+        $qry = "SELECT * FROM leave_request WHERE sic=? ORDER BY sno DESC";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s",$sic);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if($res->num_rows > 0){
+            return $res;
+        }
+        else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
 ?>

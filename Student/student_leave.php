@@ -1,27 +1,48 @@
+
+<style>
+    #approved{
+        color: green;
+    }
+    #rejected{
+        color: red;
+    }
+    #pending{
+        color: blue;
+    }
+</style>
 <script src="../Jquery/jquery-3.7.1.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        let application = document.getElementById("application");
-        let history = document.getElementById("history");
+        let application = document.querySelector("#application");
+        let history = document.querySelector("#history");
+        // console.log(application)
+        // console.log(history)
+        let applicationContent = document.querySelector("#application-content")
+        let historyContent = document.querySelector("#history-content")
 
         application.style.borderBottom = "2px solid blue";
 
+        
         application.addEventListener("click", function() {
             application.style.borderBottom = "2px solid blue";
             history.style.borderBottom = "none";
             history.style.color = "blue"
-            application.style.color = "black"
+            
+            $("#application-content").show()
+            $("#history-content").hide()
         });
 
         history.addEventListener("click", function() {
             history.style.borderBottom = "2px solid blue";
             application.style.borderBottom = "none";
             history.style.color = "black"
-            application.style.color = "red"
+            $("#application-content").hide()
+            $("#history-content").show()
+            leaveHistory()
         });
     });
 
-    $("document").ready(() => {
+    $(document).ready(() => {
         $.ajax({
             url: "pending_leave.php",
             method: "GET",
@@ -76,10 +97,45 @@
             }
         })
     }
+    function leaveHistory(){
+        $.ajax({
+            url: "leave_history.php",
+            method: "POST",
+            success: function(data){
+                // console.log(data)
+                // console.log(typeof(data))
+                if(data !== "False"){
+                    data = JSON.parse(data)
+                    let table = `<div class='table-reponsive>
+                                    <table class='table border border-1>
+                                        <thead>
+                                            <tr>
+                                                <th>Sno</th>
+                                                <th>Apply Date</th>
+                                                <th>Leave Date</th>
+                                                <th>Destination</th>
+                                                <th>Reason</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>`
+                    for (let i = 0; i < data.length; i++) {
+                        table += `<tr>
+                                    <td>${i+1}</td>
+                                    <td>${data[i].apply_date}</td>
+                                    <td>${data[i].leave_days}</td>
+                                    <td>${data[i].destination}</td>
+                                    <td>${data[i].reason}</td>
+                                    <td class='${data[i].status}'>${data[i].status}</td>
+                                </tr>`
+                    }
+                }
+            }
+        })
+    }
 </script>
 <?php
-session_start();
-if ($_SESSION['sic']) {
+// session_start();
+if (isset($_SESSION['sic'])) {
     include "student_navbar.html";
     $current_file = basename(__FILE__);
 ?>
@@ -92,71 +148,72 @@ if ($_SESSION['sic']) {
         </style>
         <div class="container">
             <h3 class="shadow p-2">Leave Workways</h3>
-            <div id="pending-list"></div>
             <div class="shadow mt-4 rounded-2">
                 <div class="border-bottom p-2">
                     <a href="#" class="text-decoration-none text-dark p-2 border-end" id="application">Applications</a>
-                    <a href="leave_history.php" class="text-decoration-none p-2" id="history">History</a>
+                    <a href="#" class="text-decoration-none p-2" id="history">History</a>
                 </div>
-                <div class="modal-body p-2">
-                    <form class="form" action="" method="post" id="leave-form">
-                        <div class="mb-1">
-                            <h5 class="text-center">Leave From</h5>
+                <div id="application-content">
+                    <div id="pending-list" class="mt-2"></div>
+                    <div class="modal-body p-2">
+                        <form class="form" action="" method="post" id="leave-form">
+                            <div class="mb-1">
+                                <h5 class="text-center">Leave From</h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-1">
+                                        <label class="form-label">Date :</label>
+                                        <input type="date" id="from-date" class="form-control" placeholder="Eg: 14-02-2025" name="from_date" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Time :</label>
+                                        <input type="time" id="from-time" class="form-control" placeholder="Eg:12:00" name="from_time" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <h5 class="text-center">Leave To</h5>
+                                <div class="row">
+                                    <div class="col-md-6 mb-1">
+                                        <label class="form-label">Date :</label>
+                                        <input type="date" id="to-date" class="form-control" placeholder="Eg: 14-02-2025" name="to_date" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Time :</label>
+                                        <input type="time" id="to-date" class="form-control" placeholder="Eg:12:00" name="to_time" required>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6 mb-1">
-                                    <label class="form-label">Date :</label>
-                                    <input type="date" id="from-date" class="form-control" placeholder="Eg: 14-02-2025" name="from_date" required>
+                                    <label class="form-label">Destination:</label>
+                                    <input type="text" class="form-control border border-1" name="destination" required>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Time :</label>
-                                    <input type="time" id="from-time" class="form-control" placeholder="Eg:12:00" name="from_time" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-1">
-                            <h5 class="text-center">Leave To</h5>
-                            <div class="row">
                                 <div class="col-md-6 mb-1">
-                                    <label class="form-label">Date :</label>
-                                    <input type="date" id="to-date" class="form-control" placeholder="Eg: 14-02-2025" name="to_date" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Time :</label>
-                                    <input type="time" id="to-date" class="form-control" placeholder="Eg:12:00" name="to_time" required>
+                                    <label class="form-label">Contact no:</label>
+                                    <input type="tel" id="contact_no" class="form-control" name="contact_no" required>
+                                    <p class="text-danger" id="contact-error"></p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-1">
-                                <label class="form-label">Destination:</label>
-                                <input type="text" class="form-control border border-1" name="destination" required>
+                            <div class="mb-1">
+                                <label class="form-label">Reason:</label>
+                                <textarea class="form-control" id="reason" name="reason" required></textarea>
+                                <p class="text-danger" id="reason-error"></p>
                             </div>
-                            <div class="col-md-6 mb-1">
-                                <label class="form-label">Contact no:</label>
-                                <input type="tel" id="contact_no" class="form-control" name="contact_no" required>
-                                <p class="text-danger" id="contact-error"></p>
+                            <p class="text-danger text-center">* All Fields are Mandatory</p>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-primary" value="Apply" name="apply">
                             </div>
-                        </div>
-                        <div class="mb-1">
-                            <label class="form-label">Reason:</label>
-                            <textarea class="form-control" id="reason" name="reason" required></textarea>
-                            <p class="text-danger" id="reason-error"></p>
-                        </div>
-                        <p class="text-danger text-center">* All Fields are Mandatory</p>
-                        <div class="text-center">
-                            <input type="submit" class="btn btn-primary" value="Apply" name="apply">
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-
+                <div id="history-content">
+                </div>
             </div>
         </div>
     </div>
 <?php
 }
 ?>
-
-<script src="../Jquery/jquery-3.7.1.js"></script>
 <script>
     document.querySelector("#from-date").addEventListener('click',()=>{
         document.querySelector("#from-date").setAttribute('min',new Date().toLocaleDateString('en-CA'))
