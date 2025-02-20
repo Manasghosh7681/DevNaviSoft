@@ -106,7 +106,7 @@ if (isset($_SESSION['email'])) {
                     <div class="info-box leave">
                         <h4>Leave</h4>
                         <i class="fa-solid fs-1 fa-plane-departure"></i>
-                        <a href="#" class="btn">
+                        <a href="admin_leave.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> More info</a>
                     </div>
                 </div>

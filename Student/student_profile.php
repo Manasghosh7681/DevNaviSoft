@@ -6,6 +6,11 @@ if ($_SESSION['sic']) {
 ?>
     <div class="d-flex">
         <?php include "student_sidebar.php"; ?>
+        <style>
+            .sidebar{
+                height: auto;
+            }
+        </style>
         <div class="container">
             <h4>Profile</h4>
             <div class="row">

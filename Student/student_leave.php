@@ -20,12 +20,8 @@
             application.style.color = "red"
         });
     });
-    // function pendingTable(){
-    //     console.log("Pending Table")
-       
-    // }
+
     $("document").ready(() => {
-    //    pendingTable()
         $.ajax({
             url: "pending_leave.php",
             method: "GET",
@@ -43,9 +39,13 @@
                         table += `<tr>
                                     <td>${data[i].apply_date}</td>
                                     <td>${data[i].leave_days}</td>
-                                    <td class='text-danger'>
+                                    <td class="${(data[i].status === 'Rejected')? 'text-danger' : 'text-success' }">
                                         ${data[i].status}
-                                        <button class='btn btn-info text-light withdraw-btn' data-apply-date="${data[i].apply_date}">Withdraw</button>
+                                        ${
+                                            (data[i].status !== 'Rejected')?
+                                                `<button class='btn btn-info text-light withdraw-btn' data-apply-date="${data[i].apply_date}">Withdraw</button>`: ''
+                                        }
+                                        
                                     </td>
                                 </tr>`
                     }
@@ -72,7 +72,7 @@
                 "apply_date": apply_date
             },
             success: function(data) {
-                
+                console.log(data)
             }
         })
     }
@@ -85,6 +85,11 @@ if ($_SESSION['sic']) {
 ?>
     <div class="d-flex">
         <?php include "student_sidebar.php"; ?>
+        <style>
+            .sidebar{
+                height: auto;
+            }
+        </style>
         <div class="container">
             <h3 class="shadow p-2">Leave Workways</h3>
             <div id="pending-list"></div>
@@ -153,6 +158,13 @@ if ($_SESSION['sic']) {
 
 <script src="../Jquery/jquery-3.7.1.js"></script>
 <script>
+    document.querySelector("#from-date").addEventListener('click',()=>{
+        document.querySelector("#from-date").setAttribute('min',new Date().toLocaleDateString('en-CA'))
+    })
+    document.querySelector("#from-date").addEventListener('change',()=>{
+        let fromDate = document.querySelector("#from-date").value
+        document.querySelector("#to-date").setAttribute('min',fromDate)
+    })
     $("#leave-form").submit((e) => {
         let contact_no = $("#contact_no").val()
         let reason = $("#reason").val()

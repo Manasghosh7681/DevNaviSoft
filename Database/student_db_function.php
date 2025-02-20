@@ -36,7 +36,7 @@ function apply_leave($sic,$apply_date,$leave_days,$destination,$contact_no,$reas
 function pending_leave_list($sic){
     global $conn;
     try {
-        $qry = "SELECT * FROM leave_request WHERE status='Pending' AND sic=? ORDER BY sno DESC";
+        $qry = "SELECT * FROM leave_request WHERE status='Pending' OR status='Approved' OR status='Rejected' AND sic=? ORDER BY sno DESC";
         $stmt = $conn->prepare($qry);
         $stmt->bind_param("s",$sic);
         $stmt->execute();
@@ -54,7 +54,7 @@ function pending_leave_list($sic){
 function withdraw($sic,$apply_date){
     global $conn;
     try {
-        $qry = "DELETE FROM leave_request WHERE sic=? AND apply_date=? AND status='Pending'";
+        $qry = "UPDATE leave_request SET status='Withdraw' WHERE sic=? AND apply_date=? AND status='Pending' OR status='Approved'";
         $stmt = $conn->prepare($qry);
         $stmt->bind_param("ss",$sic,$apply_date);
         $stmt->execute();
