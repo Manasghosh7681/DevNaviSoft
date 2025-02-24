@@ -6,10 +6,9 @@ if ($_SESSION['email']) {
 ?>
     <div class="d-flex">
         <?php include "./admin_sidebar.php" ?>
-        <div class="container">
+        <div id="main-content" class="container">
             <?php require_once "../Database/admin_db_functions.php";
             $res = displayAllPendingLeave();
-            // echo $res;
             if ($res) {
             ?>
                 <div class="table-responsive">

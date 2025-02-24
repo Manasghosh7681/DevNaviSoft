@@ -1,21 +1,12 @@
-<style>
-    body {
-        background-color: #f8f9fa;
-    }
-
+<!-- <style>
     .container {
         background: #fff;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         margin-top: 50px;
-    }
-
-    .form-label i {
-        color: rgba(77, 72, 101, 0.69);
-        margin-right: 5px;
-    }
-</style>
+    }  
+</style> -->
 <script src="../Jquery/jquery-3.7.1.js"></script>
 <?php
 session_start();
@@ -27,7 +18,7 @@ if (isset($_SESSION['email'])) {
         <?php
         include "admin_sidebar.php";
         ?>
-        <div class="container m-2">
+        <div id="main-content" class="container">
             <div class="row">
                 <div class="p-2 col-md-6">
                     <h4 class="text-center mb-4"><i class="bi bi-pencil-square"></i> Add Notice</h4>

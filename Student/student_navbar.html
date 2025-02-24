@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HMS</title>
+    <link rel="stylesheet" href="./studentStyle.css">
     <link rel="icon" href="../images/HMS Logo.jpg">
     <link rel="stylesheet" href="./../Bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
-    <style>
-        .top-navbar {
-            position: sticky;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .top-navbar .logout-link {
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .top-navbar .logout-link:hover {
-            color: #ffc107 !important;
-        }
-    </style>
 </head>
 
 <body><!-- Admin navbar -->
@@ -36,11 +19,30 @@
             <i class="fa fa-bars"></i> Menu
         </button>
         <div class="div">
-            <img src="../images/HMS Logo.jpg" alt="" style="height:40px; width:40px; border-radius: 50%; margin-right:5px">
+            <img src="../images/HMS Logo.jpg" alt=""
+                style="height:40px; width:40px; border-radius: 50%; margin-right:5px">
             <a class="navbar-brand text-white fw-bold" href="#">HMS</a>
         </div>
         <span class="fw-bold d-none d-md-block">Student Dashboard</span>
-        <a href="admin_logout.php" class="logout-link text-white"><i class="fa fa-sign-out"></i> Logout</a>
+        <!-- <a href="admin_logout.php" class="logout-link text-white"><i class="fa fa-sign-out"></i> Logout</a> -->
+        <div id="navbar-right">
+            <a href="#" class="position-relative d-inline-block text-white">
+                <i class="fa-solid fa-envelope fs-2"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    10
+                </span>
+            </a>
+            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="fa-solid fa-circle-user fs-2" id="admin-logo"></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Change Password</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a href="#" class="logout-link dropdown-item"><i class="fa fa-sign-out"></i> Logout</a></li>
+            </ul>
+        </div>
     </div>
     <script src="./../Bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

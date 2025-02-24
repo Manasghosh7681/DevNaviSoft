@@ -1,16 +1,3 @@
-<style>
-    #approved {
-        color: green;
-    }
-
-    #rejected {
-        color: red;
-    }
-
-    #pending {
-        color: blue;
-    }
-</style>
 <?php
 session_start();
 if (isset($_SESSION['sic'])) {
@@ -19,12 +6,7 @@ if (isset($_SESSION['sic'])) {
 ?>
     <div class="d-flex">
         <?php include "student_sidebar.php"; ?>
-        <style>
-            .sidebar {
-                height: auto;
-            }
-        </style>
-        <div class="container">
+        <div id="main-content" class="container">
             <h3 class="shadow p-2">Leave Workways</h3>
             <div class="shadow mt-4 rounded-2">
                 <div class="border-bottom p-2">
@@ -185,8 +167,8 @@ if (isset($_SESSION['sic'])) {
             success: function(data) {
                 if (data !== "False") {
                     data = JSON.parse(data)
-                    let table = `<div class='table-reponsive mt-4'>
-                                    <table class='table table-bordered text-center'>
+                    let table = `<div class='table-responsive'>
+                                    <table class='table table-bordered text-center mt-4'>
                                         <thead class='table-dark'>
                                             <tr>
                                                 <th>Sno</th>
