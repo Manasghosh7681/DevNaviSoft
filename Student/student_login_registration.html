@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
+    
+    <style>
+        body {
+            background-color: #e0f2fe;
+            
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        .container {
+            max-width: 50%;
+            width: 100%;
+            padding: 5px 0px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            vertical-align: center;
+        }
+        .login-box {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(to right, #0f4c75, #3282b8);
+            padding: 30px;
+           
+            border-radius: 10px;
+            color: white;
+            
+        }
+        .form-control {
+            margin-bottom: 20px;
+        }
+
+        /* Marquee container */
+        .marquee-container {
+            background: linear-gradient(to right, #0f4c75, #3282b8);
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%; /* Adjust width as needed */
+            height: 100%; /* Adjust height as needed */
+            overflow: hidden;
+            /* border: 2px solid #3282b8; */
+            border-radius: 10px;
+            background: white;
+        }
+
+        /* Marquee effect for vertical scrolling */
+        .marquee {
+            display: flex;
+            flex-direction: column;
+            animation: scrollUp 15s linear infinite;
+        }
+
+        .marquee img {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        /* Keyframes for vertical scrolling */
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15%); } /* Scroll halfway to loop smoothly */
+        }
+        .anchortag{
+            text-decoration: none;
+            color: white;
+            text-align: right;
+
+        }
+        .login_image{
+
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="container ms-2">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="login-box mt-3">
+                    <h3 class="text-center">Login</h3>
+                    <div class="d-flex justify-content-center my-3 ">
+                        <img src="../images/hostel1.jpeg" alt="" class="login_image">
+                    </div>
+                    <input type="text" class="form-control" placeholder="Sic Number">
+                    <input type="password" class="form-control" placeholder="Password">
+                    <button class="btn btn-light w-100">Login</button>
+                    <a href="" class="anchortag d-block mt-3">Click here to register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marquee Section -->
+    <div class="marquee-container">
+        <div class="marquee">
+            <img src="../images/hostel1.jpeg" alt="Image 1">
+            <img src="../images/hostel2.jpeg" alt="Image 2">
+            <img src="../images/hostel3.jpeg" alt="Image 3">
+            <img src="../images/hostel4.jpeg" alt="Image 4">
+            <img src="../images/hostel1.jpeg" alt="Image 1">
+            <img src="../images/hostel2.jpeg" alt="Image 2">
+            <img src="../images/hostel3.jpeg" alt="Image 3">
+            <img src="../images/hostel4.jpeg" alt="Image 4">
+        </div>
+    </div>
+</body>
+</html>
