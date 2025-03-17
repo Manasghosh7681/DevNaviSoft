@@ -39,7 +39,7 @@ if (isset($_SESSION['sic'])) {
                     <div class="info-box complain">
                         <h4>Complain</h4>
                         <i class="fa-solid fs-1 fa-comments"></i>
-                        <a href="student_complaint.php" class="btn">
+                        <a href="student_complain.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> Complain Registration</a>
                     </div>
                 </div>
@@ -55,7 +55,7 @@ if (isset($_SESSION['sic'])) {
                     <div class="info-box feedback">
                         <h4>Feedback</h4>
                         <i class="fas fa-comment-dots"></i>
-                        <a href="#" class="btn">
+                        <a href="student_feedback.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> More info</a>
                     </div>
                 </div>

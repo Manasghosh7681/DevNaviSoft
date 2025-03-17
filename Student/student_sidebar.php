@@ -13,8 +13,8 @@
                 href="student_leave.php"><i class="fa-solid fa-plane-departure"></i> Leave</a>
             <a class="nav-link <?php echo $current_file === 'student_notice_board.php' ? 'active' : '' ?>"
                 href="student_notice_board.php"><i class="fa-solid fa-bell"></i> Notice</a>
-            <a class="nav-link" href="#"><i class="fa-solid fa-list"></i> Complain</a>
-            <a class="nav-link <?php echo $current_file === '#' ? 'active' : '' ?>" href="#"><i class="fa-solid fa-bars"></i> Feedback</a>
+            <a class="nav-link <?php echo $current_file === 'student_complain.php' ? 'active' : '' ?>"  href="student_complain.php"><i class="fa-solid fa-list"></i> Complain</a>
+            <a class="nav-link <?php echo $current_file === 'student_feedback.php' ? 'active' : '' ?>" href="student_feedback.php"><i class="fa-solid fa-bars"></i> Feedback</a>
         </nav>
     </div>
 </div>
@@ -26,7 +26,8 @@
             href="student_leave.php"><i class="fas fa-plane-departure"></i> Apply Leave</a>
         <a class="nav-link <?php echo $current_file === "student_notice_board.php" ? 'active' : '' ?>"
             href="student_notice_board.php"><i class="fa-solid fa-bell"></i> Notice</a>
-        <a class="nav-link" href="student_complaint.php"><i class="fa-solid fa-list"></i> Complain</a>
-        <a class="nav-link <?php echo $current_file === '#' ? 'active' : '' ?>" href="#"><i class="fa-solid fa-bars"></i> Feedback</a>
+        <a class="nav-link <?php echo $current_file === 'student_complain.php' ? 'active' : '' ?>"  
+            href="student_complain.php"><i class="fa-solid fa-list"></i> Complain</a>
+        <a class="nav-link <?php echo $current_file === 'student_feedback.php' ? 'active' : '' ?>" href="student_feedback.php"><i class="fa-solid fa-bars"></i> Feedback</a>
     </nav>
 </div>
