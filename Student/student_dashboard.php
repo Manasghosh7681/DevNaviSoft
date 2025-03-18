@@ -39,8 +39,8 @@ if (isset($_SESSION['sic'])) {
                     <div class="info-box complain">
                         <h4>Complain</h4>
                         <i class="fa-solid fs-1 fa-comments"></i>
-                        <a href="student_complain.php" class="btn">
-                            <i class="fa-solid fa-arrow-right"></i> Complain Registration</a>
+                        <a href="student_complaint.php" class="btn">
+                            <i class="fa-solid fa-arrow-right"></i> Complaint Registration</a>
                     </div>
                 </div>
                 <div class="col-md-4 col-12">
