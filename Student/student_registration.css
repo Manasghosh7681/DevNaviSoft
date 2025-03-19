@@ -1,0 +1,70 @@
+body {
+    /* background: #6d4c41; */
+    background: linear-gradient(to bottom, #ff9a8b, #de6262);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background:white;
+    /* background: rgba(0, 0, 0, 0.8); */
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); */
+    max-width: 90%;
+    width: 100%;
+    /* background: linear-gradient(to bottom, #ff9a8b, #de6262); */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input,
+select {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus,
+select:focus {
+    background: rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: right;
+   gap: 10px;
+    
+}
+
+.btn-primary {
+    background: #00adb5;
+    border: none;
+    padding: 10px 20px;
+}
+
+.btn-primary:hover {
+    background: #008c8c;
+}
+
+h5 {
+    color: rgb(12, 12, 12);
+    background-color: aquamarine;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}

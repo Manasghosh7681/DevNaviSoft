@@ -85,4 +85,5 @@ function  leaveHistory($sic){
         echo $e->getMessage();
     }
 }
+
 ?>
