@@ -24,24 +24,15 @@
                     <form id="loginForm">
                         <div class="mb-3">
                             <label class="form-label fw-bold">USER NAME</label>
-                            <input type="text" class="form-control" id="userId">
+                            <input type="text" class="form-control" id="userId" style="height: 45px;">
                             <span id="userIdError" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold">PASSWORD</label>
-                            <input type="password" class="form-control" id="password">
+                            <input type="password" class="form-control" id="password"  style="height: 45px;">
                             <span id="passwordError" class="text-danger"></span>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">RESIDENCY TYPE</label>
-                            <select class="form-control" id="residencyType">
-                                <option value="">--SELECT--</option>
-                                <option value="Hosteler">Hosteler</option>
-                                <option value="Non-Hosteler">Non-Hosteler</option>
-                            </select>
-                            <span id="residencyTypeError" class="text-danger"></span>
-                        </div>
-                        <button type="submit" class="btn btn-signin">Sign in</button>
+                        <button type="submit" class="btn btn-signin mt-3"><h5 class="fw-600">Sign in</h5></button>
                     </form>
                 </div>
             </div>
@@ -121,13 +112,12 @@
 
             let userId = document.getElementById("userId").value.trim();
             let password = document.getElementById("password").value.trim();
-            let residencyType = document.getElementById("residencyType").value;
             let userIdPattern = /^[0-9]{2}[a-zA-Z]{4}[0-9]{2}$/; // Format: 23mmci55
 
             // Clear previous error messages
             document.getElementById("userIdError").innerText = "";
             document.getElementById("passwordError").innerText = "";
-            document.getElementById("residencyTypeError").innerText = "";
+            // document.getElementById("residencyTypeError").innerText = "";
 
             if (userId === "") {
                 document.getElementById("userIdError").innerText = "User ID cannot be empty.";
@@ -142,10 +132,6 @@
                 isValid = false;
             }
 
-            if (residencyType === "") {
-                document.getElementById("residencyTypeError").innerText = "Please select a residency type.";
-                isValid = false;
-            }
 
             if (isValid) {
                 alert("Login successful!");

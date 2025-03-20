@@ -57,10 +57,10 @@ select:focus {
     background: #008c8c;
 }
 
-h5 {
+h3 {
     color: rgb(12, 12, 12);
     background-color: aquamarine;
-    padding: 10px;
+    padding:18px 4px;
     border-radius: 5px;
 }
 
