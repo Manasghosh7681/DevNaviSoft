@@ -1,30 +1,28 @@
 <?php
 session_start();
-$_SESSION['sic'] = "22vlsi44";
 if (isset($_SESSION['sic'])) {
-    $current_file = basename(__FILE__);
     include "student_navbar.html";
-    include_once "student_sidebar.php";
-    ?>
+    $current_file = basename(__FILE__);
+?>
     <div class="d-flex">
         <?php include_once "student_sidebar.php"; ?>
         <div id="main-content">
             <h4 class="text-center">Register Complaints</h4>
-            <div class="content p-3 m-3 border">
+            <div class="p-3 m-3">
                 <form action="">
                     <div class="row">
                         <div class="col-md-3 my-1">
                             <label class="form-label">Complaint Type: </label>
                         </div>
                         <div class="col-md-6 my-1">
-                            <select name="" class="form-control" required>
-                                <option value="">Select</option>
-                                <option value="">Food Related</option>
-                                <option value="">Room Related</option>
-                                <option value="">Plumbing</option>
-                                <option value="">Electrical</option>
-                                <option value="">Other</option>
-                                <option value="">Discipline</option>
+                            <select name="complaint_type" class="form-control" required>
+                                <option value="" disabled selected>Select Complaint Type</option>
+                                <option value="room">Room Related</option>
+                                <option value="cleanliness">Cleanliness</option>
+                                <option value="plumbing">Plumbing Issues</option>
+                                <option value="electrical">Electrical Problems</option>
+                                <option value="discipline">Discipline Issues</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
                     </div>
@@ -33,7 +31,7 @@ if (isset($_SESSION['sic'])) {
                             <label class="form-label">Complaint Description: </label>
                         </div>
                         <div class="col-md-6 my-1">
-                            <textarea name="" id="" cols="30"  class="text-decoration-none form-control" required></textarea>
+                            <textarea name="" id="" cols="30" class="text-decoration-none form-control" required></textarea>
                         </div>
                     </div>
 
@@ -50,7 +48,7 @@ if (isset($_SESSION['sic'])) {
             </div>
         </div>
     </div>
-    <?php
+<?php
 } else {
     header("location:student_login.php");
 }
