@@ -113,7 +113,7 @@ if (isset($_POST['submit'])) {
         <?php
         }
     } else {
-        // require_once "../Database/admin_db_functions.php";
+        require_once "../Database/admin_db_functions.php";
         $res = addNotice($notice_title, $notice_date, $notice_description);
         if ($res) {
         ?>

@@ -159,17 +159,19 @@ body {
     background: linear-gradient(135deg, #34495e, #2c3e50);
 }
 
-
 /*--------------- Student Leave------------ */
 
-#approved {
-    color: green;
+.Approved {
+    color: green !important;
 }
 
-#rejected {
-    color: red;
+.Rejected {
+    color: red !important;
 }
 
-#pending {
-    color: blue;
+.Pending{
+    color: blue !important;
+}
+.sic{
+    color: #27ae60;
 }

@@ -77,13 +77,13 @@ if (isset($_SESSION['sic'])) {
 <script src="../Jquery/jquery-3.7.1.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        
         let application = document.querySelector("#application");
         let history = document.querySelector("#history");
         let applicationContent = document.querySelector("#application-content")
         let historyContent = document.querySelector("#history-content")
 
         application.style.borderBottom = "2px solid blue";
-
 
         application.addEventListener("click", function() {
             application.style.borderBottom = "2px solid blue";
@@ -180,14 +180,17 @@ if (isset($_SESSION['sic'])) {
                                             </tr>
                                         </thead>
                                         <tbody>`
-                    for (let i = 0; i < data.length; i++) {
+                                        for (let i = 0; i < data.length; i++) {
                         table += `<tr>
                                     <td>${i+1}</td>
                                     <td>${data[i].apply_date}</td>
                                     <td>${data[i].leave_days}</td>
                                     <td>${data[i].destination}</td>
                                     <td>${data[i].reason}</td>
-                                    <td class='${data[i].status}'>${data[i].status}</td>
+                                    <td class= '${
+                                    (data[i].status === 'Pending')? "text-info": (data[i].status === 'Rejected')? "text-danger":"text-success"
+                                    }'> ${data[i].status}
+                                    </td>
                                 </tr>`
                     }
                     table += `</tbody>

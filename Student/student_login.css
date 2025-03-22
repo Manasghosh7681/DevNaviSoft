@@ -25,6 +25,7 @@ body {
     position: absolute;
     top: 10px;
     left: 10px;
+    border-radius: 50%;
 }
 
 /* Fixed size for carousel */
@@ -119,7 +120,9 @@ body {
 .btn-signin {
     width: 100%;
     background: #d9534f;
-    color: rgb(14, 10, 10);
+    color: aliceblue;
     border-radius: 5px;
-    padding: 10px;   
+    padding: 10px;  
+    outline: none; 
+    border: none;
 }
