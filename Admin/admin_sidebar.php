@@ -15,7 +15,7 @@
                 href="admin_notice_board.php"><i class="fa-solid fa-bell"></i> Notice</a>
             <a class="nav-link <?php echo $current_file === 'admin_leave.php' ? 'active' : '' ?>"
                 href="admin_leave.php"><i class="fa-solid fa-plane-departure"></i> Leave</a>
-            <a class="nav-link" href="#"><i class="fa-solid fa-list"></i> Complain</a>
+            <a class="nav-link <?php echo $current_file === 'admin_complaint.php' ? 'active' : '' ?>" href="admin_complaint.php"><i class="fa-solid fa-list"></i> Complain</a>
             <a class="nav-link <?php echo $current_file === 'admin_display.php' ? 'active' : '' ?>" href="admin_display.php"><i class="fa-solid fa-bars"></i> Feedback</a>
         </nav>
     </div>
@@ -29,7 +29,7 @@
             href="admin_notice_board.php"><i class="fa-solid fa-bell"></i> Notice</a>
         <a class="nav-link <?php echo $current_file === 'admin_leave.php' ? 'active' : '' ?>"
             href="admin_leave.php"><i class="fa-solid fa-plane-departure"></i> Leave</a>
-        <a class="nav-link" href="#"><i class="fa-solid fa-list"></i> Complain</a>
+        <a class="nav-link <?php echo $current_file === 'admin_complaint.php' ? 'active' : '' ?>" href="admin_complaint.php"><i class="fa-solid fa-list"></i> Complain</a>
         <a class="nav-link <?php echo $current_file === 'admin_display.php' ? 'active' : '' ?>" href="admin_display.php"><i class="fa-solid fa-bars"></i> Feedback</a>
     </nav>
 </div>

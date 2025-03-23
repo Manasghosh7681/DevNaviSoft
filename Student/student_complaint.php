@@ -136,29 +136,29 @@ if (isset($_SESSION['sic'])) {
                                     <table class='table table-bordered table-hover text-center mt-4'>
                                         <thead class='table-dark'>
                                             <tr>
-                                                <th>Sno</th>
-                                                <th>Sic</th>
-                                                <th>Complaint Type</th>
-                                                <th>Complaint Description</th>
-                                                <th>Status</th>
-                                                <th>File</th>
+                                                <th><i class="fas fa-hashtag"></i> Sno</th>
+                                                <th><i class="fas fa-exclamation-circle"></i> Complaint Type</th>
+                                                <th><i class="fas fa-file-alt"></i> Complaint Description</th>
+                                                <th><i class="fas fa-calendar-alt"></i> Apply Date</th>
+                                                <th><i class="fas fa-paperclip"></i> File</th>
+                                                <th><i class="fas fa-hourglass-half"></i> Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>`
                     for (let i = 0; i < data.length; i++) {
                         table += `<tr>
                                     <td>${i+1}</td>
-                                    <td class='sic'>${data[i].sic}</td>
                                     <td>${data[i].complaint_type}</td>
                                     <td>${data[i].complaint_description}</td>
-                                    <td class= '${
-                                    (data[i].status === 'Pending')? "text-info": (data[i].status === 'Rejected')? "text-danger":"text-success"
-                                    }'> ${data[i].status}
-                                    </td>
+                                    <td>${data[i].apply_date}</td>
                                     <td>
                                         ${
                                             (data[i].file === 'empty')? "No File" : `<a href="../Complaint files/${data[i].file}"><i class="fas fa-download"></i> Download</a>`
                                         }
+                                    </td>
+                                    <td class= '${
+                                    (data[i].status === 'Pending')? "text-info": (data[i].status === 'Rejected')? "text-danger":"text-success"
+                                    }'> ${data[i].status}
                                     </td>
                                 </tr>`
                     }
@@ -173,14 +173,17 @@ if (isset($_SESSION['sic'])) {
     </script>
     <?php
     if (isset($_POST['submit_complaint'])) {
+        date_default_timezone_set('Asia/Kolkata');
+        $apply_date = date('d-m-Y H:i:s A');
         $sic = $_SESSION['sic'];
         $complaint_type = $_POST['complaint_type'];
         $complaint_description = $_POST['complaint_description'];
+        $status = "Pending";
         $file = $_FILES['file'];
         $upload_path = "../Complaint files/" . $file['name'];
         if (move_uploaded_file($file['tmp_name'], $upload_path)) {
             require_once '../Database/student_db_function.php';
-            $res = addComplaint($sic, $complaint_type, $complaint_description, $file['name']);
+            $res = addComplaint($sic, $complaint_type, $complaint_description, $file['name'],$status,$apply_date);
             if ($res) {
                 ?>
                 <script>
@@ -198,7 +201,8 @@ if (isset($_SESSION['sic'])) {
             }
         } else {
             require_once '../Database/student_db_function.php';
-            $res = addComplaint($sic, $complaint_type, $complaint_description);
+            $file = 'empty';
+            $res = addComplaint($sic, $complaint_type, $complaint_description,$file,$status,$apply_date);
             if ($res) {
                 ?>
                 <script>

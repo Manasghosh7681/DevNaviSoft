@@ -171,12 +171,12 @@ if (isset($_SESSION['sic'])) {
                                     <table class='table table-bordered text-center mt-4'>
                                         <thead class='table-dark'>
                                             <tr>
-                                                <th>Sno</th>
-                                                <th>Apply Date</th>
-                                                <th>Leave Date</th>
-                                                <th>Destination</th>
-                                                <th>Reason</th>
-                                                <th>Status</th>
+                                               <th><i class="fas fa-hashtag"></i> Sno</th>
+                                                <th><i class="fas fa-calendar-plus"></i> Apply Date</th>
+                                                <th><i class="fas fa-calendar-alt"></i> Leave Date</th>
+                                                <th><i class="fas fa-map-marker-alt"></i> Destination</th>
+                                                <th><i class="fas fa-comment-dots"></i> Reason</th>
+                                                <th><i class="fas fa-hourglass-half"></i> Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>`

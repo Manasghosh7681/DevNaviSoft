@@ -88,13 +88,13 @@ function leaveHistory($sic)
     }
 }
 
-function addComplaint($sic, $complaint_type, $complaint_description, $file = "empty", $status = "Pending")
+function addComplaint($sic, $complaint_type, $complaint_description, $file, $status,$apply_date)
 {
     global $conn;
     try {
-        $qry = 'INSERT INTO complaint(sic,complaint_type,complaint_description,file,status)VALUES(?,?,?,?,?)';
+        $qry = 'INSERT INTO complaint(sic,complaint_type,complaint_description,file,status,apply_date)VALUES(?,?,?,?,?,?)';
         $stmt = $conn->prepare($qry);
-        $stmt->bind_param('sssss', $sic, $complaint_type, $complaint_description, $file, $status);
+        $stmt->bind_param('ssssss', $sic, $complaint_type, $complaint_description, $file, $status,$apply_date);
         $res = $stmt->execute();
         return $res;
     } catch (Exception $e) {
@@ -121,7 +121,7 @@ function pending_complaint_list($sic){
 function complaintHistory($sic){
     global $conn;
     try{
-        $qry = "SELECT * FROM complaint WHERE sic=?";
+        $qry = "SELECT * FROM complaint WHERE sic=? ORDER BY apply_date DESC";
         $stmt = $conn->prepare($qry);
         $stmt->bind_param("s", $sic);
         $stmt->execute();

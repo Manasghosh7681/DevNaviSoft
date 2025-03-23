@@ -8,17 +8,18 @@ if ($_SESSION['email']) {
         <?php include "./admin_sidebar.php" ?>
         <div id="main-content" class="container">
             <?php require_once "../Database/admin_db_functions.php";
-            $res = displayAllPendingLeave();
+            $res = displayAllPendingComplaint();
             if ($res) {
                 ?>
                 <div class="table-responsive">
-                    <table class="table table-bordered text-center">
-                        <thead class="table-dark">
+                    <h4 class="text-center fw-bold">Complaint Request</h4>
+                    <table class="table table-bordered table-hover text-center">
+                        <thead class="table-dark text-warning">
                             <tr>
                                 <th><i class="fas fa-id-card"></i> SIC</th>
-                                <th><i class="fas fa-calendar-alt"></i> Apply Date</th>
-                                <th><i class="fas fa-moon"></i> Leave Days</th>
-                                <th><i class="fas fa-comment-dots"></i> Reason</th>
+                                <th><i class="fas fa-exclamation-circle"></i> Complaint Type</th>
+                                <th><i class="fas fa-file-alt"></i> Complaint Description</th>
+                                <th><i class="fas fa-paperclip"></i> File</th>
                                 <th><i class="fas fa-hourglass-half"></i> Status</th>
                             </tr>
                         </thead>
@@ -26,19 +27,30 @@ if ($_SESSION['email']) {
                             <?php
                             while ($data = $res->fetch_assoc()) {
                                 ?>
-                                <tr>
+                                <>
                                     <td class="sic"><?php echo $data['sic'] ?></td>
-                                    <td><?php echo $data['apply_date'] ?></td>
-                                    <td><?php echo $data['leave_days'] ?></td>
-                                    <td><?php echo $data['reason'] ?></td>
+                                    <td><?php echo $data['complaint_type'] ?></td>
+                                    <td><?php echo $data['complaint_description'] ?></td>
                                     <td>
-                                        <button class="btn btn-success mb-1 approve"
+                                        <?php
+                                        if ($data['file'] === "empty") {
+                                            echo "No File";
+                                        } else {
+                                            ?>
+                                            <a href="../Complaint files/<?php echo $data['file'] ?>" target="_blank">
+                                                <i class="fas fa-download"></i> Download</a>
+                                            <?php
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-success approve"
                                             data-approve="<?php echo $data['apply_date'] ?>">Approve</button>
                                         <button class="btn btn-danger reject"
                                             data-reject="<?php echo $data['apply_date'] ?>">Reject</button>
                                     </td>
-                                </tr>
-                                <?php
+                                    </tr>
+                                    <?php
                             }
                             ?>
                         </tbody>
@@ -46,7 +58,7 @@ if ($_SESSION['email']) {
                 </div>
                 <?php
             } else {
-                echo "<h2 class='text-center mt-5'>No leave Request</h2>";
+                echo "<h2 class='text-center mt-5'>No Complaint Request</h2>";
             }
             ?>
         </div>
@@ -56,42 +68,41 @@ if ($_SESSION['email']) {
 ?>
 <script src="../Jquery/jquery-3.7.1.js"></script>
 <script>
-    $(document).on("click", ".approve", function () {
+    $(document).on("click", ".approve", function() {
         let apply_date = $(this).data("approve");
         let status = document.querySelector(".approve").innerHTML
         let row = $(this).closest("tr");
         let sic = row.find(".sic").text();
         $.ajax({
-            url: "admin_leave_approval.php",
+            url: "admin_complaint_approval.php",
             method: "POST",
             data: {
                 "sic": sic,
                 "apply_date": apply_date,
                 "status": status
             },
-            success: function (data) {
-
+            success: function(data) {
+                
             }
         })
-        window.location = "admin_leave.php"
+        window.location = "admin_complaint.php";
     })
-    $(document).on("click", ".reject", function () {
+    $(document).on("click", ".reject", function() {
         let apply_date = $(this).data("reject");
         let status = document.querySelector(".reject").innerHTML
         let row = $(this).closest("tr");
         let sic = row.find(".sic").text();
         $.ajax({
-            url: "admin_leave_approval.php",
+            url: "admin_complaint_approval.php",
             method: "POST",
             data: {
                 "sic": sic,
                 "apply_date": apply_date,
                 "status": status
             },
-            success: function (data) {
-
+            success: function(data) {
             }
         })
-        window.location = "admin_leave.php"
+        window.location = "admin_complaint.php";
     })
 </script>
