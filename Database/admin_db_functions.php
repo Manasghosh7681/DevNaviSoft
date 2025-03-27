@@ -90,4 +90,63 @@ function leaveRejected($sic,$apply_date){
         $conn->close();
     }
 }
+
+function displayAllPendingComplaint(){
+    global $conn;
+    try{
+        $qry = "SELECT * FROM complaint WHERE status='Pending' ORDER BY apply_date DESC";
+        $stmt = $conn->prepare($qry);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if($res->num_rows > 0)
+            return $res;
+        else{
+            return false;
+        }
+    }catch(Exception $e){
+        echo $e->getMessage();
+    }finally{
+        $conn->close();
+    }
+}
+function complaintApproved($sic,$apply_date){
+    global $conn;
+    try {
+        $qry = "UPDATE complaint SET status='Approved' WHERE sic=? AND apply_date=?";
+        $stmt= $conn->prepare($qry);
+        $stmt->bind_param("ss",$sic,$apply_date);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if($conn->affected_rows > 0){
+            return true;
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+        return false;
+    }finally{
+        $conn->close();
+    }
+}
+function complaintRejected($sic,$apply_date){
+    global $conn;
+    try {
+        $qry = "UPDATE complaint SET status='Rejected' WHERE sic=? AND apply_date=?";
+        $stmt= $conn->prepare($qry);
+        $stmt->bind_param("ss",$sic,$apply_date);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if($conn->affected_rows > 0){
+            return true;
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+        return false;
+    }finally{
+        $conn->close();
+    }
+}
 ?>
