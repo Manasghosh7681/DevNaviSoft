@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2025 at 07:43 PM
+-- Generation Time: Mar 28, 2025 at 07:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,50 @@ SET time_zone = "+00:00";
 --
 -- Database: `hms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `adminId` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adminId`, `password`) VALUES
+('admin@silicon.ac.in', 'silicon@123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `complaint`
+--
+
+CREATE TABLE `complaint` (
+  `sic` varchar(8) NOT NULL,
+  `complaint_type` varchar(255) NOT NULL,
+  `complaint_description` varchar(255) NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `apply_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `complaint`
+--
+
+INSERT INTO `complaint` (`sic`, `complaint_type`, `complaint_description`, `file`, `status`, `apply_date`) VALUES
+('23mmci79', 'electrical', 'Room fan is not working properly', 'Id card.jpg', 'Approved', '23-03-2025 10:47:53 AM'),
+('23mmci85', 'plumbing', 'Bathrooms taps is broken', 'empty', 'Rejected', '23-03-2025 10:56:01 AM'),
+('23mmci85', 'cleanliness', 'Since 2days our floor has not clean', 'Resume.pdf', 'Approved', '23-03-2025 10:57:30 AM'),
+('23mmci85', 'room', 'Some thing problem in our room', 'empty', 'Pending', '23-03-2025 11:45:45 AM'),
+('23mmci44', 'discipline', 'Ragging', 'empty', 'Pending', '23-03-2025 11:46:54 AM');
 
 -- --------------------------------------------------------
 
@@ -43,7 +87,9 @@ CREATE TABLE `leave_request` (
 --
 
 INSERT INTO `leave_request` (`sno`, `sic`, `apply_date`, `leave_days`, `destination`, `contact_no`, `reason`, `status`) VALUES
-(1, '22vlsi44', '20-02-2025 11:58:26 AM', '2025-02-22 11:00 TO 2025-02-28 11:00', 'Home', 8093547586, 'I will go to office', 'Approved');
+(1, '22vlsi44', '20-02-2025 11:58:26 AM', '2025-02-22 11:00 TO 2025-02-28 11:00', 'Home', 8093547586, 'I will go to office', 'Withdraw'),
+(5, '22vlsi44', '22-03-2025 09:59:20 AM', '2025-03-27 11:00 TO 2025-03-29 10:00', 'Puri', 8093547586, 'I will go to Puri', 'Rejected'),
+(8, '23mmci79', '22-03-2025 20:46:41 PM', '2025-03-24 01:00 TO 2025-03-30 02:00', 'Home', 8093547586, 'I will go home for family function', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -70,7 +116,8 @@ INSERT INTO `notice` (`notice_id`, `notice_title`, `notice_date`, `notice_descri
 (5, 'Republic Day', '2025-01-26', 'Happy Republic Day', 'MyResume.pdf'),
 (6, 'Independence Day', '2025-08-15', 'Happy Independence Day', 'CV Template.docx'),
 (7, 'Birth Day', '2002-07-24', 'Haapy Birth Day', 'empty'),
-(8, 'Zygon', '2025-02-25', 'Zygon Notice', 'empty');
+(8, 'Zygon', '2025-02-25', 'Zygon Notice', 'empty'),
+(10, 'Presentation', '2025-04-05', 'kjbiu  99ugbk', 'empty');
 
 --
 -- Indexes for dumped tables
@@ -96,13 +143,13 @@ ALTER TABLE `notice`
 -- AUTO_INCREMENT for table `leave_request`
 --
 ALTER TABLE `leave_request`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,5 +1,26 @@
 <?php
 require_once "connection.php";
+
+function fetchAdminData($userId, $password){
+    global $conn;
+    try {
+        $qry = "SELECT * FROM admin WHERE adminId = ? AND password = ?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("ss", $userId, $password);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if($res->num_rows > 0){
+            return true;
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+    finally{
+        $conn->close();
+    }
+}
 function addNotice($notice_title,$notice_date,$notice_description,$notice_file="empty"){
     global $conn;
     try{
