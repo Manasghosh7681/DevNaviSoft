@@ -64,6 +64,9 @@ if ($_SESSION['email']) {
         </div>
     </div>
     <?php
+}else {
+    header("Location: ../Authentication/login.html");
+    exit(); // Always use exit() after header redirection
 }
 ?>
 <script src="../Jquery/jquery-3.7.1.js"></script>

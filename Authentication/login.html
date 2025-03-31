@@ -147,7 +147,9 @@
                     method: "POST",
                     data: {'userId': userId, 'password': password},
                     success: function(data){
-                        if(data === "Admin True Data"){                            
+                        
+                        if(data === "Admin True Data"){  
+                            console.log(data);                            
                             window.location = "../Admin/admin_dashboard.php"
                         }
                         else if(data === "Admin False Data"){

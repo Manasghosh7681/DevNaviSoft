@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['email'] = "admin";
+// $_SESSION['email'] = "admin";
 if (isset($_SESSION['email'])) {
     $current_file = basename(__FILE__);
     include "admin_navbar.html"
@@ -15,7 +15,7 @@ if (isset($_SESSION['email'])) {
                     <div class="info-box students">
                         <h4>Students</h4>
                         <i class="fa-solid fs-1 fa-user-graduate"></i>
-                        <a href="#" class="btn">
+                        <a href="students_record.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> More info</a>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ if (isset($_SESSION['email'])) {
                     <div class="info-box rooms">
                         <h4>Rooms</h4>
                         <i class="fa-solid fs-1 fa-door-closed"></i>
-                        <a href="#" class="btn">
+                        <a href="rooms_record.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> More info</a>
                     </div>
                 </div>
@@ -80,9 +80,9 @@ if (isset($_SESSION['email'])) {
             </div>
         </div>
     </div>
-    </div>
 <?php
 } else {
-    header("location:admin_login_form.html");
+    header("Location: ../Authentication/login.html");
+    exit(); // Always use exit() after header redirection
 }
 ?>

@@ -86,7 +86,8 @@ if (isset($_SESSION['email'])) {
     </div>
     <?php
 } else {
-    header("location:admin_login.php");
+    header("Location: ../Authentication/login.html");
+    exit(); // Always use exit() after header redirection
 }
 if (isset($_POST['submit'])) {
     $notice_title = $_POST['notice_title'];

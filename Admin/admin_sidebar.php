@@ -9,8 +9,8 @@
         <nav class="sidebar">
             <a class="nav-link <?php echo $current_file === 'admin_dashboard.php' ? 'active' : '' ?>"
                 href="admin_dashboard.php"><i class="fa fa-fw fa-home"></i> Dashboard</a>
-            <a class="nav-link <?php echo $current_file === 'addProduct.php' ? 'active' : '' ?>"
-                href="addProduct.php"><i class="fa-solid fa-plus"></i> Manage Student</a>
+            <a class="nav-link <?php echo $current_file === 'students_record.php' ? 'active' : '' ?>"
+                href="students_record.php"><i class="fa-solid fa-plus"></i> Manage Student</a>
             <a class="nav-link <?php echo $current_file === 'admin_notice_board.php' ? 'active' : '' ?>"
                 href="admin_notice_board.php"><i class="fa-solid fa-bell"></i> Notice</a>
             <a class="nav-link <?php echo $current_file === 'admin_leave.php' ? 'active' : '' ?>"
@@ -24,7 +24,7 @@
     <nav id="sidebarMenu" class="sidebar collapse d-md-block bg-dark">
         <a class="nav-link <?php echo $current_file === 'admin_dashboard.php' ? 'active' : '' ?>"
             href="admin_dashboard.php"><i class="fa fa-fw fa-home"></i> Dashboard</a>
-        <a class="nav-link <?php echo $current_file === 'addProduct.php' ? 'active' : '' ?>" href="addProduct.php"><i class="fa-solid fa-plus"></i> Manage Student</a>
+        <a class="nav-link <?php echo $current_file === 'students_record.php' ? 'active' : '' ?>" href="students_record.php"><i class="fa-solid fa-plus"></i> Manage Student</a>
         <a class="nav-link <?php echo $current_file === 'admin_notice_board.php' ? 'active' : '' ?>"
             href="admin_notice_board.php"><i class="fa-solid fa-bell"></i> Notice</a>
         <a class="nav-link <?php echo $current_file === 'admin_leave.php' ? 'active' : '' ?>"
