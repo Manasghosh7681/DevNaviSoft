@@ -189,7 +189,7 @@ if (isset($_SESSION['sic'])) {
                                     <td>${data[i].reason}</td>
                                     <td class= '${
                                     (data[i].status === 'Pending')? "text-info": (data[i].status === 'Rejected')? "text-danger":"text-success"
-                                    }'> ${data[i].status}
+                                    }'><i class="fa-solid fa-circle-dot"></i> ${data[i].status}
                                     </td>
                                 </tr>`
                     }

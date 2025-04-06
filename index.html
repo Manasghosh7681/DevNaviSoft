@@ -1,261 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
-    <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css" />
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-        #logo {
-            width: 50px;
-            border-radius: 50%;
-        }
-       .navbar-nav .nav-link {
-            color: #947f40 !important;
-            transition: color 0.3s ease;
-        }
-        .navbar-nav .nav-link:hover {
-            color: #5c4c1b !important;
-        }
-       #hero-section {
-        background-image: url('images/hostel3.jpeg');
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      #logo {
+        width: 50px;
+        border-radius: 50%;
+      }
+      .navbar-nav .nav-link {
+        color: #947f40 !important;
+        transition: color 0.3s ease;
+      }
+      .navbar-nav .nav-link:hover {
+        color: #5c4c1b !important;
+      }
+      #hero-section {
+        background-image: url("images/hostel3.jpeg");
         background-repeat: no-repeat;
         background-size: cover;
         height: 100vh;
         width: 100%;
-       }
-       #hero-section> h1 {
+      }
+      #hero-section > h1 {
         color: #947f40;
         padding-left: 50px;
         padding-top: 200px;
         max-width: 700px;
         font-weight: bold;
-       }
-       #hero-section> p {
+      }
+      #hero-section > p {
         color: aliceblue;
         font-size: 1.2rem;
         padding-left: 50px;
         max-width: 700px;
         margin-top: 20px;
-       }
-       #hero-section> button {
+      }
+      #hero-section > button {
         border: none;
         outline: none;
-        background-color: #947f40;
+        background-color: #ff9800;
         color: white;
         padding: 12px 24px;
         margin-top: 50px;
         margin-left: 100px;
         border-radius: 10px;
-       }
-       #hero-section button:hover {
-            background-color: #5c4c1b;
-        }
-       #rooms{
+      }
+      #hero-section button:hover {
+        background-color: #d09d50;
+      }
+      #rooms {
         margin-top: 50px;
-       }
-       .section-header{
-        display: inline;
-        border: 4px solid black;
-        padding: 10px 20px;
+      }
+      .section-header {
+        display: inline-block;
+        border-bottom: 4px solid #ff9800;
+        padding-bottom: 10px;
         font-weight: bold;
-       }
-       .card {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        #facilities{
-            margin-top: 50px;
-        }
-        #carousel-img {
-            height: 500px;
-        }
-        #contact{
-          margin-top: 50px;
-        }
+        font-size: 2rem;
+      }
+      .card {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+      }
+      .card:hover {
+        transform: scale(1.05);
+      }
+      #facilities {
+        margin-top: 50px;
+      }
+      #carousel-img {
+        height: 500px;
+      }
+      #contact {
+        margin-top: 50px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bold text-uppercase" href="#"><img src="./images/HMS Logo.jpg" id="logo"> Silicon Hostel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto fw-bold">
-                    <li class="nav-item"><a class="nav-link" href="#rooms">Rooms</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#facilities">Facilities</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#explore">Explore</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-                <ul class="navbar-nav fw-bold">
-                    <li class="nav-item"><a class="nav-link" href="./Authentication/login.html">Log In</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./Authentication/student_registration.html">Sign Up</a></li>
-                </ul>
-            </div>
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-uppercase" href="#"
+          ><img src="./images/HMS Logo.jpg" id="logo" /> Silicon Hostel</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto fw-bold">
+            <li class="nav-item">
+              <a class="nav-link" href="#rooms">Rooms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#facilities">Facilities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#explore">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./Authentication/login.html">Log In</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
     <section id="hero-section">
-        <h1>YOUR ADVENTURER STARTS WITH US</h1>
-        <p>Hostels at SiliconTech are named as the Silicon Residences. There are two boys residences and one girls residence where students can experience the comforts of a home. Resident students carry the spirit of accommodation and self-help, foster harmonious living, share the joy of fellowship and professional fraternity.</p>
-        <button>Check Out Our Rooms</button>
+      <h1>YOUR ADVENTURER STARTS WITH US</h1>
+      <p>
+        Hostels at SiliconTech are named as the Silicon Residences. There are
+        two boys residences and one girls residence where students can
+        experience the comforts of a home. Resident students carry the spirit of
+        accommodation and self-help, foster harmonious living, share the joy of
+        fellowship and professional fraternity.
+      </p>
+      <button>Check Out Our Rooms</button>
     </section>
     <div class="container">
-        <section id="rooms">
-            <div class="text-center">
-                <h2 class="section-header">OUR ROOMS</h2>
-                <div class="row mt-5 g-4">
-                    <div class="col-md-4">
-                        <div class="card" >
-                            <img src="./images/cover4.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-white fw-bold" style="background-color: orange;">
-                              <h5 class="card-title">SHARED DORMITORY</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <div class="text-start ps-3">Include:
-                                <li>Bed</li>
-                                <li>Matress & Pillow</li>
-                                <li>Study Table</li>
-                                <li>Chair</li>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card" >
-                            <img src="./images/Room1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-white fw-bold" style="background-color: orange;">
-                              <h5 class="card-title">SHARED DORMITORY</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <div class="text-start ps-3">Include:
-                                <li>Bed</li>
-                                <li>Matress & Pillow</li>
-                                <li>Study Table</li>
-                                <li>Chair</li>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card" >
-                            <img src="./images/Guest House 1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-white fw-bold" style="background-color: orange;">
-                              <h5 class="card-title">GUEST HOUSE</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <div class="text-start ps-3">Include:
-                                <li>Wi-fi facility</li>
-                                <li>A.C / Non-A.C Rooms</li>
-                                <li>Flat screen television with satellite channels</li>
-                                <li>Luggage store and laundry service</li>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="facilities">
-            <div class="text-center">
-                <h2 class="section-header">Facilities</h2>
-            </div>
-            <div id="carouselExampleCaptions" class="carousel slide mt-5" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="./images/hostel4.jpeg" class="d-block w-100" alt="..." id="carousel-img">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Common Area</h5>
-                      <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="./images/hostel3.jpeg" class="d-block w-100" alt="..." id="carousel-img">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Second slide label</h5>
-                      <p>Some representative placeholder content for the second slide.</p>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="./images/hostel2.jpeg" class="d-block w-100" alt="..." id="carousel-img">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Third slide label</h5>
-                      <p>Some representative placeholder content for the third slide.</p>
-                    </div>
+      <section id="rooms">
+        <div class="text-center">
+          <h2 class="section-header">OUR ROOMS</h2>
+          <div class="row mt-5 g-4">
+            <div class="col-md-4">
+              <div class="card">
+                <img src="./images/cover4.jpg" class="card-img-top" alt="..." />
+                <div
+                  class="card-body text-white fw-bold"
+                  style="background-color: orange"
+                >
+                  <h5 class="card-title">SHARED DORMITORY</h5>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <div class="text-start ps-3">
+                    Include:
+                    <li>Bed</li>
+                    <li>Matress & Pillow</li>
+                    <li>Study Table</li>
+                    <li>Chair</li>
                   </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
               </div>
-        </section>
-        <section id="contact">
-          <div class="text-center">
-            <h2 class="section-header">CONTACT US</h2>
-          </div>
-          <div class="row mt-5">
-            <div class="col-md-8">
-              <h4>DROP US A MESSAGE</h4>
-              <form action="" class="form">
-                <div class="row">
-                  <div class="col-md-6">
-                    <label for="name" class="form-label">Your name</label><br>
-                    <input type="text" class="form-control" name="name" placeholder="Enter your name">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="email"  class="form-label">Email</label><br>
-                    <input type="text" class="form-control" name="email" placeholder="Enter your email">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-8">
-                    <label for="subject" class="form-label">Subject/Concern</label><br>
-                    <input type="text" class="form-control" name="subject" placeholder="Enter your concern">
-                  </div>
-                </div>
-                <div class="row ms-1">
-                  <label for="message" class="form-label">Message</label>
-                  <textarea name="message" class="form-control" placeholder="Enter your message" rows="6"></textarea>
-                </div>
-                <input type="submit" name="sendMessage" value="Send Message" class="btn mt-2" style="background-color: orange; color: white;">
-              </form>
             </div>
-            <div class="col-md-4 mt-4">
-              <h4>ALTERNATIVELY, YOU CAN ALSO REACH US THROUGH OTHER CHANNELS</h4>
-              <p class="fs-4"><i class="fa-solid fa-phone" style="color: orange;"></i> 9937289499/ 7381499499</p>
-              <p class="fs-4"><i class="fa-solid fa-envelope" style="color: orange;"></i>  info@silicon.ac.in</p>
-              <h4>FOLLOW OUR SOCIALS</h4>
-              <div class="d-flex justify-content-around text-decoration-none">
-                <a class="text-dark fs-4" href="https://www.facebook.com/siliconite/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                <a class="text-dark fs-4" href="https://www.instagram.com/silicontech-bbs/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a class="text-dark fs-4" href="https://www.youtube.com/@SiliconInstituteofTechnology" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                <a class="text-dark fs-4" href="https://twitter.com/siliconitech_bbs?s=08"><i class="fa-brands fa-square-twitter"></i></a>
+            <div class="col-md-4">
+              <div class="card">
+                <img src="./images/Room1.jpg" class="card-img-top" alt="..." />
+                <div
+                  class="card-body text-white fw-bold"
+                  style="background-color: orange"
+                >
+                  <h5 class="card-title">SHARED DORMITORY</h5>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <div class="text-start ps-3">
+                    Include:
+                    <li>Bed</li>
+                    <li>Matress & Pillow</li>
+                    <li>Study Table</li>
+                    <li>Chair</li>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <img
+                  src="./images/Guest House 1.jpg"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div
+                  class="card-body text-white fw-bold"
+                  style="background-color: orange"
+                >
+                  <h5 class="card-title">GUEST HOUSE</h5>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <div class="text-start ps-3">
+                    Include:
+                    <li>Wi-fi facility</li>
+                    <li>A.C / Non-A.C Rooms</li>
+                    <li>Flat screen television with satellite channels</li>
+                    <li>Luggage store and laundry service</li>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+      <section id="facilities">
+        <div class="text-center">
+          <h2 class="section-header">Facilities</h2>
+        </div>
+        <div
+          id="carouselExampleCaptions"
+          class="carousel slide mt-5"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="./images/hostel4.jpeg"
+                class="d-block w-100"
+                alt="..."
+                id="carousel-img"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Common Area</h5>
+                <p>
+                  Some representative placeholder content for the first slide.
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                src="./images/hostel3.jpeg"
+                class="d-block w-100"
+                alt="..."
+                id="carousel-img"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>
+                  Some representative placeholder content for the second slide.
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img
+                src="./images/hostel2.jpeg"
+                class="d-block w-100"
+                alt="..."
+                id="carousel-img"
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>
+                  Some representative placeholder content for the third slide.
+                </p>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+      <section id="contact">
+        <div class="text-center">
+          <h2 class="section-header">CONTACT US</h2>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-8">
+            <h4>DROP US A MESSAGE</h4>
+            <form action="" class="form">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="name" class="form-label">Your name</label><br />
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    placeholder="Enter your name"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email</label><br />
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="email"
+                    placeholder="Enter your email"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <label for="subject" class="form-label">Subject/Concern</label
+                  ><br />
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="subject"
+                    placeholder="Enter your concern"
+                  />
+                </div>
+              </div>
+              <div class="row ms-1">
+                <label for="message" class="form-label">Message</label>
+                <textarea
+                  name="message"
+                  class="form-control"
+                  placeholder="Enter your message"
+                  rows="6"
+                ></textarea>
+              </div>
+              <input
+                type="submit"
+                name="sendMessage"
+                value="Send Message"
+                class="btn mt-2"
+                style="background-color: orange; color: white"
+              />
+            </form>
+          </div>
+          <div class="col-md-4 mt-4">
+            <h4>ALTERNATIVELY, YOU CAN ALSO REACH US THROUGH OTHER CHANNELS</h4>
+            <p class="fs-4">
+              <i class="fa-solid fa-phone" style="color: orange"></i>
+              9937289499/ 7381499499
+            </p>
+            <p class="fs-4">
+              <i class="fa-solid fa-envelope" style="color: orange"></i>
+              info@silicon.ac.in
+            </p>
+            <h4>FOLLOW OUR SOCIALS</h4>
+            <div class="d-flex justify-content-around text-decoration-none">
+              <a
+                class="text-dark fs-4"
+                href="https://www.facebook.com/siliconite/"
+                target="_blank"
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+              <a
+                class="text-dark fs-4"
+                href="https://www.instagram.com/silicontech-bbs/"
+                target="_blank"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a
+                class="text-dark fs-4"
+                href="https://www.youtube.com/@SiliconInstituteofTechnology"
+                target="_blank"
+                ><i class="fa-brands fa-youtube"></i
+              ></a>
+              <a
+                class="text-dark fs-4"
+                href="https://twitter.com/siliconitech_bbs?s=08"
+                ><i class="fa-brands fa-square-twitter"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
- 
+
     <script src="./Bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>

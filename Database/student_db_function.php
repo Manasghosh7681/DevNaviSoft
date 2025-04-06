@@ -38,7 +38,7 @@ function pending_leave_list($sic)
 {
     global $conn;
     try {
-        $qry = "SELECT * FROM leave_request WHERE status='Pending' OR status='Approved' OR status='Rejected' AND sic=? ORDER BY sno DESC";
+        $qry = "SELECT * FROM leave_request WHERE status='Pending' AND sic=? ORDER BY sno DESC";
         $stmt = $conn->prepare($qry);
         $stmt->bind_param("s", $sic);
         $stmt->execute();

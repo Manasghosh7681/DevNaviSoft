@@ -113,7 +113,7 @@ if (isset($_SESSION['sic'])) {
                             <tr>
                                 <td>${data[i].complaint_type}</td>
                                 <td>${data[i].complaint_description}</td>
-                                <td class='text-info'>${data[i].status}</td>
+                                <td class='text-info'><i class="fa-solid fa-circle-dot"></i> ${data[i].status}</td>
                             </tr>
                         `
                         }

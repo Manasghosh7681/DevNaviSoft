@@ -7,11 +7,10 @@ if (isset($_SESSION['email'])) {
     <div class="d-flex">
         <?php include_once "admin_sidebar.php"; ?>
         <div id="main-content">
-            <h2 style="color:rgb(152, 136, 13)">Room Records</h2>
-
             <!-- Search Box -->
-            <div class="mb-3 d-flex justify-content-between">
-                <input type="text" id="searchInput" class="form-control w-50" placeholder="Search rooms...">
+            <div class="my-3 d-flex justify-content-between">
+                <h2 style="color:rgb(152, 136, 13)">Room Records</h2>
+                <input type="text" id="searchInput" class="form-control w-50 w-md-25" placeholder="Search rooms...">
             </div>
 
             <!-- Table to display room records -->

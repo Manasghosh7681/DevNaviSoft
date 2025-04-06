@@ -29,7 +29,7 @@ $tableData = "";
 while ($room = $result->fetch_assoc()) {
     $tableData .= "
         <tr>
-            <td>{$room['room_id']}</td>
+            <td><a href='#'  class='text-decoration-none'>{$room['room_id']}</a></td>
             <td>{$room['room_no']}</td>
             <td>{$room['room_type']}</td>
             <td>{$room['hostel_name']}</td>
