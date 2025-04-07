@@ -30,7 +30,7 @@ if (isset($_SESSION['email'])) {
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="name" class="form-label">Name:</label>
-                                <input type="text" class="form-control" value="<?php echo $std['name'] ?>" readonly>
+                                <input type="text" id="name" class="form-control" value="<?php echo $std['name'] ?>" readonly>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="branch" class="form-label">Branch:</label>
@@ -54,7 +54,7 @@ if (isset($_SESSION['email'])) {
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="email" class="form-label">Email:</label>
-                                <input type="text" class="form-control" value="<?php echo $std['email'] ?>" readonly>
+                                <input type="text" id="email" class="form-control" value="<?php echo $std['email'] ?>" readonly>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="address" class="form-label">Address:</label>
@@ -159,7 +159,10 @@ if (isset($_SESSION['email'])) {
         $("#form").submit(function(e){
             e.preventDefault()
             let sic = $("#sic").val()
-            // let hostel = $("#hostel").val()
+            let name = $("#name").val()
+            let email = $("#email").val()
+            let hostel = $("#hostel").val()
+            let preferenceType = $("#preference-type").val()
             let room = $("#room").val()
             let bed = $("#bed").val()
             $.ajax({
@@ -170,7 +173,15 @@ if (isset($_SESSION['email'])) {
                     console.log(data);
                     if(data === 'True'){
                         alert("Room Allocated")
-                        window.location = "students_record.php"
+                       window.location = "students_record.php"
+                        $.ajax({
+                            url: "sending_mail.php",
+                            method: "POST",
+                            data: {'sic': sic, 'name': name, 'email': email, 'hostel': hostel, 'preference_type': preferenceType, 'room': room},
+                            success: function(response){
+                                // console.log(response);
+                            }
+                        })
                     }
                     else{
                         alert("Room Not Allocated")

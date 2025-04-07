@@ -135,4 +135,23 @@ function complaintHistory($sic){
         echo $e->getMessage();
     }
 }
+
+function updateStudentPassword($sic, $password){
+    global $conn;
+    try {
+        $qry = "UPDATE students SET password=? WHERE sic=?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("ss", $password,$sic);
+        $stmt->execute();
+        if ($conn->affected_rows > 0) {
+            return true;
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }finally{
+        $conn->close();
+    }
+}
 ?>
