@@ -37,11 +37,3 @@ if (isset($_POST['sic'])) {
 
 }
 ?>
-
-
-
-<b>Fatal error</b>: Uncaught Error: Call to undefined function generatePassword() in
-D:\xampp\htdocs\FinalYearProject\DevNaviSoft\Admin\sending_mail.php:3
-Stack trace:
-#0 {main}
-thrown in <b>D:\xampp\htdocs\FinalYearProject\DevNaviSoft\Admin\sending_mail.php</b> on line <b>3</b><br />
