@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['sic'] = "23mmci85";
+// $_SESSION['sic'] = "23mmci85";
 if (isset($_SESSION['sic'])) {
     $current_file = basename(__FILE__);
     include "student_navbar.html";

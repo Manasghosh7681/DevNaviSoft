@@ -15,12 +15,14 @@
         padding: 0;
         font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
       }
+
       #logo {
         width: 50px;
         border-radius: 50%;
       }
       .navbar-nav .nav-link {
-        color: #947f40 !important;
+        /* color: #947f40 !important; */
+        color: orange;
         transition: color 0.3s ease;
       }
       .navbar-nav .nav-link:hover {
@@ -41,7 +43,7 @@
         font-weight: bold;
       }
       #hero-section > p {
-        color: aliceblue;
+        color: olivedrab;
         font-size: 1.2rem;
         padding-left: 50px;
         max-width: 700px;
@@ -70,7 +72,7 @@
         font-weight: bold;
         font-size: 2rem;
       }
-      .card {
+      /* .card {
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -78,7 +80,35 @@
       }
       .card:hover {
         transform: scale(1.05);
+      } */
+      .room-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
       }
+
+      .room-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+      }
+
+      .room-card .card-body {
+        background: orange; /* orange tint with transparency */
+        color: white;
+        font-weight: bold;
+        flex-grow: 1;
+        padding: 20px;
+        backdrop-filter: blur(5px);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
       #facilities {
         margin-top: 50px;
       }
@@ -94,7 +124,7 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand fw-bold text-uppercase" href="#"
-          ><img src="./images/HMS Logo.jpg" id="logo" /> Silicon Hostel</a
+          ><img src="./images/hms logo.jpeg" id="logo" /> Silicon Hostel</a
         >
         <button
           class="navbar-toggler"
@@ -145,12 +175,9 @@
           <h2 class="section-header">OUR ROOMS</h2>
           <div class="row mt-5 g-4">
             <div class="col-md-4">
-              <div class="card">
-                <img src="./images/cover4.jpg" class="card-img-top" alt="..." />
-                <div
-                  class="card-body text-white fw-bold"
-                  style="background-color: orange"
-                >
+              <div class="card room-card h-100">
+                <img src="./images/room2.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
                   <h5 class="card-title">SHARED DORMITORY</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
@@ -162,17 +189,15 @@
                     <li>Matress & Pillow</li>
                     <li>Study Table</li>
                     <li>Chair</li>
+                    <li>Wardrobe</li>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="card">
+              <div class="card room-card h-100">
                 <img src="./images/Room1.jpg" class="card-img-top" alt="..." />
-                <div
-                  class="card-body text-white fw-bold"
-                  style="background-color: orange"
-                >
+                <div class="card-body">
                   <h5 class="card-title">SHARED DORMITORY</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
@@ -184,25 +209,18 @@
                     <li>Matress & Pillow</li>
                     <li>Study Table</li>
                     <li>Chair</li>
+                    <li>Wardrobe</li>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="card">
-                <img
-                  src="./images/Guest House 1.jpg"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div
-                  class="card-body text-white fw-bold"
-                  style="background-color: orange"
-                >
+              <div class="card room-card h-100">
+                <img src="./images/Guest House 1.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
                   <h5 class="card-title">GUEST HOUSE</h5>
                   <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    SiliconTech’s well-appointed, modern guest house provides accommodation to individuals and groups associated with official visits or guests visiting our campus.
                   </p>
                   <div class="text-start ps-3">
                     Include:
@@ -265,13 +283,13 @@
             </div>
             <div class="carousel-item">
               <img
-                src="./images/hostel3.jpeg"
+                src="./images/facility1.jpg"
                 class="d-block w-100"
                 alt="..."
                 id="carousel-img"
               />
               <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
+                <h5>Ambulance</h5>
                 <p>
                   Some representative placeholder content for the second slide.
                 </p>
@@ -279,13 +297,13 @@
             </div>
             <div class="carousel-item">
               <img
-                src="./images/hostel2.jpeg"
+                src="./images/facility2.jpg"
                 class="d-block w-100"
                 alt="..."
                 id="carousel-img"
               />
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
+                <h5>Sky Lab</h5>
                 <p>
                   Some representative placeholder content for the third slide.
                 </p>
@@ -371,41 +389,49 @@
             </form>
           </div>
           <div class="col-md-4 mt-4">
-            <h4>ALTERNATIVELY, YOU CAN ALSO REACH US THROUGH OTHER CHANNELS</h4>
-            <p class="fs-4">
+            <h5>ALTERNATIVELY, YOU CAN ALSO REACH US THROUGH OTHER CHANNELS</h5>
+            <p class="fs-5">
               <i class="fa-solid fa-phone" style="color: orange"></i>
               9937289499/ 7381499499
             </p>
-            <p class="fs-4">
+            <p class="fs-5">
               <i class="fa-solid fa-envelope" style="color: orange"></i>
               info@silicon.ac.in
             </p>
-            <h4>FOLLOW OUR SOCIALS</h4>
+            <h4 class="text-center">FOLLOW OUR SOCIALS</h4>
             <div class="d-flex justify-content-around text-decoration-none">
               <a
-                class="text-dark fs-4"
+                class="fs-4 text-primary"
                 href="https://www.facebook.com/siliconite/"
                 target="_blank"
                 ><i class="fa-brands fa-facebook"></i
               ></a>
+            
               <a
-                class="text-dark fs-4"
+                class="fs-4"
                 href="https://www.instagram.com/silicontech-bbs/"
                 target="_blank"
+                style="color: #E1306C"
                 ><i class="fa-brands fa-instagram"></i
               ></a>
+            
               <a
-                class="text-dark fs-4"
+                class="fs-4"
                 href="https://www.youtube.com/@SiliconInstituteofTechnology"
                 target="_blank"
+                style="color: #FF0000"
                 ><i class="fa-brands fa-youtube"></i
               ></a>
+            
               <a
-                class="text-dark fs-4"
+                class="fs-4"
                 href="https://twitter.com/siliconitech_bbs?s=08"
+                target="_blank"
+                style="color: #1DA1F2"
                 ><i class="fa-brands fa-square-twitter"></i
               ></a>
             </div>
+            
           </div>
         </div>
       </section>

@@ -7,19 +7,20 @@
   <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css" />
   <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> -->
   <link rel="stylesheet" href="./login.css">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"> -->
   
 </head>
 
 <body>
   <div class="header-bar">
-    <img src="../images/HMS Logo.jpg" alt="Logo" width="80px" class="logo" />
+    <img src="../images/hms logo.jpeg" alt="Logo" width="80px" class="logo" />
     <h2 >Silicon Residence</h2>
   </div>
 
   <div class="container">
-    <div class="row justify-content-center align-items-center w-100">
+    <div class="row justify-content-center align-items-center w-100 g-2">
       <!-- Login Section -->
       <div class="col-md-5">
         <div class="login-box animate__animated animate__fadeInUp">
@@ -157,10 +158,16 @@
           method: "POST",
           data: { 'userId': userId, 'password': password },
           success: function (data) {
+            console.log(data);
             if (data === "Admin True Data") {
-              console.log(data);
               window.location = "../Admin/admin_dashboard.php";
-            } else if (data === "Admin False Data") {
+            }
+            //  else if (data === "Admin False Data") {
+            // }
+            else if(data === "Student True Data"){
+              window.location = "../Student/student_dashboard.php";
+            }else{
+              
               document.getElementById("passwordError").innerText = "UserId/Password incorrect Try Again!";
               document.getElementById("passwordError").style.color = "red";
             }

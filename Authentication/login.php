@@ -11,5 +11,15 @@ if($userId === "admin@silicon.ac.in"){
     } else{
         echo "Admin False Data";
     }
+}else{
+    require_once "../Database/student_db_function.php";
+
+    $res = studentLogin($userId, $password);
+    if($res){
+        $_SESSION["sic"] = $res["sic"];
+        echo "Student True Data";
+    } else {
+        echo "Student False Data";
+    }
 }
 ?>
