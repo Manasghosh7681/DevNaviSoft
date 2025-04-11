@@ -3,58 +3,63 @@ session_start();
 if ($_SESSION['email']) {
     include "./admin_navbar.html";
     $current_file = basename(__FILE__);
-?>
+    ?>
     <div class="d-flex">
         <?php include "./admin_sidebar.php" ?>
         <div id="main-content" class="container">
             <?php require_once "../Database/admin_db_functions.php";
             $res = displayAllPendingLeave();
             if ($res) {
-            ?>
+                ?>
                 <div class="table-responsive">
                     <table class="table table-bordered text-center">
-                        <thead class="table">
+                        <thead class="table-dark">
                             <tr>
-                                <th>SIC</th>
-                                <th>Apply Date</th>
-                                <th>Leave Days</th>
-                                <th>Reason</th>
-                                <th>Status</th>
+                                <th><i class="fas fa-id-card"></i> SIC</th>
+                                <th><i class="fas fa-calendar-alt"></i> Apply Date</th>
+                                <th><i class="fas fa-moon"></i> Leave Days</th>
+                                <th><i class="fas fa-comment-dots"></i> Reason</th>
+                                <th><i class="fas fa-hourglass-half"></i> Status</th>
                             </tr>
                         </thead>
                         <tbody class="table-light">
                             <?php
                             while ($data = $res->fetch_assoc()) {
-                            ?>
+                                ?>
                                 <tr>
                                     <td class="sic"><?php echo $data['sic'] ?></td>
                                     <td><?php echo $data['apply_date'] ?></td>
                                     <td><?php echo $data['leave_days'] ?></td>
                                     <td><?php echo $data['reason'] ?></td>
                                     <td>
-                                        <button class="btn btn-success mb-1 approve" data-approve="<?php echo $data['apply_date'] ?>">Approve</button>
-                                        <button class="btn btn-info text-white reject" data-reject="<?php echo $data['apply_date'] ?>">Reject</button>
+                                        <button class="btn btn-success mb-1 approve"
+                                            data-approve="<?php echo $data['apply_date'] ?>">Approve</button>
+                                        <button class="btn btn-danger reject"
+                                            data-reject="<?php echo $data['apply_date'] ?>">Reject</button>
                                     </td>
                                 </tr>
-                            <?php
+                                <?php
                             }
                             ?>
                         </tbody>
                     </table>
                 </div>
-            <?php
-            }else{
+                <?php
+            } else {
                 echo "<h2 class='text-center mt-5'>No leave Request</h2>";
             }
             ?>
         </div>
     </div>
-<?php
+    <?php
+}else {
+    header("Location: ../Authentication/login.html");
+    exit(); // Always use exit() after header redirection
 }
 ?>
 <script src="../Jquery/jquery-3.7.1.js"></script>
 <script>
-    $(document).on("click", ".approve", function() {
+    $(document).on("click", ".approve", function () {
         let apply_date = $(this).data("approve");
         let status = document.querySelector(".approve").innerHTML
         let row = $(this).closest("tr");
@@ -67,13 +72,13 @@ if ($_SESSION['email']) {
                 "apply_date": apply_date,
                 "status": status
             },
-            success: function(data) {
+            success: function (data) {
 
             }
         })
         window.location = "admin_leave.php"
     })
-    $(document).on("click", ".reject", function() {
+    $(document).on("click", ".reject", function () {
         let apply_date = $(this).data("reject");
         let status = document.querySelector(".reject").innerHTML
         let row = $(this).closest("tr");
@@ -86,7 +91,7 @@ if ($_SESSION['email']) {
                 "apply_date": apply_date,
                 "status": status
             },
-            success: function(data) {
+            success: function (data) {
 
             }
         })

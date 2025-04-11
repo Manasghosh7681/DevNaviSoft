@@ -77,13 +77,13 @@ if (isset($_SESSION['sic'])) {
 <script src="../Jquery/jquery-3.7.1.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        
         let application = document.querySelector("#application");
         let history = document.querySelector("#history");
         let applicationContent = document.querySelector("#application-content")
         let historyContent = document.querySelector("#history-content")
 
         application.style.borderBottom = "2px solid blue";
-
 
         application.addEventListener("click", function() {
             application.style.borderBottom = "2px solid blue";
@@ -171,23 +171,26 @@ if (isset($_SESSION['sic'])) {
                                     <table class='table table-bordered text-center mt-4'>
                                         <thead class='table-dark'>
                                             <tr>
-                                                <th>Sno</th>
-                                                <th>Apply Date</th>
-                                                <th>Leave Date</th>
-                                                <th>Destination</th>
-                                                <th>Reason</th>
-                                                <th>Status</th>
+                                               <th><i class="fas fa-hashtag"></i> Sno</th>
+                                                <th><i class="fas fa-calendar-plus"></i> Apply Date</th>
+                                                <th><i class="fas fa-calendar-alt"></i> Leave Date</th>
+                                                <th><i class="fas fa-map-marker-alt"></i> Destination</th>
+                                                <th><i class="fas fa-comment-dots"></i> Reason</th>
+                                                <th><i class="fas fa-hourglass-half"></i> Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>`
-                    for (let i = 0; i < data.length; i++) {
+                                        for (let i = 0; i < data.length; i++) {
                         table += `<tr>
                                     <td>${i+1}</td>
                                     <td>${data[i].apply_date}</td>
                                     <td>${data[i].leave_days}</td>
                                     <td>${data[i].destination}</td>
                                     <td>${data[i].reason}</td>
-                                    <td class='${data[i].status}'>${data[i].status}</td>
+                                    <td class= '${
+                                    (data[i].status === 'Pending')? "text-info": (data[i].status === 'Rejected')? "text-danger":"text-success"
+                                    }'><i class="fa-solid fa-circle-dot"></i> ${data[i].status}
+                                    </td>
                                 </tr>`
                     }
                     table += `</tbody>
