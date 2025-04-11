@@ -153,7 +153,7 @@ if (isset($_SESSION['sic'])) {
                                     <td>${data[i].apply_date}</td>
                                     <td>
                                         ${
-                                            (data[i].file === 'empty')? "No File" : `<a href="../Complaint files/${data[i].file}"><i class="fas fa-download"></i> Download</a>`
+                                            (data[i].file === 'empty')? "No File" : `<a href="../Complaint files/${data[i].file}" target='_blank'><i class="fas fa-download"></i> Download</a>`
                                         }
                                     </td>
                                     <td class= '${
