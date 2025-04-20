@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); 
 * {
   box-sizing: border-box;
   margin: 0;
@@ -58,10 +57,10 @@ body::before {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.logo {
+
+.logo{
   border-radius: 50%;
 }
-
 /* Centering Login Box */
 .login-wrapper {
   flex-grow: 1;
@@ -72,8 +71,8 @@ body::before {
 
 /* Login Box Styling */
 .login-box {
-  background: rgba(0, 0, 0, 0.8);
-  background: radial-gradient(circle,blue,whitesmoke,rgb(83, 83, 99));
+  /* background: rgba(0, 0, 0, 0.8); */
+  /* background: radial-gradient(circle,blue,whitesmoke,rgb(83, 83, 99)); */
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
@@ -97,7 +96,7 @@ body::before {
 
 .login-title {
   /* color: #0ff; */
-  color: linear-gradient(135deg,blue,rgb(0, 149, 255));
+  color: linear-gradient(135deg,blue,white,whitesmoke);
   font-size: 24px;
   margin-bottom: 30px;
   text-align: center;
@@ -146,3 +145,4 @@ input[type="password"]:focus {
   /* color: red; */
   color: linear-gradient(135deg,red,blue,rgb(0, 149, 255),red);
 }
+
