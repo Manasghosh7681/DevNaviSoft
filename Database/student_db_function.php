@@ -1,5 +1,24 @@
 <?php
 require_once "connection.php";
+function studentLogin($sic, $password) {
+    global $conn;
+    try {
+        $qry = "SELECT * FROM students WHERE sic = ? AND password = ?";
+        $stmt = $conn->prepare("$qry");
+        $stmt->bind_param("ss",  $sic,$password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }finally{
+        $conn->close();
+    }
+}
 function displayAllNotice()
 {
     global $conn;
