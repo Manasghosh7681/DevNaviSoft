@@ -173,4 +173,22 @@ function updateStudentPassword($sic, $password){
         $conn->close();
     }
 }
+function insertVisitorData($sic, $name, $visitor_name, $relation, $arrival_date, $mobile)
+{
+    global $conn;
+    try {
+        $qry = "INSERT INTO visitors(sic,name,visitor_name,relation,arrival_date,mobile)VALUES(?,?,?,?,?,?)";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("sssssi", $sic, $name, $visitor_name, $relation, $arrival_date, $mobile);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    } finally {
+        $conn->close();
+    }
+}
 ?>

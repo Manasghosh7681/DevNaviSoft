@@ -3,7 +3,7 @@ require_once "../Database/connection.php";
 
 $search = isset($_POST['search']) ? $_POST['search'] : "";
 $page = isset($_POST['page']) ? (int) $_POST['page'] : 1;
-$limit = 10;
+$limit = 8;
 $offset = ($page - 1) * $limit;
 
 $searchParam = "%$search%";

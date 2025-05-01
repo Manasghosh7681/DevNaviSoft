@@ -3,7 +3,7 @@ require_once "../Database/connection.php";
 
 $search = isset($_POST['search']) ? $_POST['search'] : "";
 $page = isset($_POST['page']) ? (int)$_POST['page'] : 1;
-$limit = 10; // Number of records per page
+$limit = 8; // Number of records per page
 $offset = ($page - 1) * $limit;
 
 // Search Query
