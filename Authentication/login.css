@@ -14,7 +14,6 @@ body {
   position: relative; /* required for pseudo-element positioning */
   
 }
-
 @keyframes backgroundEffect {
   0% {
     transform: scale(1);
