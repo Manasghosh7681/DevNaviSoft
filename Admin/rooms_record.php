@@ -24,6 +24,7 @@ if (isset($_SESSION['email'])) {
                             <th>Hostel Name</th>
                             <th>Bed Capacity</th>
                             <th>Available Beds</th>
+                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody id="roomData">

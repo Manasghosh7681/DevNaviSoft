@@ -3,7 +3,7 @@ require_once "../Database/connection.php";
 
 $search = isset($_POST['search']) ? $_POST['search'] : "";
 $page = isset($_POST['page']) ? (int)$_POST['page'] : 1;
-$limit = 10; // Number of records per page
+$limit = 8; // Number of records per page
 $offset = ($page - 1) * $limit;
 
 // Search Query
@@ -29,12 +29,13 @@ $tableData = "";
 while ($room = $result->fetch_assoc()) {
     $tableData .= "
         <tr>
-            <td><a href='#'  class='text-decoration-none'>{$room['room_id']}</a></td>
+            <td>{$room['room_id']}</td>
             <td>{$room['room_no']}</td>
             <td>{$room['room_type']}</td>
             <td>{$room['hostel_name']}</td>
             <td>{$room['bed_capacity']} Beds</td>
             <td>{$room['availability_beds']} Beds</td>
+            <td><a href='view_room.php?room_id={$room['room_id']}' class='btn btn-warning btn-outline-light'>Check Out</a></td>
         </tr>";
 }
 

@@ -17,9 +17,28 @@ function fetchAdminData($userId, $password){
     } catch (Exception $e) {
         echo $e->getMessage();
     }
-    finally{
-        $conn->close();
+    // finally{
+    //     $conn->close();
+    // }
+}
+function updateAdminPassword($new_password)  {
+    global $conn;
+    try {
+        $qry = "UPDATE admin SET password = ?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s", $new_password);
+        $stmt->execute();
+        if($conn -> affected_rows > 0){
+            return true;
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
     }
+    // finally{
+    //     $conn->close();
+    // }
 }
 function addNotice($notice_title,$notice_date,$notice_description,$notice_file="empty"){
     global $conn;
@@ -397,5 +416,100 @@ function updateRoomTableByAvailability($room_id){
     // finally{
     //     $conn->close();
     // }
+}
+function fetchStudentsFromRoom($room_id){
+    global $conn;
+    try {
+        $qry = "SELECT * FROM students JOIN room_allocation ON students.sic= room_allocation.sic WHERE room_allocation.room_id=?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s",$room_id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $qry1 = "SELECT room_no, hostel_name FROM rooms WHERE room_id = ?";
+        $stmt1 = $conn->prepare($qry1);
+        $stmt1->bind_param("s",$room_id);
+        $stmt1->execute();
+        $res1 = $stmt1->get_result();
+        if($res->num_rows > 0 && $res1->num_rows > 0){
+            return [$res, $res1];
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }finally{
+        $conn->close();
+    }
+}
+function importStudents($sic,$name,$gender,$branch,$year,$contact_no,$email,$address){
+    global $conn;
+    try {
+        $studentQuery = "INSERT INTO std (sic,name,gender,branch,year,contact_no,email,address) VALUES (?,?,?,?,?,?,?,?)";
+        $stmt = $conn->prepare($studentQuery);
+        $stmt->bind_param("ssssiiss",$sic,$name,$gender,$branch,$year,$contact_no,$email,$address);
+        $result = $stmt->execute();
+
+        if($result){
+          return true;
+        }else{
+           return false;
+        }
+        
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+    // finally{
+    //     $conn->close();
+    // }
+}
+
+
+function removeFromRoomAllocation($sic){
+    global $conn;
+    try {
+        $qry = "DELETE FROM room_allocation WHERE sic=?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s",$sic);
+        $stmt->execute();
+        if($conn->affected_rows > 0){
+            return true;
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
+function deallocateBed($bed_id){
+    global $conn;
+    try {
+        $qry = "UPDATE beds SET status = 'Vacant' WHERE bed_id=?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s",$bed_id);
+        $stmt->execute();
+        if($conn->affected_rows > 0){
+            return true;
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
+function deallocateRoomTable($room_id){
+    global $conn;
+    try {
+        $qry = "UPDATE rooms SET status = 'Available', availability_beds =  availability_beds + 1 WHERE room_id=?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s",$room_id);
+        $stmt->execute();
+        if($conn->affected_rows > 0){
+            return true;
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 ?>

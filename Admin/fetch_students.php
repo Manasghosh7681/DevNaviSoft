@@ -3,7 +3,7 @@ require_once "../Database/connection.php";
 
 $search = isset($_POST['search']) ? $_POST['search'] : "";
 $page = isset($_POST['page']) ? (int) $_POST['page'] : 1;
-$limit = 10;
+$limit = 8;
 $offset = ($page - 1) * $limit;
 
 $searchParam = "%$search%";
@@ -13,10 +13,10 @@ $total_sql = "
     SELECT COUNT(*) AS total 
     FROM students 
     WHERE sic NOT IN (SELECT sic FROM room_allocation)
-    AND (sic LIKE ? OR gender LIKE ? OR branch LIKE ? OR year LIKE ?)
+    AND (sic LIKE ? OR name LIKE ? OR gender LIKE ? OR branch LIKE ? OR year LIKE ?)
 ";
 $stmt1 = $conn->prepare($total_sql);
-$stmt1->bind_param("ssss", $searchParam, $searchParam, $searchParam, $searchParam);
+$stmt1->bind_param("sssss", $searchParam, $searchParam, $searchParam, $searchParam, $searchParam);
 $stmt1->execute();
 $result = $stmt1->get_result();
 $total_records = $result->fetch_assoc()['total'];
@@ -26,11 +26,10 @@ $total_pages = ceil($total_records / $limit);
 $data_sql = "
     SELECT * FROM students 
     WHERE sic NOT IN (SELECT sic FROM room_allocation)
-    AND (sic LIKE ? OR gender LIKE ? OR branch LIKE ? OR year LIKE ?)
-    LIMIT ?, ?
+    AND (sic LIKE ? OR name LIKE ? OR gender LIKE ? OR branch LIKE ? OR year LIKE ?)LIMIT ?, ?
 ";
 $stmt2 = $conn->prepare($data_sql);
-$stmt2->bind_param("ssssii", $searchParam, $searchParam, $searchParam, $searchParam, $offset, $limit);
+$stmt2->bind_param("ssssiii", $searchParam, $searchParam, $searchParam, $searchParam, $searchParam, $offset, $limit);
 $stmt2->execute();
 $result = $stmt2->get_result();
 

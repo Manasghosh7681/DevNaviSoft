@@ -15,9 +15,10 @@ function studentLogin($sic, $password) {
         }
     } catch (Exception $e) {
         echo $e->getMessage();
-    }finally{
-        $conn->close();
     }
+    // finally{
+    //     $conn->close();
+    // }
 }
 function displayAllNotice()
 {
@@ -171,6 +172,49 @@ function updateStudentPassword($sic, $password){
         echo $e->getMessage();
     }finally{
         $conn->close();
+    }
+}
+function roomInfo($sic){
+    global $conn;
+    try {
+        $qry1 = "SELECT room_id FROM room_allocation WHERE sic=?";
+        $stmt1 = $conn->prepare($qry1);
+        $stmt1->bind_param('s',$sic);
+        $stmt1->execute();
+        $res1 = $stmt1->get_result();
+        if($res1->num_rows > 0){
+            $room_id = $res1->fetch_assoc()['room_id'];
+            $qry2 = "SELECT sic FROM room_allocation WHERE room_id=(SELECT room_id FROM room_allocation WHERE sic=?)";
+            $stmt2 = $conn->prepare($qry2);
+            $stmt2->bind_param('s',$sic);
+            $stmt2->execute();
+            $res2 = $stmt2->get_result();
+            if($res2->num_rows > 0){
+                $qry3 = "SELECT * FROM rooms WHERE room_id =?";
+                $stmt3 = $conn->prepare($qry3);
+                $stmt3->bind_param('s', $room_id);
+                $stmt3->execute();
+                $res3 = $stmt3->get_result();
+                $data = $res3->fetch_assoc();
+                $room_no = $data['room_no'];
+                $room_type = $data['room_type'];
+                $hostel = $data['hostel_name'];
+                // $sic = $res2->fetch_assoc()['sic']; 
+                $names = [];               
+                while($sic = $res2->fetch_assoc()){
+                    $qry = "SELECT name FROM students WHERE sic = ?";
+                    $stmt = $conn->prepare($qry);
+                    $stmt->bind_param('s',$sic['sic']);
+                    $stmt->execute();
+                    $res = $stmt->get_result();
+                    $name = $res->fetch_assoc()['name'];
+                    array_push($names,$name);
+                }
+                return ['room_id'=>$room_id, 'room_no'=>$room_no, 'room_type'=>$room_type, 'hostel_name'=>$hostel, 'names'=>$names];
+            }
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
     }
 }
 ?>

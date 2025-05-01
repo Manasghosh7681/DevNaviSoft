@@ -1,12 +1,4 @@
-<!-- <style>
-    .container {
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        margin-top: 50px;
-    }  
-</style> -->
+
 <script src="../Jquery/jquery-3.7.1.js"></script>
 <?php
 session_start();
@@ -53,11 +45,9 @@ if (isset($_SESSION['email'])) {
                                 success: function(data) {
 
                                     if (data !== "false") {
-                                        console.log(data)
-                                        console.log(typeof(data))
+                                       
                                         data = JSON.parse(data)
-                                        console.log(data)
-                                        console.log(typeof(data))
+                                       
                                         let table = `<div class="table-responsive">
                                                         <table class="table">
                                                             <tr>

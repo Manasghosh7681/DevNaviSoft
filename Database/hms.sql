@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2025 at 04:31 PM
+-- Generation Time: Apr 25, 2025 at 06:29 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -37,7 +37,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`adminId`, `password`) VALUES
-('admin@silicon.ac.in', 'silicon@123');
+('admin@silicon.ac.in', 'silicon@1234');
 
 -- --------------------------------------------------------
 
@@ -56,10 +56,10 @@ CREATE TABLE `beds` (
 --
 
 INSERT INTO `beds` (`bed_id`, `room_id`, `status`) VALUES
-('BH1-01A', 'BH1-01', 'Vacant'),
-('BH1-01B', 'BH1-01', 'Vacant'),
-('BH1-01C', 'BH1-01', 'Vacant'),
-('BH1-01D', 'BH1-01', 'Vacant'),
+('BH1-01A', 'BH1-01', 'Occupied'),
+('BH1-01B', 'BH1-01', 'Occupied'),
+('BH1-01C', 'BH1-01', 'Occupied'),
+('BH1-01D', 'BH1-01', 'Occupied'),
 ('BH1-02A', 'BH1-02', 'Vacant'),
 ('BH1-02B', 'BH1-02', 'Vacant'),
 ('BH1-02C', 'BH1-02', 'Vacant'),
@@ -372,17 +372,6 @@ CREATE TABLE `complaint` (
   `apply_date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `complaint`
---
-
-INSERT INTO `complaint` (`sic`, `complaint_type`, `complaint_description`, `file`, `status`, `apply_date`) VALUES
-('23mmci79', 'electrical', 'Room fan is not working properly', 'Id card.jpg', 'Approved', '23-03-2025 10:47:53 AM'),
-('23mmci85', 'plumbing', 'Bathrooms taps is broken', 'empty', 'Rejected', '23-03-2025 10:56:01 AM'),
-('23mmci85', 'cleanliness', 'Since 2days our floor has not clean', 'Resume.pdf', 'Approved', '23-03-2025 10:57:30 AM'),
-('23mmci85', 'room', 'Some thing problem in our room', 'empty', 'Pending', '23-03-2025 11:45:45 AM'),
-('23mmci44', 'discipline', 'Ragging', 'empty', 'Pending', '23-03-2025 11:46:54 AM');
-
 -- --------------------------------------------------------
 
 --
@@ -399,15 +388,6 @@ CREATE TABLE `leave_request` (
   `reason` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `leave_request`
---
-
-INSERT INTO `leave_request` (`sno`, `sic`, `apply_date`, `leave_days`, `destination`, `contact_no`, `reason`, `status`) VALUES
-(1, '22vlsi44', '20-02-2025 11:58:26 AM', '2025-02-22 11:00 TO 2025-02-28 11:00', 'Home', 8093547586, 'I will go to office', 'Withdraw'),
-(5, '22vlsi44', '22-03-2025 09:59:20 AM', '2025-03-27 11:00 TO 2025-03-29 10:00', 'Puri', 8093547586, 'I will go to Puri', 'Rejected'),
-(8, '23mmci79', '22-03-2025 20:46:41 PM', '2025-03-24 01:00 TO 2025-03-30 02:00', 'Home', 8093547586, 'I will go home for family function', 'Withdraw');
 
 -- --------------------------------------------------------
 
@@ -458,7 +438,7 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`room_id`, `room_no`, `room_type`, `hostel_name`, `bed_capacity`, `availability_beds`, `status`) VALUES
-('BH1-01', 1, 'NON-AC', 'Boys Hostel 1', 4, 4, 'Available'),
+('BH1-01', 1, 'NON-AC', 'Boys Hostel 1', 4, 0, 'Full'),
 ('BH1-02', 2, 'NON-AC', 'Boys Hostel 1', 4, 4, 'Available'),
 ('BH1-03', 3, 'NON-AC', 'Boys Hostel 1', 4, 4, 'Available'),
 ('BH1-04', 4, 'NON-AC', 'Boys Hostel 1', 4, 4, 'Available'),
@@ -551,6 +531,16 @@ CREATE TABLE `room_allocation` (
   `bed_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `room_allocation`
+--
+
+INSERT INTO `room_allocation` (`sic`, `room_id`, `bed_id`) VALUES
+('23adci78', 'BH1-01', 'BH1-01A'),
+('23adci95', 'BH1-01', 'BH1-01B'),
+('23aici58', 'BH1-01', 'BH1-01C'),
+('23cvci53', 'BH1-01', 'BH1-01D');
+
 -- --------------------------------------------------------
 
 --
@@ -566,7 +556,7 @@ CREATE TABLE `students` (
   `contact_no` bigint(10) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `preference_type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -575,68 +565,68 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`sic`, `name`, `gender`, `branch`, `year`, `contact_no`, `email`, `address`, `password`, `preference_type`) VALUES
-('23adci78', 'Debasish Rout', 'Male', 'ECE', '1', 9285377101, 'debasish_rout@gmail.com', 'Badamba, Cuttack, 753001', 'Y3QocQPS', 'NON-AC'),
-('23adci95', 'Suresh Sahu', 'Male', 'CSE', '1', 9772133383, 'suresh_sahu@gmail.com', 'Balianta, Jajpur, 755001', 'JLYC3FNF', 'NON-AC'),
-('23aici58', 'Debasish Das', 'Male', 'M.Sc', '1', 9954016238, 'debasish_das@gmail.com', 'Banapur, Sambalpur, 768001', 'fWgMoQTo', 'NON-AC'),
-('23auci65', 'Priya Tripathy', 'Female', 'CST', '1', 9115599865, 'priya_tripathy@gmail.com', 'Banapur, Puri, 752001', 'TWztlb8Y', 'NON-AC'),
-('23cgci44', 'Ritu Patnaik', 'Female', 'CSE', '1', 9522772183, 'ritu_patnaik@gmail.com', 'Banapur, Berhampur, 760001', 'U02fxA8F', 'AC'),
-('23cuci41', 'Chandan Nayak', 'Male', 'CST', '1', 9552027322, 'chandan_nayak@gmail.com', 'Badamba, Cuttack, 753001', 'WKKcEWT4', 'AC'),
-('23cvci53', 'Amit Mohanty', 'Male', 'EEE', '1', 9428099758, 'amit_mohanty@gmail.com', 'Chandaka, Berhampur, 760001', 'q7qLyPAv', 'NON-AC'),
-('23enci14', 'Sweta Patnaik', 'Female', 'M.Sc', '1', 9705118969, 'sweta_patnaik@gmail.com', 'Chandaka, Puri, 752001', 'n4sXh0vu', 'NON-AC'),
-('23eoci69', 'Rakesh Behera', 'Male', 'MCA', '1', 9196747045, 'rakesh_behera@gmail.com', 'Banapur, Bhubaneswar, 751001', 'QG4FIUHG', 'AC'),
-('23fbci92', 'Smita Mishra', 'Female', 'ECE', '1', 9649386761, 'smita_mishra@gmail.com', 'Chandaka, Cuttack, 753001', 'Vbp7xUiR', 'NON-AC'),
-('23fdci33', 'Sweta Nayak', 'Female', 'MCA', '1', 9163502478, 'sweta_nayak@gmail.com', 'Khaira, Angul, 759122', 'JZP8Bjs9', 'NON-AC'),
-('23fsci39', 'Suresh Patnaik', 'Male', 'CST', '1', 9854695780, 'suresh_patnaik@gmail.com', 'Balianta, Bhubaneswar, 751001', '2aF3vTkD', 'AC'),
-('23geci53', 'Ritu Nayak', 'Female', 'CST', '1', 9995867653, 'ritu_nayak@gmail.com', 'Chandaka, Balasore, 756001', 'GWrZcprh', 'NON-AC'),
-('23gjci64', 'Akash Sahu', 'Male', 'M.Sc', '1', 9301308012, 'akash_sahu@gmail.com', 'Patana, Cuttack, 753001', 'R3FiZYGT', 'NON-AC'),
-('23gwci21', 'Ananya Rout', 'Female', 'EEE', '1', 9171590850, 'ananya_rout@gmail.com', 'Patana, Bhubaneswar, 751001', 'MLWVIs0Y', 'NON-AC'),
-('23gxci90', 'Niharika Patnaik', 'Female', 'MCA', '1', 9247556551, 'niharika_patnaik@gmail.com', 'Banapur, Bhubaneswar, 751001', 'Lptc3lws', 'NON-AC'),
-('23jjci24', 'Priya Patnaik', 'Female', 'ECE', '1', 9936205662, 'priya_patnaik@gmail.com', 'Balianta, Bhadrak, 756100', 'RJJB8V4M', 'NON-AC'),
-('23joci21', 'Ananya Mohanty', 'Female', 'ECE', '1', 9660322082, 'ananya_mohanty@gmail.com', 'Badamba, Jajpur, 755001', '7d8ABcw7', 'AC'),
-('23khci81', 'Priya Das', 'Female', 'CSE', '1', 9705801521, 'priya_das@gmail.com', 'Badamba, Bhadrak, 756100', 'cH0J8yHP', 'NON-AC'),
-('23lgci24', 'Amit Tripathy', 'Male', 'MCA', '1', 9476174796, 'amit_tripathy@gmail.com', 'Patana, Cuttack, 753001', 'IrHYyOEq', 'AC'),
-('23lkci83', 'Debasish Patnaik', 'Male', 'CSE', '1', 9876983200, 'debasish_patnaik@gmail.com', 'Patana, Berhampur, 760001', 'dCdRVhLm', 'NON-AC'),
-('23mmci01', 'Aryan Das', 'Male', 'CSE', '1', 9876543210, 'aryan.das@email.com', 'Bhadrak, Bhubaneswar, 751001', 'Aryan@123', 'NON-AC'),
-('23mmci02', 'Priti Rout', 'Female', 'ECE', '1', 8765432109, 'priya.rout@email.com', 'Jajpur, Cuttack, 753001', 'Priya@456', 'NON-AC'),
-('23mmci03', 'Rahul Behera', 'Male', 'CST', '1', 7654321098, 'rahul.b@email.com', 'Kendrapara, Puri, 752001', 'Rahul@789', 'NON-AC'),
-('23mmci04', 'Sneha Mishra', 'Female', 'MCA', '1', 6543210987, 'sneha.m@email.com', 'Berhampur, Ganjam, 760001', 'Sneha@321', 'NON-AC'),
-('23mmci05', 'Sandeep Kar', 'Male', 'EEE', '1', 9432109876, 'sandeep.k@email.com', 'Balasore, Bhadrak, 756001', 'Sandeep@741', ''),
-('23mmci06', 'Rituparna Nayak', 'Female', 'M.Sc', '1', 9321098765, 'ritu.n@email.com', 'Nimapada, Puri, 752101', 'Ritu@852', ''),
-('23mmci07', 'Akash Sen', 'Male', 'CSE', '1', 9210987654, 'akash.s@email.com', 'Jaleswar, Balasore, 756002', 'Akash@963', ''),
-('23mmci08', 'Swati Das', 'Female', 'ECE', '1', 9109876543, 'swati.d@email.com', 'Bhanjanagar, Ganjam, 761126', 'Swati@147', ''),
-('23mmci09', 'Manas Ranjan', 'Male', 'CST', '1', 9098765432, 'manas.r@email.com', 'Sambalpur, Sambalpur, 768001', 'Manas@258', ''),
-('23mmci10', 'Pooja Sahoo', 'Female', 'MCA', '1', 8987654321, 'pooja.s@email.com', 'Dhenkanal, Angul, 759122', 'Pooja@369', ''),
-('23mmci11', 'Deepak Swain', 'Male', 'EEE', '1', 8876543210, 'deepak.s@email.com', 'Baripada, Mayurbhanj, 757001', 'Deepak@741', ''),
-('23mmci12', 'Ananya Das', 'Female', 'M.Sc', '1', 8765432108, 'ananya.d@email.com', 'Jharsuguda, Jharsuguda, 768202', 'Ananya@852', ''),
-('23mmci13', 'Alok Ranjan', 'Male', 'CSE', '1', 7654321097, 'alok.r@email.com', 'Rourkela, Sundargarh, 769001', 'Alok@963', ''),
-('23mmci14', 'Kriti Mohapatra', 'Male', 'ECE', '1', 7543210986, 'kriti.m@email.com', 'Nayagarh, Nayagarh, 752069', 'Kriti@147', ''),
-('23mmci15', 'Bikash Patel', 'Male', 'CST', '1', 7432109875, 'bikash.p@email.com', 'Rayagada, Rayagada, 765017', 'Bikash@258', ''),
-('23mmci16', 'Roshni Jena', 'Female', 'MCA', '1', 7321098764, 'roshni.j@email.com', 'Kendujhar, Kendujhar, 758001', 'Roshni@369', ''),
-('23mmci17', 'Anupam Singh', 'Male', 'EEE', '1', 7210987653, 'anupam.s@email.com', 'Balangir, Balangir, 767001', 'Anupam@741', ''),
-('23mmci18', 'Divya Mishra', 'Female', 'M.Sc', '1', 7109876542, 'divya.m@email.com', 'Jagatsinghpur, Cuttack, 754103', 'Divya@852', ''),
-('23mmci19', 'Satyajit Nayak', 'Male', 'CSE', '1', 7098765431, 'satyajit.n@email.com', 'Titilagarh, Balangir, 767033', 'Satyajit@963', ''),
-('23mmci20', 'Nisha Das', 'Female', 'ECE', '1', 6987654320, 'nisha.d@email.com', 'Angul, Angul, 759122', 'Nisha@147', ''),
-('23mmci67', 'Tanmay Patnaik', 'Male', 'M.Sc', '1', 9632470196, 'tanmay_patnaik@gmail.com', 'Jatni, Berhampur, 760001', '4KLK0cSg', ''),
-('23noci12', 'Ritika Das', 'Male', 'MCA', '1', 9949561589, 'ritika_das@gmail.com', 'Kendrapara, Angul, 759122', '0i8NGpJN', ''),
-('23nrci18', 'Smaranika Mohanty', 'Male', 'ECE', '1', 9681936688, 'smaranika_mohanty@gmail.com', 'Kendrapara, Cuttack, 753001', 'e8wEfNde', ''),
-('23ouci45', 'Suchitra Sahu', 'Male', 'MCA', '1', 9746925168, 'suchitra_sahu@gmail.com', 'Badamba, Berhampur, 760001', 'NwgrFnVe', ''),
-('23oxci66', 'Rakesh Mishra', 'Male', 'ECE', '1', 9419311773, 'rakesh_mishra@gmail.com', 'Badamba, Bhubaneswar, 751001', '6mThyBsF', ''),
-('23puci69', 'Bikash Panda', 'Male', 'MCA', '1', 9735470288, 'bikash_panda@gmail.com', 'Chandaka, Jajpur, 755001', 'S6kPUeF8', ''),
-('23qlci69', 'Suresh Panda', 'Male', 'EEE', '1', 9894130147, 'suresh_panda@gmail.com', 'Chandaka, Balasore, 756001', 'wPFdJwwG', ''),
-('23rqci65', 'Soumya Ranjan Nayak', 'Male', 'EEE', '1', 9737233617, 'soumya_ranjan_nayak@gmail.com', 'Chandaka, Bhubaneswar, 751001', 'Kvs38rd6', ''),
-('23rvci36', 'Rakesh Tripathy', 'Male', 'EEE', '1', 9235460655, 'rakesh_tripathy@gmail.com', 'Patana, Sambalpur, 768001', 'CGXx4Mao', ''),
-('23ryci45', 'Suresh Rout', 'Male', 'EEE', '1', 9924453406, 'suresh_rout@gmail.com', 'Balianta, Sambalpur, 768001', 'DSX5B2UF', ''),
-('23tgci41', 'Ananya Tripathy', 'Female', 'MCA', '1', 9410971170, 'ananya_tripathy@gmail.com', 'Khaira, Jajpur, 755001', 'gLt8I1hp', ''),
-('23tmci78', 'Debasish Behera', 'Male', 'CST', '1', 9690466451, 'debasish_behera@gmail.com', 'Khaira, Puri, 752001', 'rNPb5quJ', ''),
-('23uhci56', 'Amit Nayak', 'Male', 'CSE', '1', 9410464214, 'amit_nayak@gmail.com', 'Badamba, Berhampur, 760001', 'nmLdpkTB', ''),
-('23vpci62', 'Chandan Mohanty', 'Male', 'CSE', '1', 9983289449, 'chandan_mohanty@gmail.com', 'Banapur, Balasore, 756001', 'iXdx7M3i', ''),
-('23wpci66', 'Alisa Behera', 'Female', 'M.Sc', '1', 9608661741, 'alisa_behera@gmail.com', 'Banapur, Angul, 759122', 'gdT3FFt0', ''),
-('23wsci92', 'Chandan Sahu', 'Male', 'EEE', '1', 9939453767, 'chandan_sahu@gmail.com', 'Dhenkanal, Bhubaneswar, 751001', '2gvfDnnD', ''),
-('23wzci10', 'Subrat Senapati', 'Male', 'CST', '1', 9636631671, 'subrat_senapati@gmail.com', 'Chandaka, Berhampur, 760001', 'yOQqRIVo', ''),
-('23zrci34', 'Suprava Sahu', 'Female', 'ECE', '1', 9251148784, 'suprava_sahu@gmail.com', 'Dhenkanal, Jajpur, 755001', 'Tpzr1Vfk', ''),
-('23zrci71', 'Mandeep Bhatt', 'Male', 'CSE', '1', 9524409303, 'mandeep_bhatt@gmail.com', 'Jatni, Angul, 759122', 'OYM51M4g', ''),
-('23zuci59', 'Debasish Nayak', 'Male', 'ECE', '1', 9893226947, 'debasish_nayak@gmail.com', 'Badamba, Bhadrak, 756100', 'yzGeiKdB', ''),
-('23zuci62', 'Debasmita Prusti', 'Female', 'M.Sc', '1', 9879697513, 'debasmita_prusti@gmail.com', 'Banapur, Balasore, 756001', 'CYgZ6c2t', '');
+('23adci78', 'Debasish Rout', 'Male', 'ECE', '1', 9285377101, 'debasish_rout@gmail.com', 'Badamba, Cuttack, 753001', '4u5JEiRg', 'NON-AC'),
+('23adci95', 'Suresh Sahu', 'Male', 'CSE', '1', 9772133383, 'suresh_sahu@gmail.com', 'Balianta, Jajpur, 755001', 'PlI6ya00', 'NON-AC'),
+('23aici58', 'Debasish Das', 'Male', 'M.Sc', '1', 9954016238, 'debasish_das@gmail.com', 'Banapur, Sambalpur, 768001', '4PMnGqfr', 'NON-AC'),
+('23auci65', 'Priya Tripathy', 'Female', 'CST', '1', 9115599865, 'priya_tripathy@gmail.com', 'Banapur, Puri, 752001', NULL, 'NON-AC'),
+('23cgci44', 'Ritu Patnaik', 'Female', 'CSE', '1', 9522772183, 'ritu_patnaik@gmail.com', 'Banapur, Berhampur, 760001', NULL, 'AC'),
+('23cuci41', 'Chandan Nayak', 'Male', 'CST', '1', 9552027322, 'chandan_nayak@gmail.com', 'Badamba, Cuttack, 753001', NULL, 'AC'),
+('23cvci53', 'Amit Mohanty', 'Male', 'EEE', '1', 9428099758, 'amit_mohanty@gmail.com', 'Chandaka, Berhampur, 760001', 'hyIvgOAu', 'NON-AC'),
+('23enci14', 'Sweta Patnaik', 'Female', 'M.Sc', '1', 9705118969, 'sweta_patnaik@gmail.com', 'Chandaka, Puri, 752001', NULL, 'NON-AC'),
+('23eoci69', 'Rakesh Behera', 'Male', 'MCA', '1', 9196747045, 'rakesh_behera@gmail.com', 'Banapur, Bhubaneswar, 751001', NULL, 'AC'),
+('23fbci92', 'Smita Mishra', 'Female', 'ECE', '1', 9649386761, 'smita_mishra@gmail.com', 'Chandaka, Cuttack, 753001', NULL, 'NON-AC'),
+('23fdci33', 'Sweta Nayak', 'Female', 'MCA', '1', 9163502478, 'sweta_nayak@gmail.com', 'Khaira, Angul, 759122', NULL, 'NON-AC'),
+('23fsci39', 'Suresh Patnaik', 'Male', 'CST', '1', 9854695780, 'suresh_patnaik@gmail.com', 'Balianta, Bhubaneswar, 751001', NULL, 'AC'),
+('23geci53', 'Ritu Nayak', 'Female', 'CST', '1', 9995867653, 'ritu_nayak@gmail.com', 'Chandaka, Balasore, 756001', NULL, 'NON-AC'),
+('23gjci64', 'Akash Sahu', 'Male', 'M.Sc', '1', 9301308012, 'akash_sahu@gmail.com', 'Patana, Cuttack, 753001', NULL, 'NON-AC'),
+('23gwci21', 'Ananya Rout', 'Female', 'EEE', '1', 9171590850, 'ananya_rout@gmail.com', 'Patana, Bhubaneswar, 751001', NULL, 'NON-AC'),
+('23gxci90', 'Niharika Patnaik', 'Female', 'MCA', '1', 9247556551, 'niharika_patnaik@gmail.com', 'Banapur, Bhubaneswar, 751001', NULL, 'NON-AC'),
+('23jjci24', 'Priya Patnaik', 'Female', 'ECE', '1', 9936205662, 'priya_patnaik@gmail.com', 'Balianta, Bhadrak, 756100', NULL, 'NON-AC'),
+('23joci21', 'Ananya Mohanty', 'Female', 'ECE', '1', 9660322082, 'ananya_mohanty@gmail.com', 'Badamba, Jajpur, 755001', NULL, 'AC'),
+('23khci81', 'Priya Das', 'Female', 'CSE', '1', 9705801521, 'priya_das@gmail.com', 'Badamba, Bhadrak, 756100', NULL, 'NON-AC'),
+('23lgci24', 'Amit Tripathy', 'Male', 'MCA', '1', 9476174796, 'amit_tripathy@gmail.com', 'Patana, Cuttack, 753001', NULL, 'AC'),
+('23lkci83', 'Debasish Patnaik', 'Male', 'CSE', '1', 9876983200, 'debasish_patnaik@gmail.com', 'Patana, Berhampur, 760001', NULL, 'NON-AC'),
+('23mmci01', 'Aryan Das', 'Male', 'CSE', '1', 9876543210, 'aryan.das@email.com', 'Bhadrak, Bhubaneswar, 751001', NULL, 'NON-AC'),
+('23mmci02', 'Priti Rout', 'Female', 'ECE', '1', 8765432109, 'priya.rout@email.com', 'Jajpur, Cuttack, 753001', NULL, 'NON-AC'),
+('23mmci03', 'Rahul Behera', 'Male', 'CST', '1', 7654321098, 'rahul.b@email.com', 'Kendrapara, Puri, 752001', NULL, 'NON-AC'),
+('23mmci04', 'Sneha Mishra', 'Female', 'MCA', '1', 6543210987, 'sneha.m@email.com', 'Berhampur, Ganjam, 760001', NULL, 'NON-AC'),
+('23mmci05', 'Sandeep Kar', 'Male', 'EEE', '1', 9432109876, 'sandeep.k@email.com', 'Balasore, Bhadrak, 756001', NULL, 'NON-AC'),
+('23mmci06', 'Rituparna Nayak', 'Female', 'M.Sc', '1', 9321098765, 'ritu.n@email.com', 'Nimapada, Puri, 752101', NULL, 'NON-AC'),
+('23mmci07', 'Akash Sen', 'Male', 'CSE', '1', 9210987654, 'akash.s@email.com', 'Jaleswar, Balasore, 756002', NULL, 'AC'),
+('23mmci08', 'Swati Das', 'Female', 'ECE', '1', 9109876543, 'swati.d@email.com', 'Bhanjanagar, Ganjam, 761126', NULL, 'NON-AC'),
+('23mmci09', 'Manas Ranjan', 'Male', 'CST', '1', 9098765432, 'manas.r@email.com', 'Sambalpur, Sambalpur, 768001', NULL, 'NON-AC'),
+('23mmci10', 'Pooja Sahoo', 'Female', 'MCA', '1', 8987654321, 'pooja.s@email.com', 'Dhenkanal, Angul, 759122', NULL, 'AC'),
+('23mmci11', 'Deepak Swain', 'Male', 'EEE', '1', 8876543210, 'deepak.s@email.com', 'Baripada, Mayurbhanj, 757001', NULL, 'NON-AC'),
+('23mmci12', 'Ananya Das', 'Female', 'M.Sc', '1', 8765432108, 'ananya.d@email.com', 'Jharsuguda, Jharsuguda, 768202', NULL, 'NON-AC'),
+('23mmci13', 'Alok Ranjan', 'Male', 'CSE', '1', 7654321097, 'alok.r@email.com', 'Rourkela, Sundargarh, 769001', NULL, 'NON-AC'),
+('23mmci14', 'Kriti Mohapatra', 'Male', 'ECE', '1', 7543210986, 'kriti.m@email.com', 'Nayagarh, Nayagarh, 752069', NULL, 'AC'),
+('23mmci15', 'Bikash Patel', 'Male', 'CST', '1', 7432109875, 'bikash.p@email.com', 'Rayagada, Rayagada, 765017', NULL, 'NON-AC'),
+('23mmci16', 'Roshni Jena', 'Female', 'MCA', '1', 7321098764, 'roshni.j@email.com', 'Kendujhar, Kendujhar, 758001', NULL, 'NON-AC'),
+('23mmci17', 'Anupam Singh', 'Male', 'EEE', '1', 7210987653, 'anupam.s@email.com', 'Balangir, Balangir, 767001', NULL, 'NON-AC'),
+('23mmci18', 'Divya Mishra', 'Female', 'M.Sc', '1', 7109876542, 'divya.m@email.com', 'Jagatsinghpur, Cuttack, 754103', NULL, 'NON-AC'),
+('23mmci19', 'Satyajit Nayak', 'Male', 'CSE', '1', 7098765431, 'satyajit.n@email.com', 'Titilagarh, Balangir, 767033', NULL, 'AC'),
+('23mmci20', 'Nisha Das', 'Female', 'ECE', '1', 6987654320, 'nisha.d@email.com', 'Angul, Angul, 759122', NULL, 'NON-AC'),
+('23mmci67', 'Tanmay Patnaik', 'Male', 'M.Sc', '1', 9632470196, 'tanmay_patnaik@gmail.com', 'Jatni, Berhampur, 760001', NULL, 'NON-AC'),
+('23noci12', 'Ritika Das', 'Male', 'MCA', '1', 9949561589, 'ritika_das@gmail.com', 'Kendrapara, Angul, 759122', NULL, 'AC'),
+('23nrci18', 'Smaranika Mohanty', 'Male', 'ECE', '1', 9681936688, 'smaranika_mohanty@gmail.com', 'Kendrapara, Cuttack, 753001', NULL, 'NON-AC'),
+('23ouci45', 'Suchitra Sahu', 'Male', 'MCA', '1', 9746925168, 'suchitra_sahu@gmail.com', 'Badamba, Berhampur, 760001', NULL, 'NON-AC'),
+('23oxci66', 'Rakesh Mishra', 'Male', 'ECE', '1', 9419311773, 'rakesh_mishra@gmail.com', 'Badamba, Bhubaneswar, 751001', NULL, 'NON-AC'),
+('23puci69', 'Bikash Panda', 'Male', 'MCA', '1', 9735470288, 'bikash_panda@gmail.com', 'Chandaka, Jajpur, 755001', NULL, 'AC'),
+('23qlci69', 'Suresh Panda', 'Male', 'EEE', '1', 9894130147, 'suresh_panda@gmail.com', 'Chandaka, Balasore, 756001', NULL, 'NON-AC'),
+('23rqci65', 'Soumya Ranjan Nayak', 'Male', 'EEE', '1', 9737233617, 'soumya_ranjan_nayak@gmail.com', 'Chandaka, Bhubaneswar, 751001', NULL, 'AC'),
+('23rvci36', 'Rakesh Tripathy', 'Male', 'EEE', '1', 9235460655, 'rakesh_tripathy@gmail.com', 'Patana, Sambalpur, 768001', NULL, 'AC'),
+('23ryci45', 'Suresh Rout', 'Male', 'EEE', '1', 9924453406, 'suresh_rout@gmail.com', 'Balianta, Sambalpur, 768001', NULL, 'NON-AC'),
+('23tgci41', 'Ananya Tripathy', 'Female', 'MCA', '1', 9410971170, 'ananya_tripathy@gmail.com', 'Khaira, Jajpur, 755001', NULL, 'AC'),
+('23tmci78', 'Debasish Behera', 'Male', 'CST', '1', 9690466451, 'debasish_behera@gmail.com', 'Khaira, Puri, 752001', NULL, 'NON-AC'),
+('23uhci56', 'Amit Nayak', 'Male', 'CSE', '1', 9410464214, 'amit_nayak@gmail.com', 'Badamba, Berhampur, 760001', NULL, 'NON-AC'),
+('23vpci62', 'Chandan Mohanty', 'Male', 'CSE', '1', 9983289449, 'chandan_mohanty@gmail.com', 'Banapur, Balasore, 756001', NULL, 'NON-AC'),
+('23wpci66', 'Alisa Behera', 'Female', 'M.Sc', '1', 9608661741, 'alisa_behera@gmail.com', 'Banapur, Angul, 759122', NULL, 'AC'),
+('23wsci92', 'Chandan Sahu', 'Male', 'EEE', '1', 9939453767, 'chandan_sahu@gmail.com', 'Dhenkanal, Bhubaneswar, 751001', NULL, 'NON-AC'),
+('23wzci10', 'Subrat Senapati', 'Male', 'CST', '1', 9636631671, 'subrat_senapati@gmail.com', 'Chandaka, Berhampur, 760001', NULL, 'NON-AC'),
+('23zrci34', 'Suprava Sahu', 'Female', 'ECE', '1', 9251148784, 'suprava_sahu@gmail.com', 'Dhenkanal, Jajpur, 755001', NULL, 'NON-AC'),
+('23zrci71', 'Mandeep Bhatt', 'Male', 'CSE', '1', 9524409303, 'mandeep_bhatt@gmail.com', 'Jatni, Angul, 759122', NULL, 'AC'),
+('23zuci59', 'Debasish Nayak', 'Male', 'ECE', '1', 9893226947, 'debasish_nayak@gmail.com', 'Badamba, Bhadrak, 756100', NULL, 'NON-AC'),
+('23zuci62', 'Debasmita Prusti', 'Female', 'M.Sc', '1', 9879697513, 'debasmita_prusti@gmail.com', 'Banapur, Balasore, 756001', NULL, 'NON-AC');
 
 --
 -- Indexes for dumped tables
@@ -691,7 +681,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `leave_request`
 --
 ALTER TABLE `leave_request`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `notice`

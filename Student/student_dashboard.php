@@ -15,7 +15,7 @@ if (isset($_SESSION['sic'])) {
                     <div class="info-box rooms">
                         <h4>My Rooms</h4>
                         <i class="fa-solid fs-1 fa-building"></i>
-                        <a href="#" class="btn">
+                        <a href="my_room.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> More info</a>
                     </div>
                 </div>

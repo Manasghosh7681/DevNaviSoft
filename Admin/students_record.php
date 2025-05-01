@@ -9,12 +9,10 @@ if (isset($_SESSION['email'])) {
         include_once "admin_sidebar.php";
         ?>
         <div id="main-content">
-
                 <div class="my-3 d-flex justify-content-between">
                     <h2 style="color:rgb(152, 136, 13)">Students Records</h2>
                     <input type="text" id="searchInput" class="form-control w-50 w-md-25" placeholder="Search students...">
                 </div>
-
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover text-center">
                         <thead class="table-dark">

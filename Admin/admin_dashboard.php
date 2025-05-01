@@ -1,6 +1,5 @@
 <?php
 session_start();
-// $_SESSION['email'] = "admin";
 if (isset($_SESSION['email'])) {
     $current_file = basename(__FILE__);
     include "admin_navbar.html"
@@ -9,7 +8,7 @@ if (isset($_SESSION['email'])) {
         <?php
         include_once "admin_sidebar.php";
         ?>
-        <div id="main-content" class="container">
+        <div id="main-content">
             <div class="row g-4 m-5">
                 <div class="col-md-4 col-12">
                     <div class="info-box students">
