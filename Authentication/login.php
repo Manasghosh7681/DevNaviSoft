@@ -11,7 +11,8 @@ if($userId === "admin@silicon.ac.in"){
     } else{
         echo "Admin False Data";
     }
-}else{
+}
+else{
     require_once "../Database/student_db_function.php";
 
     $res = studentLogin($userId, $password);

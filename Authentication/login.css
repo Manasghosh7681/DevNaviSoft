@@ -14,6 +14,9 @@ body {
   font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
+  overflow: hidden; /* prevent overflow during zoom */
+  position: relative; /* required for pseudo-element positioning */
+  
 }
 
 @keyframes gradientBG {
