@@ -2,36 +2,35 @@
 session_start();
 if (isset($_SESSION['email'])) {
     $current_file = basename(__FILE__);
-    include "admin_navbar.html"
-        ?>
+    include "admin_navbar.html";
+    ?>
     <div class="d-flex">
         <?php
         include_once "admin_sidebar.php";
         ?>
         <div id="main-content">
+            <div class="my-3 d-flex justify-content-between">
+                <h2 style="color:rgb(152, 136, 13)">Students Records</h2>
+                <input type="text" id="searchInput" class="form-control w-50 w-md-25" placeholder="Search students...">
+            </div>
 
-                <div class="my-3 d-flex justify-content-between">
-                    <h2 style="color:rgb(152, 136, 13)">Students Records</h2>
-                    <input type="text" id="searchInput" class="form-control w-50 w-md-25" placeholder="Search students...">
-                </div>
-
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover text-center">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>SIC</th>
-                                <th>Name</th>
-                                <th>Branch</th>
-                                <th>Year</th>
-                                <th>Gender</th>
-                                <th>Preference</th>
-                                <th>Add</th>
-                            </tr>
-                        </thead>
-                        <tbody id="studentData">
-                        </tbody>
-                    </table>
-                </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>SIC</th>
+                            <th>Name</th>
+                            <th>Branch</th>
+                            <th>Year</th>
+                            <th>Gender</th>
+                            <th>Preference</th>
+                            <th>Add</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentData">
+                    </tbody>
+                </table>
+            </div>
 
             <div class="d-flex justify-content-center mt-3">
                 <nav>

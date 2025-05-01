@@ -14,9 +14,9 @@
             <a class="nav-link <?php echo $current_file === 'student_notice_board.php' ? 'active' : '' ?>"
                 href="student_notice_board.php"><i class="fa-solid fa-bell"></i> Notice</a>
             <a class="nav-link <?php echo $current_file === 'student_complaint.php' ? 'active' : '' ?>"  href="student_complaint.php"><i class="fa-solid fa-list"></i> Complaint</a>
-            <a class="nav-link <?php echo $current_file === 'student_feedback.php' ? 'active' : '' ?>" href="student_feedback.php"><i class="fa-solid fa-bars"></i> Feedback</a>
-            <a class="nav-link <?php echo $current_file === 'student_profile.php' ? 'active' : '' ?>" href="student_profile.php"><i class="fa-solid fa-bars"></i> Profile</a>
-
+            <a class="nav-link <?php echo $current_file === 'student_feedback.php' ? 'active' : '' ?>" href="student_feedback.php"><i class="fa-solid fa-message"></i> Feedback</a>
+            <a class="nav-link <?php echo $current_file === 'student_profile.php' ? 'active' : '' ?>" href="student_profile.php"><i class="fa-regular fa-user"></i> Profile</a>
+            <a class="nav-link <?php echo $current_file === 'visitors.php' ? 'active' : '' ?>"  href="visitors.php"><i class="fa-solid fa-plane-arrival"></i>Visitors</a>
         </nav>
     </div>
 </div>
@@ -30,7 +30,7 @@
             href="student_notice_board.php"><i class="fa-solid fa-bell"></i> Notice</a>
         <a class="nav-link <?php echo $current_file === 'student_complaint.php' ? 'active' : '' ?>"  
             href="student_complaint.php"><i class="fa-solid fa-list"></i> Complaint</a>
-        <a class="nav-link <?php echo $current_file === 'student_feedback.php' ? 'active' : '' ?>" href="student_feedback.php"><i class="fa-solid fa-bars"></i> Feedback</a>
-        <a class="nav-link <?php echo $current_file === 'student_profile.php' ? 'active' : '' ?>" href="student_profile.php"><i class="fa-solid fa-bars"></i> Profile</a>
-    </nav>
+        <a class="nav-link <?php echo $current_file === 'student_feedback.php' ? 'active' : '' ?>" href="student_feedback.php"><i class="fa-solid fa-message"></i> Feedback</a>
+        <a class="nav-link <?php echo $current_file === 'student_profile.php' ? 'active' : '' ?>" href="student_profile.php"><i class="fa-regular fa-user"></i> Profile</a>
+        <a class="nav-link <?php echo $current_file === 'visitors.php' ? 'active' : '' ?>"  href="visitors.php"><i class="fa-solid fa-plane-arrival"></i>Visitors</a>    </nav>
 </div>

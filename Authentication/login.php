@@ -17,6 +17,7 @@ if($userId === "admin@silicon.ac.in"){
     $res = studentLogin($userId, $password);
     if($res){
         $_SESSION["sic"] = $res["sic"];
+        $_SESSION['name'] = $res['name'];
         echo "Student True Data";
     } else {
         echo "Student False Data";
