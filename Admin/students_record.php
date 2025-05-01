@@ -2,8 +2,8 @@
 session_start();
 if (isset($_SESSION['email'])) {
     $current_file = basename(__FILE__);
-    include "admin_navbar.html"
-        ?>
+    include "admin_navbar.html";
+    ?>
     <div class="d-flex">
         <?php
         include_once "admin_sidebar.php";
