@@ -78,6 +78,11 @@
             } else if (data === "Admin False Data") {
               document.getElementById("passwordError").innerText = "UserId/Password incorrect. Try Again!";
               document.getElementById("passwordError").style.color = "red";
+            }else if(data === "Student True Data"){
+              window.location = "../Student/student_dashboard.php";
+            }else{
+              document.getElementById("passwordError").innerText = "UserId/Password incorrect. Try Again!";
+              document.getElementById("passwordError").style.color = "red";
             }
           }
         });

@@ -512,4 +512,37 @@ function deallocateRoomTable($room_id){
         echo $e->getMessage();
     }
 }
+function calculateStudents(){
+    global $conn;
+    try {
+        $qry = "SELECT gender, address FROM students";
+        $stmt = $conn->prepare($qry);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if($res->num_rows > 0){
+            $total_students =  $res->num_rows;
+            $boys = 0;
+            $girls = 0;
+            $withinState = 0;
+            $outsideState = 0;
+            while($std = $res->fetch_assoc()){
+                if($std['gender'] === 'Male'){
+                    $boys++;
+                }else{
+                    $girls++;
+                }
+                if(strpos($std['address'],'Odisha')){
+                    $withinState++;
+                }else{
+                    $outsideState++;
+                }
+            }
+            return ['boys'=>round($boys/$total_students*100,2), 'girls'=>round($girls/$total_students*100,2), 'withinState'=>round($withinState/$total_students*100,2), 'outsideState'=>round($outsideState/$total_students*100,2)];
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
 ?>

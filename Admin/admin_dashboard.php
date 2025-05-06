@@ -60,22 +60,29 @@ if (isset($_SESSION['email'])) {
                 </div>
             </div>
             <div class="row m-5 p-4 student-info text-center">
-                <div class="col-md-3">
-                    <h4>Boys</h4>
-                    <h2 class="text-info"><i class="fa-solid fa-child"></i> 60.61%</h2>
-                </div>
-                <div class="col-md-3">
-                    <h4>Girls</h4>
-                    <h2 class="text-warning"><i class="fa-solid fa-child"></i> 39.39%</h2>
-                </div>
-                <div class="col-md-3">
-                    <h4>Within State</h4>
-                    <h2 class="text-success"><i class="fa-solid fa-map-marker-alt"></i> 84.14%</h2>
-                </div>
-                <div class="col-md-3">
-                    <h4>Out of State</h4>
-                    <h2 class="text-danger"><i class="fa-solid fa-plane"></i> 15.86%</h2>
-                </div>
+                <?php include_once "../Database/admin_db_functions.php" ;
+                $data = calculateStudents();
+                if($data){
+                    ?>
+                    <div class="col-md-3">
+                        <h4>Boys</h4>
+                        <h2 class="text-info"><i class="fa-solid fa-child"></i> <?php echo $data['boys'].'%' ?></h2>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Girls</h4>
+                        <h2 class="text-warning"><i class="fa-solid fa-child"></i> <?php echo $data['girls'].'%' ?></h2>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Within State</h4>
+                        <h2 class="text-success"><i class="fa-solid fa-map-marker-alt"></i> <?php echo $data['withinState'].'%' ?></h2>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Out of State</h4>
+                        <h2 class="text-danger"><i class="fa-solid fa-plane"></i> <?php echo $data['outsideState'].'%' ?></h2>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>

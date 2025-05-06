@@ -3,12 +3,77 @@ session_start();
 if ($_SESSION['sic']) {
     include "student_navbar.html";
     $current_file = basename(__FILE__);
-?>
+    ?>
     <div class="d-flex">
         <?php include "student_sidebar.php"; ?>
         <div id="main-content" class="container">
-            <h4>Profile</h4>
-            <div class="row">
+            <?php
+            require_once "../Database/student_db_function.php";
+            $data = viewProfile($_SESSION['sic']);
+            if ($data) {
+                ?>
+                <div class="container mt-4">
+                    <div class="card shadow rounded-4 border-0">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <!-- <div class="me-3">
+                                    <img src="https://via.placeholder.com/80" alt="Profile" width="80" height="80"
+                                        class="rounded-circle shadow">
+                                </div> -->
+                                <div>
+                                    <h3 class="mb-0" style="color: chocolate"><?php echo $data['name']; ?></h3>
+                                    <p class="text-muted mb-0">SIC: <?php echo $data['sic']; ?></p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="border rounded-3 p-3 bg-light">
+                                        <h6 class="text-muted mb-1">Branch</h6>
+                                        <p class="mb-0"><?php echo $data['branch']; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="border rounded-3 p-3 bg-light">
+                                        <h6 class="text-muted mb-1">Gender</h6>
+                                        <p class="mb-0"><?php echo $data['gender']; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="border rounded-3 p-3 bg-light">
+                                        <h6 class="text-muted mb-1">Year</h6>
+                                        <p class="mb-0"><?php echo $data['year']; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="border rounded-3 p-3 bg-light">
+                                        <h6 class="text-muted mb-1">Contact No</h6>
+                                        <p class="mb-0"><?php echo $data['contact_no']; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="border rounded-3 p-3 bg-light">
+                                        <h6 class="text-muted mb-1">Email</h6>
+                                        <p class="mb-0"><?php echo $data['email']; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="border rounded-3 p-3 bg-light">
+                                        <h6 class="text-muted mb-1">Address</h6>
+                                        <p class="mb-0"><?php echo $data['address']; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+
+            ?>
+            <!-- <div class="row">
                 <h4 class="bg-info text-white p-2"><i class="fa-solid fa-user"></i> Personal</h4>
                 <div class="col-md-6">
                     <table class="table">
@@ -138,11 +203,11 @@ if ($_SESSION['sic']) {
                         </tr>
                     </table>
                 </div>
-            </div>
-            
+            </div> -->
+
         </div>
     </div>
-<?php
+    <?php
 } else {
     header("location:student_login.php");
 }

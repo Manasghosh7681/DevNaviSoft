@@ -11,15 +11,8 @@ if (isset($_SESSION['email'])) {
         <div id="main-content">
             <div class="my-3 d-flex justify-content-between">
                 <h2 style="color:rgb(152, 136, 13)">Visitor Records</h2>
-                <div class="d-flex border ">
-                    <form action="" method="get">
-                        <input type="text" id="searchInput" class="form-control w-50 w-md-25"
-                            placeholder="Search visitors...">
-                        <input type="submit" class=" btn btn-sm btn-info ms-2" name="search" id="" value="SEARCH">
-                    </form>
-                    <!-- <a class='page-link' href='?page=$i&search=" . urlencode($search) . "'>$i</a> -->
+                <input type="text" id="searchInput" class="form-control w-50 w-md-25" placeholder="Search students...">
 
-                </div>
                 <?php
                 // Include the connection file
                 // include_once "../Database/connection.php";
@@ -82,7 +75,6 @@ if (isset($_SESSION['email'])) {
                             // echo "<p>Total pages: $total_pages</p>"; //for debugging
                     
                             if ($result && $result->num_rows > 0) {
-                                echo "$result->num_rows records found";
                                 $sr_no = 1;
                                 while ($row = $result->fetch_assoc()) {
                                     echo "<tr>";
