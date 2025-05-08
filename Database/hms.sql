@@ -56,10 +56,10 @@ CREATE TABLE `beds` (
 --
 
 INSERT INTO `beds` (`bed_id`, `room_id`, `status`) VALUES
-('BH1-01A', 'BH1-01', 'Occupied'),
-('BH1-01B', 'BH1-01', 'Occupied'),
-('BH1-01C', 'BH1-01', 'Occupied'),
-('BH1-01D', 'BH1-01', 'Occupied'),
+('BH1-01A', 'BH1-01', 'Vacant'),
+('BH1-01B', 'BH1-01', 'Vacant'),
+('BH1-01C', 'BH1-01', 'Vacant'),
+('BH1-01D', 'BH1-01', 'Vacant'),
 ('BH1-02A', 'BH1-02', 'Vacant'),
 ('BH1-02B', 'BH1-02', 'Vacant'),
 ('BH1-02C', 'BH1-02', 'Vacant'),
@@ -438,7 +438,7 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`room_id`, `room_no`, `room_type`, `hostel_name`, `bed_capacity`, `availability_beds`, `status`) VALUES
-('BH1-01', 1, 'NON-AC', 'Boys Hostel 1', 4, 0, 'Full'),
+('BH1-01', 1, 'NON-AC', 'Boys Hostel 1', 4, 4, 'Available'),
 ('BH1-02', 2, 'NON-AC', 'Boys Hostel 1', 4, 4, 'Available'),
 ('BH1-03', 3, 'NON-AC', 'Boys Hostel 1', 4, 4, 'Available'),
 ('BH1-04', 4, 'NON-AC', 'Boys Hostel 1', 4, 4, 'Available'),

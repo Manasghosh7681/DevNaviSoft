@@ -171,7 +171,7 @@ if (isset($_SESSION['email'])) {
                 data: {'sic': sic, 'room_id': room, 'bed_id': bed},
                 success: function(data){
                     console.log(data);
-                    if(data === 'True'){
+                    if(data.trim() === 'True'){
                         alert("Room Allocated")
                        window.location = "students_record.php"
                         $.ajax({

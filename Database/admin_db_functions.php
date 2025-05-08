@@ -512,4 +512,117 @@ function deallocateRoomTable($room_id){
         echo $e->getMessage();
     }
 }
+//Auto allocated room
+function fetchUnallocatedStudents() {
+    global $conn;
+    $sql = "SELECT s.* FROM students s 
+            LEFT JOIN room_allocation ra ON s.sic = ra.sic 
+            WHERE ra.sic IS NULL";
+    $result = $conn->query($sql);
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+function findAvailableRooms($hostels, $roomType, $numRoomsNeeded) {
+    global $conn;
+    $hostelList = "'" . implode("','", $hostels) . "'";
+    
+    // Modified query to find all available rooms, not just contiguous ones
+    $sql = "SELECT r.room_id, r.room_no, r.hostel_name 
+            FROM rooms r
+            JOIN beds b ON r.room_id = b.room_id
+            WHERE r.hostel_name IN ($hostelList) 
+            AND r.room_type = ? 
+            AND r.availability_beds > 0
+            AND b.status = 'Vacant'
+            GROUP BY r.room_id
+            ORDER BY r.hostel_name, r.room_no";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $roomType);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    $allRooms = $result->fetch_all(MYSQLI_ASSOC);
+    
+    // Return all available rooms and let allocation logic handle distribution
+    return $allRooms;
+}
+
+function getAvailableBeds($roomId) {
+    global $conn;
+    $sql = "SELECT bed_id FROM beds WHERE room_id = ? AND status = 'Vacant'";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $roomId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+function allocateStudentToBed($sic, $roomId, $bedId) {
+    global $conn;
+    
+    // Start transaction
+    $conn->begin_transaction();
+    
+    try {
+        // Allocate bed to student
+        $sql1 = "INSERT INTO room_allocation (sic, room_id, bed_id) VALUES (?, ?, ?)";
+        $stmt1 = $conn->prepare($sql1);
+        $stmt1->bind_param("sss", $sic, $roomId, $bedId);
+        $stmt1->execute();
+        
+        // Update bed status
+        $sql2 = "UPDATE beds SET status = 'Occupied' WHERE bed_id = ?";
+        $stmt2 = $conn->prepare($sql2);
+        $stmt2->bind_param("s", $bedId);
+        $stmt2->execute();
+        
+        // Update room availability
+        $sql3 = "UPDATE rooms SET availability_beds = availability_beds - 1 WHERE room_id = ?";
+        $stmt3 = $conn->prepare($sql3);
+        $stmt3->bind_param("s", $roomId);
+        $stmt3->execute();
+        
+        $conn->commit();
+        return true;
+    } catch (Exception $e) {
+        $conn->rollback();
+        return false;
+    }
+}
+// Add to admin_db_functions.php
+function getPendingEmails($limit = 62) {
+    global $conn;
+    $query = "SELECT * FROM email_queue WHERE status = 'pending' LIMIT ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $limit);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+function markEmailAsSent($emailId) {
+    global $conn;
+    $query = "UPDATE email_queue SET status = 'sent', sent_at = NOW() WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $emailId);
+    return $stmt->execute();
+}
+
+function markEmailAsFailed($emailId) {
+    global $conn;
+    $query = "UPDATE email_queue SET status = 'failed' WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $emailId);
+    return $stmt->execute();
+}
+function deleteEmailFromQueue($emailId) {
+    global $conn;
+    $stmt = $conn->prepare("DELETE FROM email_queue WHERE id = ?");
+    $stmt->bind_param("i", $emailId);
+    $stmt->execute();
+    $stmt->close();
+}
+
 ?>
+

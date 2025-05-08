@@ -20,7 +20,7 @@ function studentLogin($sic, $password) {
     //     $conn->close();
     // }
 }
-function displayAllNotice()
+function stud_displayAllNotice()
 {
     global $conn;
     try {
@@ -170,9 +170,10 @@ function updateStudentPassword($sic, $password){
         }
     } catch (Exception $e) {
         echo $e->getMessage();
-    }finally{
-        $conn->close();
     }
+    // }finally{
+    //     $conn->close();
+    // }
 }
 function roomInfo($sic){
     global $conn;

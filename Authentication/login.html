@@ -73,8 +73,8 @@
           data: { 'userId': userId, 'password': password },
           success: function (data) {
             console.log(data);
-            if (data === "Admin True Data") {
-              window.location = "../Admin/admin_dashboard.php";
+            if (data.trim() === "Admin True Data") {
+              window.location.href = "../Admin/admin_dashboard.php";
             } else if (data === "Admin False Data") {
               document.getElementById("passwordError").innerText = "UserId/Password incorrect. Try Again!";
               document.getElementById("passwordError").style.color = "red";
