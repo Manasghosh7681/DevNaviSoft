@@ -236,4 +236,24 @@ function insertVisitorData($sic, $name, $visitor_name, $relation, $arrival_date,
         $conn->close();
     }
 }
+function viewProfile($sic){
+    global $conn;
+    try {
+        $qry = "SELECT * FROM students WHERE sic = ?";
+        $stmt = $conn->prepare("$qry");
+        $stmt->bind_param("s",  $sic);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        }else{
+            return false;
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+    finally{
+        $conn->close();
+    }
+}
 ?>
