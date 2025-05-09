@@ -86,6 +86,18 @@ if (isset($_SESSION['email'])) {
                 </div>
             </div>
         </div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+            <div id="roomToast" class="toast fade hide shadow" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-body d-flex align-items-center gap-3">
+                    <i class="fas fa-check-circle text-success fs-4"></i>
+                    <div>
+                        <strong class="text-dark">Success</strong>
+                        <div>Room has been allocated successfully.</div>
+                    </div>
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="../Jquery/jquery-3.7.1.js"></script>
     <script>
@@ -99,7 +111,8 @@ if (isset($_SESSION['email'])) {
                 method: "POST",
                 data: { 'hostel_name': hostel_name, 'non_ac_rooms': non_ac_rooms, 'ac_rooms': ac_rooms },
                 success: function (data) {
-                    if (data === "True") {
+                    console.log(data);
+                    if (data.trim() === "True") {
                         const toast = new bootstrap.Toast(document.getElementById('roomToast'));
                         toast.show();
                         // location.reload()

@@ -19,14 +19,10 @@
                 href="admin_leave.php"><i class="fa-solid fa-plane-departure"></i> Leave</a>
             <a class="nav-link <?php echo $current_file === 'admin_complaint.php' ? 'active' : '' ?>" 
                 href="admin_complaint.php"><i class="fa-solid fa-list"></i> Complain</a>
-            <a class="nav-link <?php echo $current_file === 'admin_display.php' ? 'active' : '' ?>" 
-                href="admin_display.php"><i class="fa-solid fa-bars"></i> Feedback</a>
-            <a class="nav-link <?php echo $current_file === 'visitor_record.php' ? 'active' : '' ?>" 
-                href="visitor_record.php"><i class="fa-solid fa-bars"></i>Visotor</a>
+                <a class="nav-link <?php echo $current_file === 'visitor_record.php' ? 'active' : '' ?> 
+                    href="visitor_record.php"><i class="fa-solid fa-person-walking-luggage"></i> View Visitors</a>
             <a class="nav-link <?php echo $current_file === 'import_students.php' ? 'active' : '' ?>" 
                 href="import_students.php"><i class="fa-solid fa-file-import"></i> Import</a>
-            <a class="nav-link <?php echo $current_file === 'visitor_record.php' ? 'active' : '' ?> 
-                href="visitor_record.php"><i class="fa-solid fa-person-walking-luggage"></i> View Visitors</a>
         </nav>
     </div>
 </div>
@@ -44,13 +40,9 @@
             href="admin_leave.php"><i class="fa-solid fa-plane-departure"></i> Leave</a>
         <a class="nav-link <?php echo $current_file === 'admin_complaint.php' ? 'active' : '' ?>"
              href="admin_complaint.php"><i class="fa-solid fa-list"></i> Complain</a>
-        <a class="nav-link <?php echo $current_file === 'admin_display.php' ? 'active' : '' ?>"
-             href="admin_display.php"><i class="fa-solid fa-bars"></i> Feedback</a>
         <a class="nav-link <?php echo $current_file === 'visitor_record.php' ? 'active' : '' ?>" 
-            href="visitor_record.php"><i class="fa-solid fa-bars"></i>Visotor</a>
+                  href="visitor_record.php"><i class="fa-solid fa-person-walking-luggage"></i> View Visitors</a>
         <a class="nav-link <?php echo $current_file === 'import_students.php' ? 'active' : '' ?>" 
              href="import_students.php"><i class="fa-solid fa-file-import"></i> Import</a>
-        <a class="nav-link <?php echo $current_file === 'visitor_record.php' ? 'active' : '' ?>" 
-             href="visitor_record.php"><i class="fa-solid fa-person-walking-luggage"></i> View Visitors</a>
     </nav>
 </div>
