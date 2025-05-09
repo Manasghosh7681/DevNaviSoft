@@ -23,6 +23,23 @@
     .form-label {
         font-weight: bold;
     }
+
+    .toast {
+        border-radius: 12px;
+        background-color: #f0fdf4;
+        border-left: 6px solid #28a745;
+        min-width: 300px;
+        max-width: 350px;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .toast .toast-body {
+        padding: 16px;
+    }
+
+    .toast .text-success {
+        color: #28a745 !important;
+    }
 </style>
 
 <?php
@@ -80,11 +97,13 @@ if (isset($_SESSION['email'])) {
             $.ajax({
                 url: "add_rooms.php",
                 method: "POST",
-                data: {'hostel_name': hostel_name, 'non_ac_rooms': non_ac_rooms, 'ac_rooms': ac_rooms},
-                success: function(data){
-                    if(data === "True"){
-                        location.reload()
-                    }                    
+                data: { 'hostel_name': hostel_name, 'non_ac_rooms': non_ac_rooms, 'ac_rooms': ac_rooms },
+                success: function (data) {
+                    if (data === "True") {
+                        const toast = new bootstrap.Toast(document.getElementById('roomToast'));
+                        toast.show();
+                        // location.reload()
+                    }
                 }
             })
         })

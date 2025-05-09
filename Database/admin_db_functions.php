@@ -715,6 +715,5 @@ function insertBeds($bed_id,$room_id,$status){
 }
 ?>
 
-?>
 
 
