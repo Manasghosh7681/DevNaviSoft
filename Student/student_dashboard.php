@@ -53,9 +53,9 @@ if (isset($_SESSION['sic'])) {
                 </div>
                 <div class="col-md-4 col-12">
                     <div class="info-box feedback">
-                        <h4>Feedback</h4>
-                        <i class="fas fa-comment-dots"></i>
-                        <a href="student_feedback.php" class="btn">
+                        <h4>Visitors</h4>
+                        <i class="fa-solid fa-plane-arrival"></i>
+                        <a href="visitors.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> More info</a>
                     </div>
                 </div>

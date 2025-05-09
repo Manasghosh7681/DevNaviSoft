@@ -31,12 +31,18 @@ if (isset($_SESSION['email'])) {
                                         <p><strong>Branch:</strong> <?php echo $std['branch'] ?></p>
                                         <p><strong>Year:</strong> <?php echo $std['year'] ?> Year</p>
                                     </div>
-                                    <button class="btn btn-outline-danger deallocate-btn" 
+                                    <button class="btn btn-danger btn-outline-light border-danger deallocate-btn" 
                                             data-sic="<?php echo $std['sic']?>" 
                                             data-bedId="<?php echo $std['bed_id']?>"
                                             data-roomId="<?php echo $std['room_id']?>">
                                             Deallocate
                                     </button>
+                                    <!-- <button class="btn btn-outline-warning remove-btn" 
+                                            data-sic="<?php echo $std['sic']?>" 
+                                            data-bedId="<?php echo $std['bed_id']?>"
+                                            data-roomId="<?php echo $std['room_id']?>">
+                                            Remove
+                                    </button> -->
                                 </div>
                             </div>
                         </div>

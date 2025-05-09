@@ -61,12 +61,12 @@ if (isset($_SESSION['email'])) {
         }
         
         .search-box {
-            position: relative;
+            /* position: relative; */
             width: 300px;
         }
         
         .search-box i {
-            position: absolute;
+            /* position: absolute; */
             left: 10px;
             top: 50%;
             transform: translateY(-50%);
@@ -167,6 +167,8 @@ if (isset($_SESSION['email'])) {
             
             .search-box {
                 width: 100%;
+                display:flex;
+                
             }
             
             .visitor-table {
@@ -214,7 +216,7 @@ if (isset($_SESSION['email'])) {
                 <div class="table-header">
                     <h2><i class="fas fa-clipboard-list me-2"></i>Visitor Records</h2>
                     <div class="search-box">
-                        <i class="fas fa-search"></i>
+                        <!-- <i class="fas fa-search"></i> -->
                         <input type="text" id="searchInput" class="form-control" placeholder="Search visitors...">
                     </div>
                 </div>
@@ -325,7 +327,7 @@ if (isset($_SESSION['email'])) {
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
     <script>
         $(document).ready(function() {
             // Search functionality

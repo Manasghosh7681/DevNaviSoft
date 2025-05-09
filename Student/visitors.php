@@ -9,117 +9,135 @@ if (isset($_SESSION['sic'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Visitor | Hostel Management</title>
+    <title>Industrial Visitor Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --light-bg: #f8f9fa;
-            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --industrial-primary: #2c3e50;
+            --industrial-secondary: #34495e;
+            --industrial-accent: #e74c3c;
+            --industrial-warning: #f39c12;
+            --industrial-success: #27ae60;
+            --industrial-light: #ecf0f1;
+            --industrial-dark: #1a252f;
         }
         
         body {
-            background-color: var(--light-bg);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
+            background-color: #f5f5f5;
+            color: var(--industrial-dark);
         }
         
         #main-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 2rem;
-        }
-        
-        .visitor-form-container {
             width: 100%;
-            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
-        .visitor-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-            padding: 2rem;
-            transition: var(--transition);
+        .visitor-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-top: 4px solid var(--industrial-warning);
+            width: 100%;
+            max-width: 1100px;
         }
         
-        .visitor-card:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .form-title {
-            color: var(--secondary-color);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
+        .visitor-header {
+            background-color: var(--industrial-primary);
+            color: white;
+            padding: 1.5rem;
             text-align: center;
-            position: relative;
-            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--industrial-warning);
         }
         
-        .form-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
+        .visitor-header h3 {
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .visitor-header i {
+            color: var(--industrial-warning);
+            margin-right: 10px;
+        }
+        
+        .visitor-form {
+            padding: 2rem;
         }
         
         .form-label {
-            font-weight: 500;
-            color: var(--secondary-color);
+            font-weight: 600;
+            color: var(--industrial-secondary);
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+        
+        .input-group-text {
+            background-color: var(--industrial-secondary);
+            color: white;
+            border: none;
+            min-width: 40px;
+            justify-content: center;
         }
         
         .form-control {
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            border: 1px solid var(--industrial-secondary);
+            border-radius: 4px;
             padding: 0.75rem 1rem;
-            transition: var(--transition);
+            transition: all 0.3s;
         }
         
         .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+            border-color: var(--industrial-warning);
+            box-shadow: 0 0 0 0.25rem rgba(243, 156, 18, 0.25);
+        }
+        
+        .readonly-field {
+            background-color: rgba(44, 62, 80, 0.05);
+            cursor: not-allowed;
         }
         
         .btn-submit {
-            background-color: var(--primary-color);
+            background-color: var(--industrial-primary);
             border: none;
             padding: 0.75rem 2rem;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
             letter-spacing: 0.5px;
-            transition: var(--transition);
-            border-radius: 6px;
+            transition: all 0.3s;
+            color: white;
         }
         
         .btn-submit:hover {
-            background-color: #2980b9;
+            background-color: var(--industrial-secondary);
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
         .text-error {
-            color: var(--accent-color);
+            color: var(--industrial-accent);
             font-size: 0.85rem;
             margin-top: 0.25rem;
             display: block;
         }
         
-        .input-group-text {
-            background-color: #e9ecef;
-            border: 1px solid #ddd;
+        .is-invalid {
+            border-color: var(--industrial-accent) !important;
+            animation: shake 0.5s;
         }
         
-        .readonly-field {
-            background-color: #f8f9fa;
-            cursor: not-allowed;
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
         }
         
         @media (max-width: 768px) {
@@ -127,8 +145,22 @@ if (isset($_SESSION['sic'])) {
                 padding: 1rem;
             }
             
-            .visitor-card {
+            .visitor-form {
                 padding: 1.5rem;
+            }
+            
+            .visitor-header h3 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .visitor-header {
+                padding: 1rem;
+            }
+            
+            .visitor-form {
+                padding: 1rem;
             }
         }
     </style>
@@ -138,49 +170,55 @@ if (isset($_SESSION['sic'])) {
         <?php include_once "student_sidebar.php"; ?>
         
         <div id="main-content">
-            <div class="visitor-form-container">
-                <div class="visitor-card">
-                    <h3 class="form-title">Add Visitor Details</h3>
-                    
+            <div class="visitor-container">
+                <div class="visitor-header">
+                    <h3><i class="fas fa-user-shield"></i>VISITOR MANAGEMENT SYSTEM</h3>
+                </div>
+                
+                <div class="visitor-form">
                     <form action="" method="post" id="visitorForm">
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <label class="form-label">Your SIC</label>
-                                <div class="input-group">
+                                <label class="form-label">YOUR SIC</label>
+                                <div class="input-group mb-3">
                                     <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                                    <input type="text" class="form-control readonly-field" value="<?php echo $_SESSION['sic']; ?>" readonly>
+                                    <input type="text" class="form-control readonly-field" 
+                                           value="<?php echo htmlspecialchars($_SESSION['sic']); ?>" readonly>
                                 </div>
                             </div>
                             
                             <div class="col-md-6">
-                                <label class="form-label">Your Name</label>
-                                <div class="input-group">
+                                <label class="form-label">YOUR NAME</label>
+                                <div class="input-group mb-3">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    <input type="text" class="form-control readonly-field" value="<?php echo $_SESSION['name']; ?>" readonly>
+                                    <input type="text" class="form-control readonly-field" 
+                                           value="<?php echo htmlspecialchars($_SESSION['name']); ?>" readonly>
                                 </div>
                             </div>
                             
                             <div class="col-md-6">
-                                <label class="form-label">Visitor's Name</label>
-                                <div class="input-group">
+                                <label class="form-label">VISITOR'S NAME</label>
+                                <div class="input-group mb-3">
                                     <span class="input-group-text"><i class="fas fa-user-friends"></i></span>
-                                    <input type="text" name="visitor_name" id="visitor-name" class="form-control" placeholder="Enter visitor's full name">
+                                    <input type="text" name="visitor_name" id="visitor-name" class="form-control" 
+                                           placeholder="Enter visitor's full name">
                                 </div>
                                 <p class="text-error" id="visitor-name-error"></p>
                             </div>
                             
                             <div class="col-md-6">
-                                <label class="form-label">Relation with Visitor</label>
-                                <div class="input-group">
+                                <label class="form-label">RELATION WITH VISITOR</label>
+                                <div class="input-group mb-3">
                                     <span class="input-group-text"><i class="fas fa-link"></i></span>
-                                    <input type="text" name="relation" id="relation" class="form-control" placeholder="E.g. Father, Mother, Friend">
+                                    <input type="text" name="relation" id="relation" class="form-control" 
+                                           placeholder="E.g. Father, Mother, Friend">
                                 </div>
                                 <p class="text-error" id="relation-error"></p>
                             </div>
                             
                             <div class="col-md-6">
-                                <label class="form-label">Date of Arrival</label>
-                                <div class="input-group">
+                                <label class="form-label">DATE OF ARRIVAL</label>
+                                <div class="input-group mb-3">
                                     <span class="input-group-text"><i class="fas fa-calendar-day"></i></span>
                                     <input type="date" name="arrival_date" id="date" class="form-control">
                                 </div>
@@ -188,17 +226,18 @@ if (isset($_SESSION['sic'])) {
                             </div>
                             
                             <div class="col-md-6">
-                                <label class="form-label">Contact Number</label>
-                                <div class="input-group">
+                                <label class="form-label">CONTACT NUMBER</label>
+                                <div class="input-group mb-3">
                                     <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
-                                    <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Visitor's mobile number">
+                                    <input type="text" name="mobile" id="mobile" class="form-control" 
+                                           placeholder="Visitor's mobile number">
                                 </div>
                                 <p class="text-error" id="mobile-error"></p>
                             </div>
                             
                             <div class="col-12 text-center mt-4">
                                 <button type="submit" name="add" id="submit" class="btn btn-submit">
-                                    <i class="fas fa-save me-2"></i>Save Visitor Details
+                                    <i class="fas fa-save me-2"></i>SAVE VISITOR DETAILS
                                 </button>
                             </div>
                         </div>
@@ -209,8 +248,13 @@ if (isset($_SESSION['sic'])) {
     </div>
 
     <script src="../Jquery/jquery-3.7.1.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function(){
+            // Set minimum date to today
+            $("#date").attr('min', new Date().toISOString().split("T")[0]);
+            
             $("#visitorForm").submit(function(e){
                 let visitorName = $("#visitor-name").val().trim();
                 let relation = $("#relation").val().trim();
@@ -220,56 +264,57 @@ if (isset($_SESSION['sic'])) {
 
                 // Reset errors
                 $(".text-error").text("");
+                $(".is-invalid").removeClass("is-invalid");
 
                 // Validate visitor name
                 if(visitorName.length < 3){
                     $("#visitor-name-error").text("Visitor name must be at least 3 characters");
+                    $("#visitor-name").addClass("is-invalid");
                     error = true;
                 }
 
                 // Validate relation
                 if(relation.length < 3){
                     $("#relation-error").text("Please specify relation (min 3 chars)");
+                    $("#relation").addClass("is-invalid");
                     error = true;
                 }
 
                 // Validate date
                 if(date === ""){
                     $("#date-error").text("Please select arrival date");
-                    error = true;
-                } else if(date < new Date().toISOString().split("T")[0]){
-                    $("#date-error").text("Date cannot be in the past");
+                    $("#date").addClass("is-invalid");
                     error = true;
                 }
 
                 // Validate mobile
                 if(mobile.length != 10){
                     $("#mobile-error").text("Mobile number must be 10 digits");
+                    $("#mobile").addClass("is-invalid");
                     error = true;
                 } else if(isNaN(mobile)){
                     $("#mobile-error").text("Mobile must contain only numbers");
+                    $("#mobile").addClass("is-invalid");
                     error = true;
                 } else if(!mobile.match(/^[6-9]{1}[0-9]{9}$/)){
                     $("#mobile-error").text("Mobile must start with 6-9");
+                    $("#mobile").addClass("is-invalid");
                     error = true;
                 }
 
                 if(error){
                     e.preventDefault();
-                    // Add shake animation to error fields
-                    $(".text-error:not(:empty)").parent().find("input").addClass("is-invalid");
-                    setTimeout(() => {
-                        $(".is-invalid").removeClass("is-invalid");
-                    }, 1000);
                 }
             });
 
-            // Add real-time validation
+            // Real-time validation
             $("#visitor-name, #relation, #mobile").on("input", function(){
+                $(this).removeClass("is-invalid");
                 $(this).next(".text-error").text("");
             });
 
             $("#date").on("change", function(){
+                $(this).removeClass("is-invalid");
                 $(this).next(".text-error").text("");
             });
         });
@@ -289,10 +334,12 @@ if (isset($_SESSION['sic'])) {
             echo '<script>
                 Swal.fire({
                     icon: "success",
-                    title: "Success",
+                    title: "SUCCESS",
                     text: "Visitor added successfully",
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1500,
+                    background: "var(--industrial-light)",
+                    color: "var(--industrial-dark)"
                 }).then(() => {
                     $("#visitorForm")[0].reset();
                 });
@@ -301,9 +348,11 @@ if (isset($_SESSION['sic'])) {
             echo '<script>
                 Swal.fire({
                     icon: "error",
-                    title: "Error",
+                    title: "ERROR",
                     text: "Failed to add visitor",
-                    showConfirmButton: true
+                    showConfirmButton: true,
+                    background: "var(--industrial-light)",
+                    color: "var(--industrial-dark)"
                 });
             </script>';
         }

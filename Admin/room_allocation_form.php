@@ -11,23 +11,24 @@
     body {
         font-family: 'Roboto', sans-serif;
         background-color: #f5f7fa;
-        padding-top: 60px; /* Navbar height */
+        padding-top: 60px;
+        /* Navbar height */
     }
 
     .navbar {
         background-color: var(--primary-color) !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     #main-content {
         background-color: white;
         border-radius: 8px;
-        box-shadow: 0 0 30px rgba(0,0,0,0.05);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
         padding: 30px;
         margin-top: 20px;
         border-top: 4px solid var(--bronze);
-        background-image: 
-            linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)),
             url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="rgba(0,0,0,0.03)" width="50" height="50" x="0" y="0"></rect><rect fill="rgba(0,0,0,0.03)" width="50" height="50" x="50" y="50"></rect></svg>');
     }
 
@@ -57,7 +58,8 @@
         margin-bottom: 8px;
     }
 
-    .form-control, .form-select {
+    .form-control,
+    .form-select {
         height: 45px;
         border: 1px solid #ddd;
         border-radius: 6px;
@@ -65,7 +67,8 @@
         transition: all 0.3s;
     }
 
-    .form-control:focus, .form-select:focus {
+    .form-control:focus,
+    .form-select:focus {
         border-color: var(--accent-color);
         box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
     }
@@ -88,7 +91,7 @@
         background-color: var(--metal-dark);
         color: white;
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .input-group-text {
@@ -105,30 +108,31 @@
         transform: translateY(-50%);
         color: var(--metal-light);
     }
+
     .toast {
-    border-radius: 12px;
-    background-color: #f0fdf4;
-    border-left: 6px solid #28a745;
-    min-width: 300px;
-    max-width: 350px;
-    font-family: 'Segoe UI', sans-serif;
-}
+        border-radius: 12px;
+        background-color: #f0fdf4;
+        border-left: 6px solid #28a745;
+        min-width: 300px;
+        max-width: 350px;
+        font-family: 'Segoe UI', sans-serif;
+    }
 
-.toast .toast-body {
-    padding: 16px;
-}
+    .toast .toast-body {
+        padding: 16px;
+    }
 
-.toast .text-success {
-    color: #28a745 !important;
-}
+    .toast .text-success {
+        color: #28a745 !important;
+    }
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
         #main-content {
             padding: 20px;
         }
-        
-        .row > div {
+
+        .row>div {
             margin-bottom: 15px;
         }
     }
@@ -141,17 +145,17 @@ if (isset($_SESSION['email'])) {
     include "admin_navbar.html";
     ?>
     <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
-  <div id="roomToast" class="toast fade hide shadow" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-body d-flex align-items-center gap-3">
-      <i class="fas fa-check-circle text-success fs-4"></i>
-      <div>
-        <strong class="text-dark">Success</strong>
-        <div>Room has been allocated successfully.</div>
-      </div>
-      <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        <div id="roomToast" class="toast fade hide shadow" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body d-flex align-items-center gap-3">
+                <i class="fas fa-check-circle text-success fs-4"></i>
+                <div>
+                    <strong class="text-dark">Success</strong>
+                    <div>Room has been allocated successfully.</div>
+                </div>
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
     <div class="d-flex">
         <?php include_once "admin_sidebar.php"; ?>
@@ -182,7 +186,7 @@ if (isset($_SESSION['email'])) {
                                 <i class="fas fa-project-diagram form-icon"></i>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-4 mb-4 position-relative">
                                 <label for="year" class="form-label"><i class="fas fa-calendar-alt me-2"></i>Year:</label>
@@ -200,7 +204,7 @@ if (isset($_SESSION['email'])) {
                                 <i class="fas fa-mobile-alt form-icon"></i>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-4 mb-4 position-relative">
                                 <label for="email" class="form-label"><i class="fas fa-envelope me-2"></i>Email:</label>
@@ -214,11 +218,12 @@ if (isset($_SESSION['email'])) {
                             </div>
                             <div class="col-md-4 mb-4 position-relative">
                                 <label for="preference" class="form-label"><i class="fas fa-star me-2"></i>Preference Type:</label>
-                                <input type="text" class="form-control" id="preference-type" value="<?php echo $std['preference_type'] ?>" readonly>
+                                <input type="text" class="form-control" id="preference-type"
+                                    value="<?php echo $std['preference_type'] ?>" readonly>
                                 <i class="fas fa-clipboard-list form-icon"></i>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-4 mb-4">
                                 <label for="hostel" class="form-label"><i class="fas fa-building me-2"></i>Hostel:</label>
@@ -236,7 +241,7 @@ if (isset($_SESSION['email'])) {
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="row mt-4">
                             <div class="col-md-12 text-center">
                                 <button type="submit" name="addToHostel" class="btn btn-outline-danger fw-bold px-5 py-2">
@@ -251,14 +256,14 @@ if (isset($_SESSION['email'])) {
             ?>
         </div>
     </div>
-    
 
-    
+
+
     <!-- Include Font Awesome in head -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    
+
     <script src="../Jquery/jquery-3.7.1.js"></script>
     <script>
         $("document").ready(function () {
@@ -277,7 +282,7 @@ if (isset($_SESSION['email'])) {
         $("#hostel").change(function () {
 
             let hostelName = $("#hostel").val()
-            let preferenceType = $("#preference-type").val()            
+            let preferenceType = $("#preference-type").val()
             $.ajax({
                 url: "select_rooms.php",
                 method: "POST",
@@ -313,12 +318,12 @@ if (isset($_SESSION['email'])) {
                         $("#bed").html(beds)
 
                     } catch (error) {
-                        
+
                     }
                 }
             })
         })
-        $("#form").submit(function(e){
+        $("#form").submit(function (e) {
             e.preventDefault()
             let sic = $("#sic").val()
             let name = $("#name").val()
@@ -330,27 +335,27 @@ if (isset($_SESSION['email'])) {
             $.ajax({
                 url: "allocate_room.php",
                 method: "POST",
-                data: {'sic': sic, 'room_id': room, 'bed_id': bed},
-                success: function(data){
+                data: { 'sic': sic, 'room_id': room, 'bed_id': bed },
+                success: function (data) {
                     console.log(data);
-                    if(data.trim() === 'True'){
+                    if (data.trim() === 'True') {
                         // alert("Room Allocated")
                         const toast = new bootstrap.Toast(document.getElementById('roomToast'));
-toast.show();
- setTimeout(() => {
-        window.location = "students_record.php";
-    }, 2000);
-                    //    window.location = "students_record.php"
+                        toast.show();
+                        setTimeout(() => {
+                            window.location = "students_record.php";
+                        }, 2000);
+                        //    window.location = "students_record.php"
                         $.ajax({
                             url: "sending_mail.php",
                             method: "POST",
-                            data: {'sic': sic, 'name': name, 'email': email, 'hostel': hostel, 'preference_type': preferenceType, 'room': room},
-                            success: function(response){
+                            data: { 'sic': sic, 'name': name, 'email': email, 'hostel': hostel, 'preference_type': preferenceType, 'room': room },
+                            success: function (response) {
                                 // console.log(response);
                             }
                         })
                     }
-                    else{
+                    else {
                         alert("Room Not Allocated")
                     }
                 }

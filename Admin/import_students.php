@@ -13,7 +13,7 @@ if (isset($_SESSION['email'])) {
         include_once "admin_sidebar.php";
         ?>
         <div id="main-content">
-            <div class="container mt-5">
+            <div class="container mt-5 pt-5">
                 <div class="card shadow-lg p-4 rounded-4">
                     <h2 class="text-center mb-4 fw-bold text-primary">Import Students</h2>
                     <form action="" class="form" method="post" enctype="multipart/form-data" id="form">

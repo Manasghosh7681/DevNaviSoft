@@ -57,7 +57,7 @@ function addNotice($notice_title,$notice_date,$notice_description,$notice_file="
 function displayAllNotice(){
     global $conn;
     try{
-        $qry = "SELECT * FROM notice";
+        $qry = "SELECT * FROM notice ORDER BY notice_id DESC LIMIT 10 OFFSET 0";
         $stmt = $conn->prepare($qry);
         $stmt->execute();
         $res = $stmt->get_result();
@@ -444,7 +444,7 @@ function fetchStudentsFromRoom($room_id){
 function importStudents($sic,$name,$gender,$branch,$year,$contact_no,$email,$address){
     global $conn;
     try {
-        $studentQuery = "INSERT INTO std (sic,name,gender,branch,year,contact_no,email,address) VALUES (?,?,?,?,?,?,?,?)";
+        $studentQuery = "INSERT INTO students (sic,name,gender,branch,year,contact_no,email,address) VALUES (?,?,?,?,?,?,?,?)";
         $stmt = $conn->prepare($studentQuery);
         $stmt->bind_param("ssssiiss",$sic,$name,$gender,$branch,$year,$contact_no,$email,$address);
         $result = $stmt->execute();
@@ -657,7 +657,63 @@ function calculateStudents(){
     }
 }
 
+function getMaximumRoomNoFromRoomsTable($hostel_name){
+    global $conn;
+    try {
+        $qry = "SELECT MAX(room_no) AS max_roomNo FROM rooms WHERE hostel_name=?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s",$hostel_name);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if($res->num_rows > 0){
+          return $res->fetch_assoc()['max_roomNo'];
+        }else{
+           return false;
+        }
+        
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+    // finally{
+    //     $conn->close();
+    // }
+}
 
+function insertRooms($room_id,$room_no,$room_type,$hostel_name,$bed_capacity,$available_beds,$status){
+     global $conn;
+    try {
+        $qry = "INSERT INTO rooms(room_id,room_no,room_type,hostel_name,bed_capacity,availability_beds,status) VALUE(?,?,?,?,?,?,?)";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("sissiis",$room_id,$room_no,$room_type,$hostel_name,$bed_capacity,$available_beds,$status);
+        $res = $stmt->execute();
+        if($res){
+          return true;
+        }else{
+           return false;
+        }
+        
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+}
+function insertBeds($bed_id,$room_id,$status){
+    global $conn;
+    try {
+        $qry = "INSERT INTO beds(bed_id,room_id,status) VALUE(?,?,?)";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("sss",$bed_id,$room_id,$status);
+        $res = $stmt->execute();
+        if($res){
+          return true;
+        }else{
+           return false;
+        }
+        
+    } catch (Exception $e) {
+        die($e->getMessage());
+    }
+}
 ?>
+
 
 
