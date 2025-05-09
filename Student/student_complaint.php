@@ -4,6 +4,96 @@ if (isset($_SESSION['sic'])) {
     include "student_navbar.html";
     $current_file = basename(__FILE__);
     ?>
+    <style>
+        /* General container styling */
+#main-content {
+    padding: 2rem;
+    width: 100%;
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Styling */
+h4.shadow {
+    background-color: #ffffff;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    padding-left: 1rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Tab Section */
+.shadow.rounded-2 {
+    background-color: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+/* Tabs */
+#application, #history {
+    font-weight: 500;
+    transition: 0.3s;
+}
+#application:hover, #history:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+/* Form Elements */
+label.form-label {
+    font-weight: 500;
+    color: #333;
+}
+
+input.form-control,
+textarea.form-control,
+select.form-control {
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    transition: 0.2s;
+}
+input.form-control:focus,
+textarea.form-control:focus,
+select.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
+}
+
+/* Submit Button */
+.btn-primary {
+    font-weight: 500;
+    padding: 0.5rem 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.25);
+}
+
+/* Status Styles */
+.text-info {
+    font-weight: 500;
+}
+.text-danger {
+    font-weight: 500;
+}
+.text-success {
+    font-weight: 500;
+}
+
+/* Responsive Table */
+.table-responsive {
+    padding-top: 1rem;
+}
+.table th, .table td {
+    vertical-align: middle;
+}
+
+/* Notification Message */
+#msg {
+    font-size: 1rem;
+}
+
+    </style>
     <div class="d-flex">
         <?php include_once "student_sidebar.php"; ?>
         <div id="main-content">

@@ -623,9 +623,6 @@ function deleteEmailFromQueue($emailId) {
     $stmt->execute();
     $stmt->close();
 }
-
-?>
-
 function calculateStudents(){
     global $conn;
     try {
@@ -659,4 +656,8 @@ function calculateStudents(){
         echo $e->getMessage();
     }
 }
+
+
 ?>
+
+
