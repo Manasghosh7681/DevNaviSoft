@@ -13,32 +13,7 @@ if (isset($_SESSION['email'])) {
                 <h2 style="color:rgb(152, 136, 13)">Visitor Records</h2>
                 <input type="text" id="searchInput" class="form-control w-50 w-md-25" placeholder="Search students...">
 
-                <?php
-                // Include the connection file
-                // include_once "../Database/connection.php";
-                // $search = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';
-                // $whereClause = "";
-
-                // if (!empty($search)) {
-                //     // Adjust column names as needed
-                //     $whereClause = "WHERE name LIKE '%$search%' OR visitor_name LIKE '%$search%' OR relation LIKE '%$search%' OR sic LIKE '%$search%'";
-                // }
-
-                // $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-                // $limit = 10;
-                // $offset = ($page - 1) * $limit;
-
-                // // Get total rows (for pagination)
-                // $countSql = "SELECT COUNT(*) AS total FROM visitors $whereClause";
-                // $totalRowsResult = $conn->query($countSql);
-                // $totalRows = $totalRowsResult->fetch_assoc()['total'];
-                // $total_pages = ceil($totalRows / $limit);
-
-                // // Final paginated query
-                // $sql = "SELECT * FROM visitors $whereClause ORDER BY date DESC, time_in DESC LIMIT $offset, $limit";
-                // $result = $conn->query($sql);
                 
-                ?>
             </div>
 
             <div class="table-responsive">

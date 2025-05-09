@@ -4,11 +4,87 @@ if (isset($_SESSION['sic'])) {
     include "student_navbar.html";
     $current_file = basename(__FILE__);
 ?>
+<style>
+/* Your Industrial Theme Styles */
+.shadow.mt-4.rounded-2 {
+    background-color: #f9f9fb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.border-bottom.p-2 {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 12px 12px 0 0;
+}
+
+.border-bottom.p-2 a {
+    font-weight: 500;
+    color: #495057;
+    transition: background 0.2s, color 0.2s;
+}
+
+
+.modal-body.p-2 {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 0 0 12px 12px;
+}
+
+h5.text-center {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #0d6efd;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #212529;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.text-danger {
+    font-size: 0.875rem;
+}
+
+.btn.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+</style>
+
+
     <div class="d-flex">
         <?php include "student_sidebar.php"; ?>
-        <div id="main-content" class="container">
+        <div id="main-content" class="container " >
             <h3 class="shadow p-2">Leave Workways</h3>
-            <div class="shadow mt-4 rounded-2">
+            <div class="shadow mt-4 rounded-2 ">
                 <div class="border-bottom p-2">
                     <a href="#" class="text-decoration-none text-dark p-2 border-end" id="application">Applications</a>
                     <a href="#" class="text-decoration-none p-2" id="history">History</a>

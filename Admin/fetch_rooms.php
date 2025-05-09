@@ -6,6 +6,9 @@ $page = isset($_POST['page']) ? (int)$_POST['page'] : 1;
 $limit = 8; // Number of records per page
 $offset = ($page - 1) * $limit;
 
+// Validate page number
+if ($page < 1) $page = 1;
+
 // Search Query
 $sql = "SELECT * FROM rooms WHERE
         room_id LIKE '%$search%' OR
@@ -39,30 +42,63 @@ while ($room = $result->fetch_assoc()) {
         </tr>";
 }
 
-// Generate pagination
+// Generate smarter pagination
 $pagination = "";
 if ($totalPages > 1) {
     // Previous button
     $prevClass = ($page <= 1) ? 'disabled' : '';
     $pagination .= "<li class='page-item $prevClass'>
-                        <a class='page-link' href='#' data-page='" . ($page - 1) . "'>&laquo; Prev</a>
+                        <a class='page-link' href='#' data-page='" . ($page - 1) . "' aria-label='Previous'>
+                            <span aria-hidden='true'>&laquo;</span>
+                        </a>
                     </li>";
 
-    // Page numbers
-    for ($i = 1; $i <= $totalPages; $i++) {
+    // Always show first page
+    if ($page > 3) {
+        $pagination .= "<li class='page-item'>
+                            <a class='page-link' href='#' data-page='1'>1</a>
+                        </li>";
+        if ($page > 4) {
+            $pagination .= "<li class='page-item disabled'><span class='page-link'>...</span></li>";
+        }
+    }
+
+    // Show pages around current page
+    $startPage = max(1, $page - 2);
+    $endPage = min($totalPages, $page + 2);
+    
+    for ($i = $startPage; $i <= $endPage; $i++) {
         $active = ($i == $page) ? 'active' : '';
         $pagination .= "<li class='page-item $active'>
                             <a class='page-link' href='#' data-page='$i'>$i</a>
                         </li>";
     }
 
+    // Always show last page if needed
+    if ($page < $totalPages - 2) {
+        if ($page < $totalPages - 3) {
+            $pagination .= "<li class='page-item disabled'><span class='page-link'>...</span></li>";
+        }
+        $pagination .= "<li class='page-item'>
+                            <a class='page-link' href='#' data-page='$totalPages'>$totalPages</a>
+                        </li>";
+    }
+
     // Next button
     $nextClass = ($page >= $totalPages) ? 'disabled' : '';
     $pagination .= "<li class='page-item $nextClass'>
-                        <a class='page-link' href='#' data-page='" . ($page + 1) . "'>Next &raquo;</a>
+                        <a class='page-link' href='#' data-page='" . ($page + 1) . "' aria-label='Next'>
+                            <span aria-hidden='true'>&raquo;</span>
+                        </a>
                     </li>";
 }
 
-// Return JSON response
-echo json_encode(["tableData" => $tableData, "pagination" => $pagination]);
+// Return JSON response with additional pagination info
+echo json_encode([
+    "tableData" => $tableData, 
+    "pagination" => $pagination,
+    "totalRecords" => $totalRows,
+    "currentPage" => $page,
+    "totalPages" => $totalPages
+]);
 ?>
