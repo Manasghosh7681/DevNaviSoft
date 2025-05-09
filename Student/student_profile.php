@@ -16,10 +16,6 @@ if ($_SESSION['sic']) {
                     <div class="card shadow rounded-4 border-0">
                         <div class="card-body p-4">
                             <div class="d-flex align-items-center mb-4">
-                                <!-- <div class="me-3">
-                                    <img src="https://via.placeholder.com/80" alt="Profile" width="80" height="80"
-                                        class="rounded-circle shadow">
-                                </div> -->
                                 <div>
                                     <h3 class="mb-0" style="color: chocolate"><?php echo $data['name']; ?></h3>
                                     <p class="text-muted mb-0">SIC: <?php echo $data['sic']; ?></p>

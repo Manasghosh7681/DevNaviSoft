@@ -54,7 +54,7 @@ if (isset($_SESSION['email'])) {
                     <div class="info-box hostel">
                         <h4>Hostel</h4>
                         <i class="fa-solid fs-1 fa-building"></i>
-                        <a href="#" class="btn">
+                        <a href="add_hostel.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> More info</a>
                     </div>
                 </div>
