@@ -20,6 +20,9 @@
       --dark-color: #2c3e50;
       --error-color: #e74c3c;
       --success-color: #2ecc71;
+      --industrial-primary: #2c3e50;
+      --industrial-secondary: #34495e;
+      --light-bg: #1E1E1E;
     }
     
     body {
@@ -34,7 +37,7 @@
     }
     
     .header-bar {
-      background-color: var(--primary-color);
+      background-color: var(--light-bg);
       padding: 10px 25px;
       display: flex;
       align-items: center;
@@ -70,7 +73,8 @@
     
     .welcome-section {
       flex: 1;
-      background: linear-gradient(135deg, #3498db, #2c3e50);
+      /* background: linear-gradient(135deg, #3498db, #2c3e50); */
+       background-color: var(--industrial-primary);
       color: white;
       padding: 40px;
       display: flex;

@@ -274,8 +274,9 @@ if (isset($_SESSION['email'])) {
                                         <td><?php echo htmlspecialchars($data['leave_days']) ?></td>
                                         <td><?php echo htmlspecialchars($data['reason']) ?></td>
                                         <td><span class="status-pending">Pending</span></td>
-                                        <td>
-                                            <button class="btn-approve approve" 
+                                        <td >
+                                            <div class="d-flex align-items-center justify-content-center" >
+                                                <button class="btn-approve approve" 
                                                     data-sic="<?php echo htmlspecialchars($data['sic']) ?>"
                                                     data-apply-date="<?php echo htmlspecialchars($data['apply_date']) ?>">
                                                 <i class="fas fa-check"></i> Approve
@@ -285,6 +286,7 @@ if (isset($_SESSION['email'])) {
                                                     data-apply-date="<?php echo htmlspecialchars($data['apply_date']) ?>">
                                                 <i class="fas fa-times"></i> Reject
                                             </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php } ?>

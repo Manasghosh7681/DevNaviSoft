@@ -251,7 +251,7 @@ if (isset($_SESSION['email'])) {
                     <i class="fas fa-door-open mr-2"></i>Room Inventory
                     <span class="badge-count" id="totalRoomsBadge">0</span>
                 </h2>
-                <div class="search-container">
+                <div >
                             <div class="d-flex algn-items-center border rounded-3">
                                 <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
                                 <input type="text" id="searchInput" class="form-control border-0" placeholder="Search students...">

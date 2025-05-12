@@ -108,6 +108,7 @@ if ($_SESSION['sic']) {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
         }
         
         .download-btn:hover {
@@ -115,7 +116,6 @@ if ($_SESSION['sic']) {
             transform: translateY(-2px);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             color: white;
-            text-decoration: none;
         }
         
         .download-btn i {
@@ -202,10 +202,13 @@ if ($_SESSION['sic']) {
                                         <td><?php echo htmlspecialchars($data['notice_title']); ?></td>
                                         <td><?php echo htmlspecialchars($data['notice_description']); ?></td>
                                         <td>
-                                            <?php if ($data['notice_file'] !== 'empty') { ?>
-                                                <a href="../Notice files/<?php echo htmlspecialchars($data['notice_file']); ?>" 
-                                                   target="_blank" 
-                                                   class="download-btn">
+                                            <?php if ($data['notice_file'] !== 'empty') { 
+                                                $filePath = "../Notice files/" . htmlspecialchars($data['notice_file']);
+                                                $fileName = htmlspecialchars($data['notice_file']);
+                                            ?>
+                                                <a href="download_notice.php?file=<?php echo urlencode($fileName); ?>" 
+                                                   class="download-btn"
+                                                   download="<?php echo $fileName; ?>">
                                                     <i class="fas fa-download"></i> DOWNLOAD
                                                 </a>
                                             <?php } else { ?>
@@ -229,7 +232,34 @@ if ($_SESSION['sic']) {
         </div>
     </div>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- Create a new file called download_notice.php in the same directory with this content: -->
+    <!-- <?php
+    // session_start();
+    // if (!isset($_SESSION['sic'])) {
+    //     header("location:student_login.php");
+    //     exit();
+    // }
+    // 
+    // if (isset($_GET['file'])) {
+    //     $file = $_GET['file'];
+    //     $filepath = '../Notice files/' . $file;
+    //     
+    //     if (file_exists($filepath)) {
+    //         header('Content-Description: File Transfer');
+    //         header('Content-Type: application/octet-stream');
+    //         header('Content-Disposition: attachment; filename="'.basename($filepath).'"');
+    //         header('Expires: 0');
+    //         header('Cache-Control: must-revalidate');
+    //         header('Pragma: public');
+    //         header('Content-Length: ' . filesize($filepath));
+    //         flush(); // Flush system output buffer
+    //         readfile($filepath);
+    //         exit;
+    //     } else {
+    //         die('File not found');
+    //     }
+    // }
+    ?> -->
 </body>
 </html>
 <?php
