@@ -62,8 +62,9 @@ if (isset($_POST['import_students'])) {
                 $contact_no = $row['5'];
                 $email = $row['6'];
                 $address = $row['7'];
+                $preference_type = $row['9'];
                 require_once "../Database/admin_db_functions.php";
-                $res = importStudents($sic,$name,$gender,$branch,$year,$contact_no,$email,$address);
+                $res = importStudents($sic,$name,$gender,$branch,$year,$contact_no,$email,$address,$preference_type);
                 if($res){
                     $msg = "Successfully imported";
                 }else{

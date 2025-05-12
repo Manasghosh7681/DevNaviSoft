@@ -441,12 +441,12 @@ function fetchStudentsFromRoom($room_id){
         $conn->close();
     }
 }
-function importStudents($sic,$name,$gender,$branch,$year,$contact_no,$email,$address){
+function importStudents($sic,$name,$gender,$branch,$year,$contact_no,$email,$address,$preference_type){
     global $conn;
     try {
-        $studentQuery = "INSERT INTO students (sic,name,gender,branch,year,contact_no,email,address) VALUES (?,?,?,?,?,?,?,?)";
+        $studentQuery = "INSERT INTO students (sic,name,gender,branch,year,contact_no,email,address,preference_type) VALUES (?,?,?,?,?,?,?,?,?)";
         $stmt = $conn->prepare($studentQuery);
-        $stmt->bind_param("ssssiiss",$sic,$name,$gender,$branch,$year,$contact_no,$email,$address);
+        $stmt->bind_param("ssssiisss",$sic,$name,$gender,$branch,$year,$contact_no,$email,$address,$preference_type);
         $result = $stmt->execute();
 
         if($result){
