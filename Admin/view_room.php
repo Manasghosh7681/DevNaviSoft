@@ -7,13 +7,15 @@ if (isset($_SESSION['email'])) {
 
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Room Allocation | Hostel Management System</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
         <style>
             :root {
                 --primary-color: #3498db;
@@ -121,9 +123,7 @@ if (isset($_SESSION['email'])) {
             }
 
             .empty-state i {
-                font-size: 3rem;
                 color: var(--warning-color);
-                margin-bottom: 1rem;
             }
 
             .empty-state h4 {
@@ -135,13 +135,14 @@ if (isset($_SESSION['email'])) {
                 #main-content {
                     padding: 1rem;
                 }
-                
+
                 .profile-container {
                     margin-bottom: 1.5rem;
                 }
             }
         </style>
     </head>
+
     <body>
         <div class="d-flex">
             <?php include_once "admin_sidebar.php"; ?>
@@ -153,7 +154,8 @@ if (isset($_SESSION['email'])) {
                     $room = $data[1]->fetch_assoc();
                     ?>
                     <div class="room-header">
-                        <h4><i class="fas fa-door-open me-2"></i> Room No: <?php echo "$room[room_no] ($room[hostel_name])" ?></h4>
+                        <h4><i class="fas fa-door-open me-2"></i> Room No: <?php echo "$room[room_no] ($room[hostel_name])" ?>
+                        </h4>
                     </div>
                     <div class="row g-4">
                         <?php
@@ -167,15 +169,16 @@ if (isset($_SESSION['email'])) {
                                     <div class="profile-info">
                                         <div class="profile-info-content">
                                             <p><strong><i class="fas fa-user me-2"></i>Name:</strong> <?php echo $std['name'] ?></p>
-                                            <p><strong><i class="fas fa-id-card me-2"></i>SIC:</strong> <?php echo $std['sic'] ?></p>
-                                            <p><strong><i class="fas fa-code-branch me-2"></i>Branch:</strong> <?php echo $std['branch'] ?></p>
-                                            <p><strong><i class="fas fa-calendar-alt me-2"></i>Year:</strong> <?php echo $std['year'] ?> Year</p>
+                                            <p><strong><i class="fas fa-id-card me-2"></i>SIC:</strong> <?php echo $std['sic'] ?>
+                                            </p>
+                                            <p><strong><i class="fas fa-code-branch me-2"></i>Branch:</strong>
+                                                <?php echo $std['branch'] ?></p>
+                                            <p><strong><i class="fas fa-calendar-alt me-2"></i>Year:</strong>
+                                                <?php echo $std['year'] ?> Year</p>
                                         </div>
-                                        <button class="btn btn-danger deallocate-btn" 
-                                                data-sic="<?php echo $std['sic']?>" 
-                                                data-bedId="<?php echo $std['bed_id']?>"
-                                                data-roomId="<?php echo $std['room_id']?>">
-                                                <i class="fas fa-user-minus me-1"></i> Deallocate
+                                        <button class="btn btn-danger deallocate-btn" data-sic="<?php echo $std['sic'] ?>"
+                                            data-bedId="<?php echo $std['bed_id'] ?>" data-roomId="<?php echo $std['room_id'] ?>">
+                                            <i class="fas fa-user-minus me-1"></i> Deallocate
                                         </button>
                                     </div>
                                 </div>
@@ -191,10 +194,8 @@ if (isset($_SESSION['email'])) {
                         <i class="fas fa-door-closed"></i>
                         <h4 class="mb-3">This room is not allocated yet</h4>
                         <p class="text-muted">No students have been assigned to this room.</p>
-                        <a href="students_record.php" class="btn btn-primary mt-2">
-                            <div class="d-flex ">
-                                <i class="fas fa-arrow-left me-2 my-auto"></i> <p class=" my-auto ">Back to Allocation</p>
-                            </div>
+                        <a href="students_record.php" class="btn btn-primary">
+                                <i class="fas fa-arrow-left"> <span style="color: white; padding-left: 5px;">Back to Allocation</span></i>
                         </a>
                     </div>
                     <?php
@@ -209,7 +210,8 @@ if (isset($_SESSION['email'])) {
                 <div class="modal-content">
                     <div class="modal-header bg-danger text-white">
                         <h5 class="modal-title"><i class="fas fa-exclamation-triangle me-2"></i>Confirm Deallocation</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <p>Are you sure you want to deallocate this student from the room?</p>
@@ -227,36 +229,36 @@ if (isset($_SESSION['email'])) {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 let currentSic, currentBedId, currentRoomId;
-                
+
                 // Deallocation button click handler
-                $('.deallocate-btn').on('click', function() {
+                $('.deallocate-btn').on('click', function () {
                     currentSic = $(this).data('sic');
                     currentBedId = $(this).data('bedid');
                     currentRoomId = $(this).data('roomid');
-                    
+
                     // Show confirmation modal
                     const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
                     modal.show();
                 });
-                
+
                 // Confirm deallocation
-                $('#confirmDeallocate').on('click', function() {
+                $('#confirmDeallocate').on('click', function () {
                     deallocate(currentSic, currentBedId, currentRoomId);
                     $('#confirmationModal').modal('hide');
                 });
-                
+
                 function deallocate(sic, bedId, roomId) {
                     $.ajax({
                         url: "student_deallocation.php",
                         method: "POST",
                         data: {
-                            'sic': sic, 
-                            'bedId': bedId, 
+                            'sic': sic,
+                            'bedId': bedId,
                             'roomId': roomId
                         },
-                        success: function(response) {
+                        success: function (response) {
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Deallocated!',
@@ -268,7 +270,7 @@ if (isset($_SESSION['email'])) {
                                 location.reload();
                             });
                         },
-                        error: function(xhr, status, error) {
+                        error: function (xhr, status, error) {
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Error',
@@ -281,6 +283,7 @@ if (isset($_SESSION['email'])) {
             });
         </script>
     </body>
+
     </html>
     <?php
 } else {

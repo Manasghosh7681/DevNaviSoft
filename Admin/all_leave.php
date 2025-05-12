@@ -6,7 +6,7 @@ if (isset($_SESSION['email'])) {
     include "./admin_navbar.html";
     $current_file = "admin_leave.php";
     include "admin_navbar.html";
-    $sql = "SELECT * FROM leave_request ORDER BY sno DESC";
+    $sql = "SELECT * FROM leave_request ORDER BY apply_date DESC";
     $result = $conn->query($sql);
     // Fetch all leave requests
     ?>

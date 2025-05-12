@@ -84,7 +84,7 @@ if ($_SESSION['sic']) {
         
         .notice-table td {
             padding: 1rem;
-            text-align: center;
+            /* text-align: center; */
             vertical-align: middle;
             border-bottom: 1px solid #eee;
         }
