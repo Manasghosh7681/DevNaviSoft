@@ -128,7 +128,10 @@ if ($_SESSION['email']) {
     <div id="main-content" class="container-fluid">
         <div class="table-container">
             <div class="table-header">
-                <h2><i class="fas fa-clipboard-list fa-icon"></i> Pending Complaint Requests</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2><i class="fas fa-clipboard-list fa-icon"></i> Pending Complaint Requests</h2>
+                        <span class="ms-5"><a href="all_complaint.php" class="btn text-white fs-4">History</a></span>
+                    </div>
             </div>
             <?php
             require_once "../Database/admin_db_functions.php";

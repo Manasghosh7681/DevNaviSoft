@@ -159,7 +159,7 @@ if (isset($_SESSION['email'])) {
                         <?php
                         while ($std = $data[0]->fetch_assoc()) {
                             ?>
-                            <div class="col-md-6 col-lg-4">
+                            <div class="col-md-6 col-lg-3">
                                 <div class="profile-container">
                                     <div class="profile-icon">
                                         <i class="fas fa-user-graduate"></i>
@@ -192,7 +192,9 @@ if (isset($_SESSION['email'])) {
                         <h4 class="mb-3">This room is not allocated yet</h4>
                         <p class="text-muted">No students have been assigned to this room.</p>
                         <a href="students_record.php" class="btn btn-primary mt-2">
-                            <i class="fas fa-arrow-left me-1"></i> Back to Allocation
+                            <div class="d-flex ">
+                                <i class="fas fa-arrow-left me-2 my-auto"></i> <p class=" my-auto ">Back to Allocation</p>
+                            </div>
                         </a>
                     </div>
                     <?php
