@@ -1,7 +1,7 @@
 <!-- Add this in your PHP file -->
 
 <!-- Bootstrap CDN -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
     .form-container {

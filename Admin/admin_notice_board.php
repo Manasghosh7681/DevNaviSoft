@@ -1,5 +1,5 @@
 <script src="../Jquery/jquery-3.7.1.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+<link href="../Bootstrap/css/bootstrap-icons.css" rel="stylesheet">
 <?php
 session_start();
 if (isset($_SESSION['email'])) {
