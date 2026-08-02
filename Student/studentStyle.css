@@ -10,7 +10,6 @@ body {
 }
 
 .top-navbar {
-    /* position: sticky; */
     position: fixed;
     top: 0;
     left: 0;
@@ -37,10 +36,26 @@ body {
     width: 100px;
 }
 
+input.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.modal-content {
+    animation-duration: 0.5s;
+    border-radius: 20px;
+}
+
+.modal-header i,
+.modal-body i,
+.modal-footer i {
+    margin-right: 8px;
+}
+
 /*---------- Sidebar----------- */
 
 .sidebar {
-    /* border-top: 1px solid #ddd; */
     padding-top: 20px;
     height: 100vh;
     width: 200px;
@@ -96,7 +111,7 @@ body {
     #main-content{
         flex-grow: 1;
         margin-left: 200px; /* Ensure content starts after the sidebar */
-        height: 100vh;
+        height: auto;
         overflow-y: auto; /* Enable scrolling */
         padding: 20px;
     }
@@ -161,17 +176,19 @@ body {
     background: linear-gradient(135deg, #34495e, #2c3e50);
 }
 
-
 /*--------------- Student Leave------------ */
 
-#approved {
-    color: green;
+.Approved {
+    color: green !important;
 }
 
-#rejected {
-    color: red;
+.Rejected {
+    color: red !important;
 }
 
-#pending {
-    color: blue;
+.Pending{
+    color: blue !important;
+}
+.sic{
+    color: #27ae60;
 }

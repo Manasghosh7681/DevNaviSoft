@@ -9,14 +9,20 @@
         <nav class="sidebar">
             <a class="nav-link <?php echo $current_file === 'admin_dashboard.php' ? 'active' : '' ?>"
                 href="admin_dashboard.php"><i class="fa fa-fw fa-home"></i> Dashboard</a>
-            <a class="nav-link <?php echo $current_file === 'addProduct.php' ? 'active' : '' ?>"
-                href="addProduct.php"><i class="fa-solid fa-plus"></i> Manage Student</a>
+            <a class="nav-link <?php echo $current_file === 'students_record.php' ? 'active' : '' ?>"
+                href="students_record.php"><i class="fa-solid fa-list-check"></i></i> Manage Students</a>
+            <a class="nav-link <?php echo $current_file === 'rooms_record.php' ? 'active' : '' ?>" 
+                href="rooms_record.php"><i class="fa-solid fa-door-closed"></i> View Rooms</a>
             <a class="nav-link <?php echo $current_file === 'admin_notice_board.php' ? 'active' : '' ?>"
                 href="admin_notice_board.php"><i class="fa-solid fa-bell"></i> Notice</a>
             <a class="nav-link <?php echo $current_file === 'admin_leave.php' ? 'active' : '' ?>"
                 href="admin_leave.php"><i class="fa-solid fa-plane-departure"></i> Leave</a>
-            <a class="nav-link" href="#"><i class="fa-solid fa-list"></i> Complain</a>
-            <a class="nav-link <?php echo $current_file === 'admin_display.php' ? 'active' : '' ?>" href="admin_display.php"><i class="fa-solid fa-bars"></i> Feedback</a>
+            <a class="nav-link <?php echo $current_file === 'admin_complaint.php' ? 'active' : '' ?>" 
+                href="admin_complaint.php"><i class="fa-solid fa-list"></i> Complain</a>
+                <a class="nav-link <?php echo $current_file === 'visitor_record.php' ? 'active' : '' ?> 
+                    href="visitor_record.php"><i class="fa-solid fa-person-walking-luggage"></i> View Visitors</a>
+            <a class="nav-link <?php echo $current_file === 'import_students.php' ? 'active' : '' ?>" 
+                href="import_students.php"><i class="fa-solid fa-file-import"></i> Import</a>
         </nav>
     </div>
 </div>
@@ -24,12 +30,19 @@
     <nav id="sidebarMenu" class="sidebar collapse d-md-block bg-dark">
         <a class="nav-link <?php echo $current_file === 'admin_dashboard.php' ? 'active' : '' ?>"
             href="admin_dashboard.php"><i class="fa fa-fw fa-home"></i> Dashboard</a>
-        <a class="nav-link <?php echo $current_file === 'addProduct.php' ? 'active' : '' ?>" href="addProduct.php"><i class="fa-solid fa-plus"></i> Manage Student</a>
+        <a class="nav-link <?php echo $current_file === 'students_record.php' ? 'active' : '' ?>" 
+            href="students_record.php"><i class="fa-solid fa-list-check"></i></i> Manage Students</a>
+        <a class="nav-link <?php echo $current_file === 'rooms_record.php' ? 'active' : '' ?>" 
+            href="rooms_record.php"><i class="fa-solid fa-door-closed"></i> View Rooms</a>
         <a class="nav-link <?php echo $current_file === 'admin_notice_board.php' ? 'active' : '' ?>"
             href="admin_notice_board.php"><i class="fa-solid fa-bell"></i> Notice</a>
         <a class="nav-link <?php echo $current_file === 'admin_leave.php' ? 'active' : '' ?>"
             href="admin_leave.php"><i class="fa-solid fa-plane-departure"></i> Leave</a>
-        <a class="nav-link" href="#"><i class="fa-solid fa-list"></i> Complain</a>
-        <a class="nav-link <?php echo $current_file === 'admin_display.php' ? 'active' : '' ?>" href="admin_display.php"><i class="fa-solid fa-bars"></i> Feedback</a>
+        <a class="nav-link <?php echo $current_file === 'admin_complaint.php' ? 'active' : '' ?>"
+             href="admin_complaint.php"><i class="fa-solid fa-list"></i> Complain</a>
+        <a class="nav-link <?php echo $current_file === 'visitor_record.php' ? 'active' : '' ?>" 
+                  href="visitor_record.php"><i class="fa-solid fa-person-walking-luggage"></i> View Visitors</a>
+        <a class="nav-link <?php echo $current_file === 'import_students.php' ? 'active' : '' ?>" 
+             href="import_students.php"><i class="fa-solid fa-file-import"></i> Import</a>
     </nav>
 </div>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['sic'] = "22vlsi44";
+// $_SESSION['sic'] = "23mmci85";
 if (isset($_SESSION['sic'])) {
     $current_file = basename(__FILE__);
     include "student_navbar.html";
@@ -15,7 +15,7 @@ if (isset($_SESSION['sic'])) {
                     <div class="info-box rooms">
                         <h4>My Rooms</h4>
                         <i class="fa-solid fs-1 fa-building"></i>
-                        <a href="#" class="btn">
+                        <a href="my_room.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> More info</a>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ if (isset($_SESSION['sic'])) {
                         <h4>Complain</h4>
                         <i class="fa-solid fs-1 fa-comments"></i>
                         <a href="student_complaint.php" class="btn">
-                            <i class="fa-solid fa-arrow-right"></i> Complain Registration</a>
+                            <i class="fa-solid fa-arrow-right"></i> Complaint Registration</a>
                     </div>
                 </div>
                 <div class="col-md-4 col-12">
@@ -53,9 +53,9 @@ if (isset($_SESSION['sic'])) {
                 </div>
                 <div class="col-md-4 col-12">
                     <div class="info-box feedback">
-                        <h4>Feedback</h4>
-                        <i class="fas fa-comment-dots"></i>
-                        <a href="#" class="btn">
+                        <h4>Visitors</h4>
+                        <i class="fa-solid fa-plane-arrival"></i>
+                        <a href="visitors.php" class="btn">
                             <i class="fa-solid fa-arrow-right"></i> More info</a>
                     </div>
                 </div>

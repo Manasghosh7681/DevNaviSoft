@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silicon Residence - Login</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="../Bootstrap/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #34495e;
+      --accent-color: #3498db;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --error-color: #e74c3c;
+      --success-color: #2ecc71;
+      --industrial-primary: #2c3e50;
+      --industrial-secondary: #34495e;
+      --light-bg: #1E1E1E;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f7fa;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      color: var(--dark-color);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .header-bar {
+      background-color: var(--light-bg);
+      padding: 10px 25px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+    
+    .header-bar h2 {
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      margin: 0 0 0 15px;
+      font-size: 1.8rem;
+    }
+    
+    
+    .logo {
+      height: 50px;
+      width: 50px;
+      transition: transform 0.3s ease;
+      border-radius: 50%;
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    .main-container {
+      display: flex;
+      flex: 1;
+    }
+    
+    .welcome-section {
+      flex: 1;
+      /* background: linear-gradient(135deg, #3498db, #2c3e50); */
+       background-color: var(--industrial-primary);
+      color: white;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .welcome-content {
+      max-width: 500px;
+    }
+    
+    .welcome-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .welcome-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: white;
+    }
+    
+    .welcome-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+    
+    .welcome-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .welcome-icon {
+      background: rgba(255, 255, 255, 0.2);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .welcome-icon:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .welcome-footer {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background-color: white;
+    }
+    
+    .login-box {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 100%;
+      max-width: 450px;
+      transform: translateY(0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .login-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .login-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .login-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent-color);
+    }
+    
+    .form-label {
+      font-weight: 600;
+      color: var(--secondary-color);
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .form-control {
+      height: 45px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 10px 15px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: none;
+    }
+    
+    .form-control:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+    }
+    
+    .btn-signin {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    
+    .btn-signin:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+    }
+    
+    .btn-signin:active {
+      transform: translateY(0);
+    }
+    
+    .text-danger {
+      font-size: 0.85rem;
+      margin-top: 5px;
+      display: block;
+    }
+    
+    .input-group {
+      position: relative;
+    }
+    
+    .input-group .form-control {
+      padding-right: 40px;
+    }
+    
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--secondary-color);
+    }
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background-color: var(--industrial-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .login-wrapper::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="rgba(0,0,0,0.05)" width="50" height="50" x="0" y="0"></rect><rect fill="rgba(0,0,0,0.05)" width="50" height="50" x="50" y="50"></rect></svg>');
+      opacity: 0.3;
+    }
+    
+    .login-box {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 100%;
+      max-width: 450px;
+      transform: translateY(0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .login-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .login-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .login-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent-color);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .main-container {
+        flex-direction: column;
+      }
+      
+      .welcome-section {
+        padding: 30px 20px;
+      }
+      
+      .login-wrapper {
+        padding: 30px 20px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .login-box {
+        padding: 30px 20px;
+      }
+      
+      .header-bar h2 {
+        font-size: 1.5rem;
+      }
+      
+      .welcome-title {
+        font-size: 2rem;
+      }
+      
+      .welcome-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .welcome-icons {
+        gap: 15px;
+      }
+      
+      .welcome-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
+    
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .login-box {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Bar -->
+  <div class="header-bar">
+    <img src="../images/hms logo.jpeg" alt="Logo" width="70px" class="logo" />
+    <h2 class="mx-auto">Silicon Residence</h2>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+      <div class="welcome-content">
+        <h1 class="welcome-title">WELCOME</h1>
+        <p class="welcome-subtitle">Welcome to the Silicon Residence Portal</p>
+        
+        <div class="welcome-icons">
+          <div class="welcome-icon">
+            <a href="../index.html"><i class="fas fa-home"></i></a>
+          </div>
+          <div class="welcome-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="welcome-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+        </div>
+        
+        <p class="welcome-footer">
+          <i class="fas fa-globe"></i> www.siliconresidence.edu
+        </p>
+      </div>
+    </div>
+
+    <!-- Login Section -->
+    <div class="login-wrapper">
+      <div class="login-box">
+        <div class="login-title">Login</div>
+        <form id="loginForm">
+          <div class="mb-4">
+            <label class="form-label">USER NAME</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+              <input type="text" class="form-control" id="userId" placeholder="Enter your user ID" />
+            </div>
+            <span id="userIdError" class="text-danger"></span>
+          </div>
+          <div class="mb-4">
+            <label class="form-label">PASSWORD</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-lock"></i></span>
+              <input type="password" class="form-control" id="password" placeholder="Enter your password" />
+              <i class="toggle-password fas fa-eye" onclick="togglePasswordVisibility()"></i>
+            </div>
+            <span id="passwordError" class="text-danger"></span>
+          </div>
+          <input type="submit" class="btn-signin" value="Sign In" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../Jquery/jquery-3.7.1.js"></script>
+  <script>
+    function togglePasswordVisibility() {
+      const passwordField = document.getElementById("password");
+      const toggleIcon = document.querySelector(".toggle-password");
+      
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleIcon.classList.replace("fa-eye", "fa-eye-slash");
+      } else {
+        passwordField.type = "password";
+        toggleIcon.classList.replace("fa-eye-slash", "fa-eye");
+      }
+    }
+    
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      let isValid = true;
+
+      let userId = document.getElementById("userId").value.trim();
+      let password = document.getElementById("password").value.trim();
+      let userIdPattern = /^[0-9]{2}[a-zA-Z]{4}[0-9]{2}$/;
+
+      document.getElementById("userIdError").innerText = "";
+      document.getElementById("passwordError").innerText = "";
+
+      if (userId === "") {
+        document.getElementById("userIdError").innerText = "User ID cannot be empty.";
+        isValid = false;
+      } else if (userId !== "admin@silicon.ac.in" && !userId.match(userIdPattern)) {
+        document.getElementById("userIdError").innerText = "Invalid User ID";
+        isValid = false;
+      }
+
+      if (password === "") {
+        document.getElementById("passwordError").innerText = "Password cannot be empty.";
+        isValid = false;
+      }
+
+      if (isValid) {
+        $.ajax({
+          url: "login.php",
+          method: "POST",
+          data: { 'userId': userId, 'password': password },
+          success: function (data) {
+            console.log(data,"hello");
+            if (data.trim()=== "Admin True Data") {
+              window.location.href = "../Admin/admin_dashboard.php";
+            } else if (data === "Admin False Data") {
+              document.getElementById("passwordError").innerText = "UserId/Password incorrect. Try Again!";
+              document.getElementById("passwordError").style.color = "var(--error-color)";
+            }else if(data === "Student True Data"){
+              window.location = "../Student/student_dashboard.php";
+            }else{
+              document.getElementById("passwordError").innerText = "UserId/Password incorrect. Try Again!";
+              document.getElementById("passwordError").style.color = "var(--error-color)";
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

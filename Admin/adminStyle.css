@@ -36,6 +36,23 @@ body {
     width: 100px;
 }
 
+input.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.modal-content {
+    animation-duration: 0.5s;
+    border-radius: 20px;
+}
+
+.modal-header i,
+.modal-body i,
+.modal-footer i {
+    margin-right: 8px;
+}
+
 /*---------- Sidebar----------- */
 
 .sidebar {
@@ -95,7 +112,7 @@ body {
     #main-content{
         flex-grow: 1;
         margin-left: 200px; /* Ensure content starts after the sidebar */
-        height: 100vh;
+        height: auto;
         overflow-y: auto; /* Enable scrolling */
         padding: 20px;
     }
@@ -181,4 +198,62 @@ body {
 .form-label i {
     color: #212121;
     margin-right: 5px;
+}
+
+.pagination {
+    margin-top: 10px;
+    text-align: center;
+    margin: auto;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #000;
+}
+
+.pagination a.active {
+    background-color: #000;
+    color: #fff;
+}
+
+/*..... View Rooms ......*/
+.profile-container {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    /* Ensure full height for vertical spacing */
+}
+
+.profile-icon {
+    font-size: 100px;
+    color: rgb(31, 78, 148);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+.profile-info-content {
+    flex-grow: 1;
+}
+.profile-info p {
+    margin: 4px 0;
+    font-size: 16px;
+}
+.deallocate-btn {
+    align-self: flex-end;
 }
