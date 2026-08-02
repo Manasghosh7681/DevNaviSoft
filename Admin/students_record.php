@@ -279,7 +279,7 @@ if (isset($_SESSION['email'])) {
                 <!-- Control Sections -->
                 <div class="control-section">
                     <div class="row">
-                        <div class="col-md-12 text-center mb-3 mb-md-0">
+                        <div class="col-md-6 text-center mb-3 mb-md-0">
                             <form action="auto_allocate_room.php" method="post">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-cogs me-2"></i> Auto Allocate Rooms
